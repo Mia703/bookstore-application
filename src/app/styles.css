@@ -1,0 +1,13 @@
+
+/* =================== constants =================== */
+main {
+	grid-column: span 4;
+}
+
+.header-section {
+	background-color: var(--secondary);
+	text-align: center;
+	padding: 1rem;
+}
+
+/* =================== media queries =================== */

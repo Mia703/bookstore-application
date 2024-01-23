@@ -1,9 +1,20 @@
 /* =================== imported fonts =================== */
+@import url('https://fonts.googleapis.com/css2?family=Habibi&family=Nunito+Sans:opsz,wght@6..12,400;6..12,500;6..12,600;6..12,700&family=Playfair+Display:wght@400;500;600&display=swap');
 
-/* ---------- sub-header ---------- */
 
 /* =================== global variables =================== */
-:root {}
+:root {
+	--background: #F8F8F8;
+	--primary: #94A069; /* dark green */
+	--secondary: #E0EADE; /* medium green */
+	--accent-one: #F0F1ED; /* light green */
+	--accent-two: #A7C7A9; /* med dark green */
+	--font-colour: #1E2022;
+
+	--playfair-font: 'Playfair Display', serif;
+	--habibi-font: 'Habibi', serif;
+	--nunito-font: 'Nunito Sans', sans-serif;
+}
 
 /* =================== reset default styles =================== */
 * {
@@ -13,9 +24,66 @@
 }
 
 /* =================== base page styles =================== */
+body {
+	background-color: var(--background);
+}
+
 
 /* =================== font styles =================== */
+h1 {
+	font-family: var(--playfair-font);
+	font-weight: 600;
+	font-size: 1.5em;
+	text-transform: capitalize;
+}
+
+h2 {
+	font-family: var(--habibi-font);
+	font-weight: 400;
+	font-size: 1.2em;
+}
+
+p {
+	font-family: var(--nunito-font);
+	font-weight: 400;
+	font-size: 1em;
+}
+
+button {
+	border-radius: 10px;
+	padding: 0.5rem 1rem;
+	border: none;
+}
+
+.button-white {
+	background-color: var(--background);
+	color: var(--font-colour);
+}
+
+.button-accent-two {
+	background-color: var(--accent-two);
+	color: var(--background);
+}
+
+.button-primary {
+	background-color: var(--primary);
+}
 
 /* =================== constants =================== */
+.main-grid {
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+	gap: 10px;
+}
 
 /* =================== media queries =================== */
+
+/* =================== TABLET =================== */
+@media only screen and (min-width: 40.063em) {
+
+}
+
+/* =================== DESKTOP =================== */
+@media only screen and (min-width: 64.063em) {
+
+}
