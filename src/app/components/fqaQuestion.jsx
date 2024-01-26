@@ -1,7 +1,7 @@
 
 // FQ&A question container
 
-export default function Question({question, answer}) {
+export default function fqaQuestion({question, answer}) {
 	return(
 		<div className="question">
 			<h2>{question}</h2>

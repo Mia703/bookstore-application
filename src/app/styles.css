@@ -1,13 +1,21 @@
 
-/* =================== constants =================== */
+/* ---------- sub-header ---------- */
+
+/* =================== media queries =================== */
 main {
 	grid-column: span 4;
 }
 
-.header-section {
-	background-color: var(--secondary);
-	text-align: center;
-	padding: 1rem;
+/* =================== TABLET =================== */
+@media only screen and (min-width: 40.063em) {
+	main {
+		grid-column: span 6;
+	}
 }
 
-/* =================== media queries =================== */
+/* =================== DESKTOP =================== */
+@media only screen and (min-width: 64.063em) {
+	main {
+		grid-column: span 12;
+	}
+}
