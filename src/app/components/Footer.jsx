@@ -1,8 +1,8 @@
-// FIXME: why does footer cover the full height?
+
 export default function Footer() {
 	return(
 		<footer>
-			<p>PanelSync</p>
+			<a href="/">PanelSync</a>
 			<div>
 				<a href="http://">About</a>
 			</div>

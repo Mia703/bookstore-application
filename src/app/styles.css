@@ -3,8 +3,8 @@ main {
 	grid-column: span 4;
 }
 
-section:not(:last-child) {
-	margin-bottom: 2rem;
+section {
+	padding: 4rem 1rem;
 }
 
 section h2 {
@@ -24,6 +24,10 @@ section h2 {
 
 /* ---------- service section ---------- */
 
+.services-section {
+	background-color: var(--accent-light);
+}
+
 .service-card-grid {
 	display: grid;
 	grid-auto-columns: auto;
@@ -39,6 +43,9 @@ section h2 {
 }
 
 /* ---------- questions section ---------- */
+.left-container {
+	margin-bottom: 3rem;
+}
 
 .right-container {
 	display: grid;
@@ -75,11 +82,16 @@ section h2 {
 		max-width: 80ch;
 	}
 }
+
 /* TODO: increase font size on desktop */
 /* =================== DESKTOP =================== */
 @media only screen and (min-width: 64.063em) {
 	main {
-		grid-column: 2 / 12;
+		grid-column: span 12;
+	}
+
+	section {
+		padding: 4rem 5rem;
 	}
 
 	/* ---------- welcome section ---------- */
@@ -94,7 +106,8 @@ section h2 {
 		grid-template-columns: 1fr 1fr 1fr;
 	}
 
-	.card h2, .card p {
+	.card h2,
+	.card p {
 		margin-bottom: 1rem;
 	}
 

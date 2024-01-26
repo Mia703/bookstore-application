@@ -14,16 +14,16 @@
 
 	--primary-border: solid 1px #272343;
 	--primary-border-radius: 10px;
-	--primary-padding: 0.6rem 1rem;
+	--primary-button-padding: 0.6rem 1rem;
 	--primary-hover: 3px 4px #272343;
 	--primary-transition: box-shadow 200ms ease-in-out;
 }
 
 /* =================== reset default styles =================== */
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
 }
 
 /* =================== base page styles =================== */
@@ -36,24 +36,24 @@ body {
 h1 {
 	font-family: 'Martel', serif;
 	font-weight: 800;
-	font-size: 1.4em;
+	font-size: 1.8em;
 }
 
 h2 {
 	font-family: 'Habibi', serif;
 	font-weight: 400;
-	font-size: 1em;
+	font-size: 1.5em;
 }
 
 p {
 	font-family: 'Nunito Sans', sans-serif;
 	font-weight: 400;
-	font-size: 0.8em;
+	font-size: 1em;
 }
 
 a {
 	color: var(--font);
-	font-size: 0.8em;
+	font-size: 1em;
 	text-decoration: none;
 	border-bottom: solid 2px var(--background);
 	transition: border-bottom 150ms ease-in-out;
@@ -69,8 +69,6 @@ a:hover {
 	display: grid;
 	grid-template-columns: repeat(4, 1fr);
 	gap: 10px;
-	
-	padding: 16px;
 }
 
 button {
@@ -84,7 +82,7 @@ button:hover {
 
 .button-highlight {
 	background-color: var(--highlight);
-	padding: var(--primary-padding);
+	padding: var(--primary-button-padding);
 	border: var(--primary-border);
 	border-radius: var(--primary-border-radius);
 	transition: var(--primary-transition);
@@ -92,7 +90,7 @@ button:hover {
 
 .button-accent-light {
 	background-color: var(--accent-light);
-	padding: var(--primary-padding);
+	padding: var(--primary-button-padding);
 	border: var(--primary-border);
 	border-radius: var(--primary-border-radius);
 	transition: var(--primary-transition);
@@ -113,6 +111,7 @@ footer {
 footer a {
 	border: none;
 }
+
 /* =================== media queries =================== */
 
 /* =================== TABLET =================== */
@@ -126,5 +125,14 @@ footer a {
 @media only screen and (min-width: 64.063em) {
 	#main-grid {
 		grid-template-columns: repeat(12, 1fr);
+	}
+
+	/* =================== font styles =================== */
+	h1 {
+		font-size: 2em;
+	}
+
+	h2 {
+		font-size: 1.8em;
 	}
 }

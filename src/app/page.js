@@ -57,9 +57,9 @@ export default function Home() {
 						}
 					/>
 					<Question
-						question={"How does PanelSync work?"}
+						question={"Some question here?"}
 						answer={
-							"First, sign-up and create your personalised account to unlock a world of reading possibilities. Then start building your digital library by adding your favourite books. As your reading journey unfolds, document your progress."
+							"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Neque ornare aenean euismod elementum nisi quis eleifend quam. Morbi quis commodo odio aenean sed adipiscing diam donec adipiscing."
 						}
 					/>
 				</div>
