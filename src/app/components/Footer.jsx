@@ -1,4 +1,4 @@
-
+// FIXME: why does footer cover the full height?
 export default function Footer() {
 	return(
 		<footer>

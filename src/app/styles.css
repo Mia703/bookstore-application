@@ -1,21 +1,108 @@
-
-/* ---------- sub-header ---------- */
-
 /* =================== media queries =================== */
 main {
 	grid-column: span 4;
 }
+
+section:not(:last-child) {
+	margin-bottom: 2rem;
+}
+
+section h2 {
+	margin-bottom: 1rem;
+}
+
+/* ---------- welcome section ---------- */
+
+.welcome-section h2 {
+	max-width: 35ch;
+}
+
+.welcome-section button {
+	display: inline-flex;
+	margin-right: 1rem;
+}
+
+/* ---------- service section ---------- */
+
+.service-card-grid {
+	display: grid;
+	grid-auto-columns: auto;
+	gap: 10px;
+}
+
+.card h2 {
+	margin-bottom: 0.5rem;
+}
+
+.card:hover {
+	box-shadow: var(--primary-hover);
+}
+
+/* ---------- questions section ---------- */
+
+.right-container {
+	display: grid;
+	grid-auto-columns: auto;
+	gap: 15px;
+}
+
+.right-container h2 {
+	margin-bottom: 0.5rem;
+}
+
 
 /* =================== TABLET =================== */
 @media only screen and (min-width: 40.063em) {
 	main {
 		grid-column: span 6;
 	}
-}
 
+	/* ---------- welcome section ---------- */
+
+	.welcome-section h2 {
+		max-width: 45ch;
+	}
+
+	/* ---------- service section ---------- */
+
+	.service-card-grid {
+		grid-template-columns: 1fr 1fr;
+	}
+
+	/* ---------- question section ---------- */
+
+	.right-container p {
+		max-width: 80ch;
+	}
+}
+/* TODO: increase font size on desktop */
 /* =================== DESKTOP =================== */
 @media only screen and (min-width: 64.063em) {
 	main {
-		grid-column: span 12;
+		grid-column: 2 / 12;
+	}
+
+	/* ---------- welcome section ---------- */
+
+	.welcome-section h2 {
+		max-width: 50ch;
+	}
+
+	/* ---------- service section ---------- */
+
+	.service-card-grid {
+		grid-template-columns: 1fr 1fr 1fr;
+	}
+
+	.card h2, .card p {
+		margin-bottom: 1rem;
+	}
+
+	/* ---------- questions section ---------- */
+
+	.questions-section {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		gap: 10px;
 	}
 }

@@ -7,6 +7,7 @@ export default function serviceCard({title, body}) {
 		padding: "1rem",
 		borderRadius: "var(--primary-border-radius)",
 		border: "var(--primary-border)",
+		transition: "var(--primary-transition)",
 	};
 
 	return (

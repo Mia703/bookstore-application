@@ -1,3 +1,5 @@
+import Navigation from "./components/homeNavigation";
+import Footer from "./components/Footer";
 import "./globals.css";
 
 export const metadata = {
@@ -13,10 +15,10 @@ export default function RootLayout({ children }) {
 				<meta charset="UTF-8" />
 				<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 			</head>
-			<body id="main-grid">
-				{/* TODO: add header */}
-				{children}
-				{/* TODO: add footer */}
+			<body>
+				<Navigation />
+				<div id="main-grid">{children}</div>
+				<Footer />
 			</body>
 		</html>
 	);

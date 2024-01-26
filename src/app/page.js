@@ -12,36 +12,55 @@ export default function Home() {
 					insights. Dive into a world of personalised tracking to enhance your
 					book reading.
 				</h2>
-				<button type="button">Sign-up</button>
-				<button type="button">Login</button>
+				<button type="button" className="button-highlight">
+					Sign-up
+				</button>
+				<button type="button" className="button-accent-light">
+					Login
+				</button>
 			</section>
 			<section className="services-section">
 				<h1>Everything you need</h1>
 				<h2>All in one place</h2>
-				<Card 
-					title={"Progress Tracking"} 
-					body={"Add books to your personal library and keep track of your reading progress, future reads"} 
-				/>
-				<Card 
-					title={"Insightful Analytics"}
-					body={"Add private notes and reviews for books you have read, and revisit them later."}
-				/>
-				<Card 
-					title={"All Private"}
-					body={"Your collection is private. No one else can see it but you."}
-				/>
+				<div className="service-card-grid">
+					<Card
+						title={"Progress Tracking"}
+						body={
+							"Add books to your personal library and keep track of your reading progress, future reads"
+						}
+					/>
+					<Card
+						title={"Insightful Analytics"}
+						body={
+							"Add private notes and reviews for books you have read, and revisit them later."
+						}
+					/>
+					<Card
+						title={"All Private"}
+						body={"Your collection is private. No one else can see it but you."}
+					/>
+				</div>
 			</section>
 			<section className="questions-section">
 				<div className="left-container">
 					<h1>Frequently Asked Questions</h1>
 					<h2>
-						Can't find the answer you're looking for? <a href="mailto:amya.moore@du.edu">Email us</a>.
+						Can't find the answer you're looking for?{" "}
+						<a href="mailto:amya.moore@du.edu">Email us</a>.
 					</h2>
 				</div>
 				<div className="right-container">
-					<Question 
+					<Question
 						question={"How does PanelSync work?"}
-						answer={"First, sign-up and create your personalised account to unlock a world of reading possibilities. Then start building your digital library by adding your favourite books. As your reading journey unfolds, document your progress."}
+						answer={
+							"First, sign-up and create your personalised account to unlock a world of reading possibilities. Then start building your digital library by adding your favourite books. As your reading journey unfolds, document your progress."
+						}
+					/>
+					<Question
+						question={"How does PanelSync work?"}
+						answer={
+							"First, sign-up and create your personalised account to unlock a world of reading possibilities. Then start building your digital library by adding your favourite books. As your reading journey unfolds, document your progress."
+						}
 					/>
 				</div>
 			</section>
