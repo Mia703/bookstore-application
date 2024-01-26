@@ -9,6 +9,10 @@
   - [Creating Client Components](https://nextjs.org/docs/app/building-your-application/rendering/client-components)
 - [Linking Pages in Navigation](https://nextjs.org/docs/pages/building-your-application/routing/linking-and-navigating)
 
+3. [Creating HTML forms](https://developer.mozilla.org/en-US/docs/Learn/Forms)
+
+- [Creating Your first Form](https://developer.mozilla.org/en-US/docs/Learn/Forms/Your_first_form)
+
 ## HTML Notes
 
 The <main> tag specifies the main content of a document. The content inside the <main> element should be unique to the document. It should not contain any content that is repeated across documents such as sidebars, nav links, copyright information, site logos, and/or search forms.
