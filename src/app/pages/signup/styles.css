@@ -1,0 +1,20 @@
+
+/* =================== constants =================== */
+body {
+
+	background-color: var(--accent-light);
+}
+/* =================== media queries =================== */
+.signup-page-container {
+	grid-column: span 4;
+}
+
+/* =================== TABLET =================== */
+@media only screen and (min-width: 40.063em) {
+
+}
+
+/* =================== DESKTOP =================== */
+@media only screen and (min-width: 64.063em) {
+
+}

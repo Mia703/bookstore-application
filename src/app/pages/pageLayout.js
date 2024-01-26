@@ -1,14 +1,13 @@
-import Navigation from "./components/homeNavigation";
-import Footer from "./components/Footer";
-import "./globals.css";
+import Navigation from "../components/homeNavigation";
+import "../globals.css";
 
 export const metadata = {
 	title: "PanelSync",
-	description: "Tracking your book reading",
+	description: "Tracking your manwha reading",
 	favicon: "",
 };
 
-export default function RootLayout({ children }) {
+export default function PageLayout({ children }) {
 	return (
 		<html lang="en">
 			<head>
@@ -18,7 +17,6 @@ export default function RootLayout({ children }) {
 			<body>
 				<Navigation />
 				<div id="main-grid">{children}</div>
-				<Footer />
 			</body>
 		</html>
 	);

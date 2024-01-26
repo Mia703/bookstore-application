@@ -65,11 +65,6 @@ a:hover {
 }
 
 /* =================== constants =================== */
-#main-grid {
-	display: grid;
-	grid-template-columns: repeat(4, 1fr);
-	gap: 10px;
-}
 
 button {
 	transition: var(--primary-transition);
@@ -113,6 +108,11 @@ footer a {
 }
 
 /* =================== media queries =================== */
+#main-grid {
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+	gap: 10px;
+}
 
 /* =================== TABLET =================== */
 @media only screen and (min-width: 40.063em) {

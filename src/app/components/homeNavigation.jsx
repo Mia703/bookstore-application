@@ -34,13 +34,13 @@ export default function homeNavigation() {
 						<Link href={"/"}>Home</Link>
 					</li>
 					<li className="nav-item" style={itemStyle}>
-						<Link href={"/about"}>About</Link>
+						<Link href={"/pages/about"}>About</Link>
 					</li>
 					<li className="nav-item" style={itemStyle}>
-						<Link href={"/"}>Sign-up</Link>
+						<Link href={"/pages/signup"}>Sign-up</Link>
 					</li>
 					<li className="nav-item" style={itemStyle}>
-						<Link href={"/"}>Login</Link>
+						<Link href={"/pages/login"}>Login</Link>
 					</li>
 				</ul>
 			</nav>

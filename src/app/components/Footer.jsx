@@ -1,10 +1,11 @@
+import Link from "next/link";
 
 export default function Footer() {
-	return(
+	return (
 		<footer>
-			<a href="/">PanelSync</a>
-			<div>
-				<a href="http://">About</a>
+			<Link href={"/"}>PanelSync</Link>
+			<div className="pages-container">
+				<Link href={"/pages/about"}>About</Link>
 			</div>
 		</footer>
 	);
