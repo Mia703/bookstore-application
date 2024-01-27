@@ -1,3 +1,5 @@
+import Navigation from "./components/homeNavigation";
+import Footer from "./components/Footer";
 import Card from "./components/serviceCard";
 import Question from "./components/fqaQuestion";
 import "./styles.css";
@@ -5,6 +7,7 @@ import "./styles.css";
 export default function Home() {
 	return (
 		<main>
+			<Navigation />
 			<section className="welcome-section">
 				<h1>Welcome to PanelSync</h1>
 				<h2>
@@ -12,12 +15,16 @@ export default function Home() {
 					insights. Dive into a world of personalised tracking to enhance your
 					book reading.
 				</h2>
-				<button type="button" className="button-highlight">
-					Sign-up
-				</button>
-				<button type="button" className="button-accent-light">
-					Login
-				</button>
+				<a href={"/pages/signup"} className="a-button-link">
+					<button type="button" className="button-highlight">
+						Sign-up
+					</button>
+				</a>
+				<a href={"/pages/login"} className="a-button-link">
+					<button type="button" className="button-accent-light">
+						Login
+					</button>
+				</a>
 			</section>
 			<section className="services-section">
 				<h1>Everything you need</h1>
@@ -64,6 +71,7 @@ export default function Home() {
 					/>
 				</div>
 			</section>
+			<Footer />
 		</main>
 	);
 }

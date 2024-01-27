@@ -4,7 +4,7 @@ main {
 }
 
 section {
-	padding: 4rem 1rem;
+	padding: var(--primary-section-padding);
 }
 
 section h2 {
@@ -91,7 +91,7 @@ section h2 {
 	}
 
 	section {
-		padding: 4rem 5rem;
+		padding: var(--primary-section-padding-desktop);
 	}
 
 	/* ---------- welcome section ---------- */

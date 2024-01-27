@@ -17,6 +17,8 @@
 	--primary-button-padding: 0.6rem 1rem;
 	--primary-hover: 3px 4px #272343;
 	--primary-transition: box-shadow 200ms ease-in-out;
+	--primary-section-padding: 4rem 1rem;
+	--primary-section-padding-desktop: 4rem 5rem;
 }
 
 /* =================== reset default styles =================== */
@@ -55,13 +57,18 @@ a {
 	color: var(--font);
 	font-size: 1em;
 	text-decoration: none;
-	border-bottom: solid 2px var(--background);
+	border-bottom: solid 2px transparent;
 	transition: border-bottom 150ms ease-in-out;
 }
 
 a:hover {
 	border-color: var(--accent-medium);
 	transition: border-bottom 150ms ease-in-out;
+}
+
+/*  a tags with buttons */
+.a-button-link {
+	border: none;
 }
 
 /* =================== constants =================== */

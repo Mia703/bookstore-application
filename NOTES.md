@@ -12,6 +12,8 @@
 3. [Creating HTML forms](https://developer.mozilla.org/en-US/docs/Learn/Forms)
 
 - [Creating Your first Form](https://developer.mozilla.org/en-US/docs/Learn/Forms/Your_first_form)
+- On page refresh, clear inputs
+- How do I show what's being typed in the password input
 
 ## HTML Notes
 

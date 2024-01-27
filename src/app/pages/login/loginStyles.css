@@ -1,13 +1,31 @@
-/* =================== constants =================== */
 
+/* =================== constants =================== */
+body {
+	background-color: var(--background);
+}
+
+section {
+	padding: var(--primary-section-padding);
+}
 /* =================== media queries =================== */
+.login-page-container {
+	grid-column: span 4;
+}
 
 /* =================== TABLET =================== */
 @media only screen and (min-width: 40.063em) {
-
+	.login-page-container {
+		grid-column: span 6;
+	}
 }
 
 /* =================== DESKTOP =================== */
 @media only screen and (min-width: 64.063em) {
+	.login-page-container {
+		grid-column: span 12;
+	}
 
+	section {
+		padding: var(--primary-section-padding-desktop);
+	}
 }

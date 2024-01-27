@@ -1,0 +1,35 @@
+/* =================== constants =================== */
+section {
+	padding: var(--primary-section-padding-desktop);
+}
+
+section h1 {
+	margin-bottom: 1rem;
+}
+
+p {
+	margin-bottom: 1rem;
+}
+/* =================== media queries =================== */
+.about-page-container {
+	grid-column: span 4;
+}
+
+/* =================== TABLET =================== */
+@media only screen and (min-width: 40.063em) {
+	.about-page-container {
+		grid-column: span 6;
+	}
+}
+
+/* =================== DESKTOP =================== */
+@media only screen and (min-width: 64.063em) {
+	.about-page-container {
+		grid-column: span 12;
+	}
+	
+	/* FIXME: how do I get the page to be the full height of the viewport */
+	.about-section {
+		height: 88.2vh;
+	}
+}
