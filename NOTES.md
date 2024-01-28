@@ -22,3 +22,7 @@ There is another way to associate a form control with a label — nest the form 
 The main tag specifies the main content of a document. The content inside the main element should be unique to the document. It should not contain any content that is repeated across documents such as sidebars, nav links, copyright information, site logos, and/or search forms.
 
 There cannot be more than one main element in a document.
+
+4. Creating a search bar
+
+- [How to create a search bar](https://www.maketechstuff.com/2023/02/create-search-bar-design.html)
