@@ -11,6 +11,7 @@
 	--accent-light: #E3F6F5;
 	--accent-medium: #BAE8E8;
 	--accent-dark: #2D334A;
+	--accent-invalid: #E8BABA;
 
 	--primary-border: solid 1px #272343;
 	--primary-border-radius: 10px;
@@ -41,13 +42,16 @@ h1 {
 	font-size: 1.8em;
 }
 
-h2 {
+h2,
+label,
+input {
 	font-family: 'Habibi', serif;
 	font-weight: 400;
 	font-size: 1.5em;
 }
 
-p {
+p,
+a {
 	font-family: 'Nunito Sans', sans-serif;
 	font-weight: 400;
 	font-size: 1em;
@@ -55,7 +59,6 @@ p {
 
 a {
 	color: var(--font);
-	font-size: 1em;
 	text-decoration: none;
 	border-bottom: solid 2px transparent;
 	transition: border-bottom 150ms ease-in-out;
@@ -69,6 +72,17 @@ a:hover {
 /*  a tags with buttons */
 .a-button-link {
 	border: none;
+}
+
+span[aria-label] {
+	font-size: 0.7em;
+	font-weight: 600;
+}
+
+input {
+	padding: 0 0.5rem;
+	border-radius: 4px;
+	border-color: var(--accent-dark);
 }
 
 /* =================== constants =================== */

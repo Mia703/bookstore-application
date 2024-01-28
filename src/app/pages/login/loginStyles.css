@@ -1,15 +1,14 @@
 
 /* =================== constants =================== */
-body {
-	background-color: var(--background);
-}
-
 section {
 	padding: var(--primary-section-padding);
 }
+
 /* =================== media queries =================== */
 .login-page-container {
 	grid-column: span 4;
+	background-color: var(--accent-light);
+	height: 100vh;
 }
 
 /* =================== TABLET =================== */

@@ -10,9 +10,15 @@ section h1 {
 p {
 	margin-bottom: 1rem;
 }
+
 /* =================== media queries =================== */
 .about-page-container {
 	grid-column: span 4;
+	height: 100vh;
+
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
 }
 
 /* =================== TABLET =================== */
@@ -26,10 +32,5 @@ p {
 @media only screen and (min-width: 64.063em) {
 	.about-page-container {
 		grid-column: span 12;
-	}
-	
-	/* FIXME: how do I get the page to be the full height of the viewport */
-	.about-section {
-		height: 88.2vh;
 	}
 }
