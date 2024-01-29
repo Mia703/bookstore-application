@@ -22,10 +22,11 @@ export default function About() {
 					of Denver in ICT 4300: Web Systems and Information I. This application
 					serves the specific requirements of our assignment and any data
 					collected will be promptly erased upon the conclusion of this course
-					on March 16th, 2024. We sincerely appreciate your assistance and
-					support.
+					on March 16th, 2024. 
 				</p>
 				<p>
+					We sincerely appreciate your assistance and
+					support. <br />
 					- The PanelSync Team
 				</p>
 			</section>

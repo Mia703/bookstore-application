@@ -21,6 +21,7 @@ p {
 	justify-content: space-between;
 }
 
+
 /* =================== TABLET =================== */
 @media only screen and (min-width: 40.063em) {
 	.about-page-container {
@@ -32,5 +33,9 @@ p {
 @media only screen and (min-width: 64.063em) {
 	.about-page-container {
 		grid-column: span 12;
+	}
+	
+	.about-section {
+		margin-bottom: 15rem;
 	}
 }

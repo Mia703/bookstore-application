@@ -13,7 +13,6 @@ form .form-inputs-container {
 
 input {
 	margin: 0.5rem 0;
-	min-width: 10rem;
 }
 
 input:invalid {
@@ -40,12 +39,8 @@ input:invalid {
 	section {
 		padding: var(--primary-section-padding-desktop);
 	}
-	
+
 	.signup-page-container {
 		grid-column: span 12;
-	}
-
-	input {
-		min-width: 25rem;
 	}
 }

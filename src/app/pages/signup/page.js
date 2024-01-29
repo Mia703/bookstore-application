@@ -14,7 +14,9 @@ export default function Signup() {
 							<label htmlFor="fname">
 								My first name is <span aria-label="required">*</span>{" "}
 							</label>
-							<input type="text" name="first-name" id="fname" required />
+							<input
+								type="text" name="first-name" id="fname" placeholder="name" required
+							/>
 
 							<label htmlFor="lname">
 								<br /> My last name is <span aria-label="required">*</span>{" "}
@@ -24,7 +26,7 @@ export default function Signup() {
 							<label htmlFor="email">
 								<br /> My email is <span aria-label="required">*</span>{" "}
 							</label>
-							<input type="email" name="-user-email" id="email" required/>
+							<input type="email" name="-user-email" id="email" required />
 
 							<label htmlFor="password">
 								<br /> I want my password to be{" "}
@@ -37,10 +39,16 @@ export default function Signup() {
 								<span aria-label="required">*</span>{" "}
 							</label>
 							<input
-								type="password" name="confirmed-password" id="confirmed-password" required />
+								type="password"
+								name="confirmed-password"
+								id="confirmed-password"
+								required
+							/>
 							<label>.</label>
 						</div>
-						<button type="submit" className="button-highlight">Sign-up</button>
+						<button type="submit" className="button-highlight">
+							Sign-up
+						</button>
 					</form>
 				</div>
 			</section>

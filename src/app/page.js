@@ -9,22 +9,27 @@ export default function Home() {
 		<main>
 			<Navigation />
 			<section className="welcome-section">
-				<h1>Welcome to PanelSync</h1>
-				<h2>
-					Discover a simple way to take control of your reading progress and
-					insights. Dive into a world of personalised tracking to enhance your
-					book reading.
-				</h2>
-				<a href={"/pages/signup"} className="a-button-link">
-					<button type="button" className="button-highlight">
-						Sign-up
-					</button>
-				</a>
-				<a href={"/pages/login"} className="a-button-link">
-					<button type="button" className="button-accent-light">
-						Login
-					</button>
-				</a>
+				<div>
+					<h1>Welcome to PanelSync</h1>
+					<h2>
+						Discover a simple way to take control of your reading progress and
+						insights. Dive into a world of personalised tracking to enhance your
+						book reading.
+					</h2>
+					<a href={"/pages/signup"} className="a-button-link">
+						<button type="button" className="button-highlight">
+							Sign-up
+						</button>
+					</a>
+					<a href={"/pages/login"} className="a-button-link">
+						<button type="button" className="button-accent-light">
+							Login
+						</button>
+					</a>
+				</div>
+				<div>
+					<img src={""} alt="PanelSync Display Image" />
+				</div>
 			</section>
 			<section className="services-section">
 				<h1>Everything you need</h1>
