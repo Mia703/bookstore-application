@@ -11,13 +11,11 @@ form .form-inputs-container {
 	margin-bottom: 1rem;
 }
 
-input {
-	margin: 0.5rem 0;
+.form-inputs-container label:first-child {
+	margin-left: 0;
 }
 
-input:invalid {
-	border: solid 2px var(--accent-invalid);
-}
+
 
 /* =================== media queries =================== */
 .signup-page-container {

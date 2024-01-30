@@ -75,16 +75,38 @@ a:hover {
 }
 
 span[aria-label] {
-	font-size: 0.7em;
-	font-weight: 600;
+	font-size: 0.65em;
 }
 
 input {
+	margin: 0.5rem 0;
 	padding: 0 0.5rem;
-	border-radius: 4px;
-	border-color: var(--accent-dark);
+	border: none;
+	border-bottom: solid 2px var(--accent-dark);
+	background-color: var(--accent-light);
+	transition: all 200ms ease-in-out;
+	outline: none;
 }
 
+input::placeholder {
+	font-size: 0.8em;
+	text-transform: uppercase;
+	text-align: center;
+	color: var(--font);
+	transition: all 200ms ease-in-out;
+}
+
+input:focus {
+	background-color: var(--accent-medium);
+	border-color: var(--accent-light);
+	outline: none;
+	transition: all 200ms ease-in-out;
+	transform: scale(1.05);
+}
+
+input:focus:invalid {
+	background-color: var(--accent-invalid);
+}
 /* =================== constants =================== */
 
 button {

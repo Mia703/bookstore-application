@@ -1,0 +1,27 @@
+/* =================== constants =================== */
+section {
+	padding: var(--primary-section-padding);
+}
+
+/* =================== media queries =================== */
+.search-page-container {
+	grid-column: span 4;
+}
+
+/* =================== TABLET =================== */
+@media only screen and (min-width: 40.063em) {
+	.search-page-container {
+		grid-column: span 6;
+	}
+}
+
+/* =================== DESKTOP =================== */
+@media only screen and (min-width: 64.063em) {
+	.search-page-container {
+		grid-column: span 12;
+	}
+
+	section {
+		padding: var(--primary-section-desktop);
+	}
+}
