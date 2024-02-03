@@ -1,25 +1,24 @@
 /* =================== imported fonts =================== */
-@import url('https://fonts.googleapis.com/css2?family=Habibi&family=Martel:wght@800&family=Nunito+Sans:opsz,wght@6..12,400;6..12,600;6..12,700&display=swap');
-
-/* ---------- sub-header ---------- */
+@import url('https://fonts.googleapis.com/css2?family=Istok+Web:ital,wght@0,400;0,700;1,400;1,700&family=Noto+Sans:wght@400;600&family=Ruda:wght@800;900&display=swap');
 
 /* =================== global variables =================== */
 :root {
-	--background: #FFFFFE;
-	--font: #272343;
-	--highlight: #FFD803;
-	--accent-light: #E3F6F5;
-	--accent-medium: #BAE8E8;
-	--accent-dark: #2D334A;
-	--accent-invalid: #E8BABA;
+	--primary-font: 'Noto Sans', sans-serif;
+	--primary-header-font: 'Ruda', sans-serif;
+	--primary-sub-header-font: 'Istok Web', sans-serif;
 
-	--primary-border: solid 1px #272343;
-	--primary-border-radius: 10px;
-	--primary-button-padding: 0.6rem 1rem;
-	--primary-hover: 3px 4px #272343;
-	--primary-transition: box-shadow 200ms ease-in-out;
-	--primary-section-padding: 4rem 1rem;
-	--primary-section-padding-desktop: 4rem 5rem;
+	--background: #fffffe;
+	--font: #241d0d;
+	--highlight: #fcda5f;
+	--accent-light: #e3f6f5;
+	--accent-medium: #bae8e8;
+	--accent-dark: #2d334a;
+
+	--std-section-border-radius: 1rem;
+	--std-section-padding: 2rem;
+	--std-section-margin: 2rem 0;
+	--std-transition: 250ms ease-in-out;
+	--std-button-shadow: 2px 3px var(--font);
 }
 
 /* =================== reset default styles =================== */
@@ -31,123 +30,62 @@
 
 /* =================== base page styles =================== */
 body {
-	font-family: 'Nunito Sans', sans-serif;
 	background-color: var(--background);
+	font-family: var(--primary-font);
 }
 
 /* =================== font styles =================== */
-h1 {
-	font-family: 'Martel', serif;
+h1, .logo {
+	font-family: var(--primary-header-font);
 	font-weight: 800;
-	font-size: 1.8em;
+	font-size: 2em;
+	text-transform: uppercase;
+	margin-bottom: 0.5rem;
 }
 
-h2,
-label,
-input {
-	font-family: 'Habibi', serif;
+h2 {
+	font-family: var(--primary-sub-header-font);
 	font-weight: 400;
-	font-size: 1.5em;
+	font-size: 1.3em;
+	margin-bottom: 0.5rem;
 }
 
 p,
 a {
-	font-family: 'Nunito Sans', sans-serif;
+	font-family: var(--primary-font);
 	font-weight: 400;
 	font-size: 1em;
 }
 
 a {
-	color: var(--font);
 	text-decoration: none;
-	border-bottom: solid 2px transparent;
-	transition: border-bottom 150ms ease-in-out;
-}
-
-a:hover {
-	border-color: var(--accent-medium);
-	transition: border-bottom 150ms ease-in-out;
-}
-
-/*  a tags with buttons */
-.a-button-link {
-	border: none;
-}
-
-span[aria-label] {
-	font-size: 0.65em;
-}
-
-input {
-	margin: 0.5rem 0;
-	padding: 0 0.5rem;
-	border: none;
-	border-bottom: solid 2px var(--accent-dark);
-	background-color: var(--accent-light);
-	transition: all 200ms ease-in-out;
-	outline: none;
-}
-
-input::placeholder {
-	font-size: 0.8em;
-	text-transform: uppercase;
-	text-align: center;
 	color: var(--font);
-	transition: all 200ms ease-in-out;
 }
 
-input:focus {
-	background-color: var(--accent-medium);
-	border-color: var(--accent-light);
-	outline: none;
-	transition: all 200ms ease-in-out;
-	transform: scale(1.05);
+span.bold {
+	font-weight: 600;
 }
 
-input:focus:invalid {
-	background-color: var(--accent-invalid);
-}
 /* =================== constants =================== */
-
-button {
-	transition: var(--primary-transition);
+button[type='button'] {
+	border-radius: 10px;
+	border: solid 2px var(--font);
+	padding: 10px 12px;
 	cursor: pointer;
+	transition: box-shadow var(--std-transition);
 }
 
-button:hover {
-	box-shadow: var(--primary-hover);
+button[type='button']:hover {
+	box-shadow: var(--std-button-shadow);
+	transition: box-shadow var(--std-transition);
 }
 
 .button-highlight {
 	background-color: var(--highlight);
-	padding: var(--primary-button-padding);
-	border: var(--primary-border);
-	border-radius: var(--primary-border-radius);
-	transition: var(--primary-transition);
 }
 
 .button-accent-light {
 	background-color: var(--accent-light);
-	padding: var(--primary-button-padding);
-	border: var(--primary-border);
-	border-radius: var(--primary-border-radius);
-	transition: var(--primary-transition);
-}
-
-footer * {
-	color: var(--background);
-}
-
-footer {
-	background-color: var(--accent-dark);
-	padding: 1rem;
-	display: flex;
-	flex-direction: row;
-	justify-content: space-between;
-}
-
-footer a {
-	border: none;
 }
 
 /* =================== media queries =================== */
@@ -168,14 +106,5 @@ footer a {
 @media only screen and (min-width: 64.063em) {
 	#main-grid {
 		grid-template-columns: repeat(12, 1fr);
-	}
-
-	/* =================== font styles =================== */
-	h1 {
-		font-size: 2em;
-	}
-
-	h2 {
-		font-size: 1.8em;
 	}
 }

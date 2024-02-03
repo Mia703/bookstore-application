@@ -1,26 +1,18 @@
 /* =================== constants =================== */
-section {
-	padding: var(--primary-section-padding-desktop);
-}
-
-section h1 {
-	margin-bottom: 1rem;
-}
-
-p {
-	margin-bottom: 1rem;
+section.about-section {
+	padding: var(--std-section-padding) var(--std-section-padding) 1rem;
 }
 
 /* =================== media queries =================== */
+
 .about-page-container {
 	grid-column: span 4;
-	height: 100vh;
-
-	display: flex;
-	flex-direction: column;
-	justify-content: space-between;
+	padding: 1rem 1rem 0;
 }
 
+.about-section p {
+	margin-bottom: 1rem;
+}
 
 /* =================== TABLET =================== */
 @media only screen and (min-width: 40.063em) {
@@ -33,9 +25,5 @@ p {
 @media only screen and (min-width: 64.063em) {
 	.about-page-container {
 		grid-column: span 12;
-	}
-	
-	.about-section {
-		margin-bottom: 15rem;
 	}
 }

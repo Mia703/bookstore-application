@@ -1,46 +1,25 @@
 import Link from "next/link";
+import "./homeStyle.css"
 
 export default function homeNavigation() {
-	const sectionStyle = {
-		padding: "1rem",
-		display: "flex",
-		flexDirection: "row",
-		justifyContent: "space-between",
-	};
-
-	const navStyle = {
-		minWidth: "20vw",
-	};
-
-	const listStyle = {
-		display: "flex",
-		flexDirection: "row",
-		justifyContent: "space-between",
-	};
-
-	const itemStyle = {
-		listStyle: "none",
-		marginRight: "10px",
-	};
-
 	return (
-		<section className="navigation-section" style={sectionStyle}>
+		<section className="navigation-section">
 			<div className="logo-container">
-				<a href="/">PanelSync</a>
+				<Link href={"/"} className="logo">PanelSync</Link>
 			</div>
-			<nav id="home-navigation" style={navStyle}>
-				<ul className="nav-list" style={listStyle}>
-					<li className="nav-item" style={itemStyle}>
-						<Link href={"/"}>Home</Link>
-					</li>
-					<li className="nav-item" style={itemStyle}>
+
+			<nav id="home-navigation">
+				<ul className="nav-list">
+					<li className="nav-item">
 						<Link href={"/pages/about"}>About</Link>
 					</li>
-					<li className="nav-item" style={itemStyle}>
-						<Link href={"/pages/signup"}>Sign-up</Link>
-					</li>
-					<li className="nav-item" style={itemStyle}>
+					<li className="nav-item">
 						<Link href={"/pages/login"}>Login</Link>
+					</li>
+					<li className="nav-item">
+						<button type="button" className="button-accent-light">
+							<Link href={"/pages/signup"}>Sign up</Link>
+						</button>
 					</li>
 				</ul>
 			</nav>

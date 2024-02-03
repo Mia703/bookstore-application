@@ -1,135 +1,86 @@
+/* =================== constants =================== */
+section:not(:first-child) {
+	margin: var(--std-section-margin);
+}
+
+section:not(:first-child, .welcome-section) {
+	border-radius: var(--std-section-border-radius);
+	padding: var(--std-section-padding);
+}
+
+.image-container {
+	height: 15rem;
+	background-color: grey;
+	border-radius: var(--std-section-border-radius);
+	margin-bottom: 2rem;
+}
+
 /* =================== media queries =================== */
+
 main {
 	grid-column: span 4;
+	padding: 1rem 1rem 0;
 }
-
-section {
-	padding: var(--primary-section-padding);
-}
-
-section h2 {
-	margin-bottom: 1rem;
-}
-
-/* ---------- welcome section ---------- */
-.welcome-section {
-	display: grid;
-	grid-template-columns: repeat(2, 1fr);
-	gap: 10px;
-}
-
-.welcome-section div:first-child {
-	grid-column: span 2;
-	grid-row: 2;
-}
-
-.welcome-section h2 {
-	max-width: 35ch;
-}
-
-.welcome-section button {
-	display: inline-flex;
-	margin-right: 1rem;
-}
-
-/* ---------- service section ---------- */
 
 .services-section {
-	background-color: var(--accent-light);
+	background-color: var(--highlight);
 }
 
-.service-card-grid {
+.services-section .service-card-grid {
 	display: grid;
-	grid-auto-columns: auto;
+	grid-auto-rows: max-content;
 	gap: 10px;
 }
 
-.card h2 {
-	margin-bottom: 0.5rem;
+.services-section .card:hover {
+	box-shadow: var(--std-button-shadow);
+	transition: box-shadow var(--std-transistion);
 }
 
-.card:hover {
-	box-shadow: var(--primary-hover);
+.questions-section {
+	background-color: var(--accent-medium);
 }
 
-/* ---------- questions section ---------- */
-.left-container {
-	margin-bottom: 3rem;
+.questions-section div {
+	padding: 0 1rem;
 }
 
-.right-container {
-	display: grid;
-	grid-auto-columns: auto;
-	gap: 15px;
+.questions-section li span {
+	text-transform: capitalize;
 }
-
-.right-container h2 {
-	margin-bottom: 0.5rem;
-}
-
 
 /* =================== TABLET =================== */
 @media only screen and (min-width: 40.063em) {
 	main {
 		grid-column: span 6;
 	}
-
-	/* ---------- welcome section ---------- */
-
-	.welcome-section h2 {
-		max-width: 45ch;
+	.welcome-section {
+		display: grid;
+		grid-template-columns: repeat(2, 1fr);
+		gap: 10px;
 	}
 
-	/* ---------- service section ---------- */
-
-	.service-card-grid {
-		grid-template-columns: 1fr 1fr;
+	.welcome-section .image-container {
+		grid-column: 2;
+		grid-row: 1;
 	}
 
-	/* ---------- question section ---------- */
-
-	.right-container p {
-		max-width: 80ch;
+	.services-section .service-card-grid {
+		grid-template-columns: repeat(2, 1fr);
 	}
 }
 
-/* TODO: increase font size on desktop */
 /* =================== DESKTOP =================== */
 @media only screen and (min-width: 64.063em) {
 	main {
 		grid-column: span 12;
 	}
-
-	section {
-		padding: var(--primary-section-padding-desktop);
+	
+	.welcome-section .text-container h2 {
+		max-width: 45ch;
 	}
 
-	/* ---------- welcome section ---------- */
-	.welcome-section div:first-child {
-		grid-column: span 1;
-		grid-row: 1;
-	}
-
-	.welcome-section h2 {
-		max-width: 50ch;
-	}
-
-	/* ---------- service section ---------- */
-
-	.service-card-grid {
-		grid-template-columns: 1fr 1fr 1fr;
-	}
-
-	.card h2,
-	.card p {
-		margin-bottom: 1rem;
-	}
-
-	/* ---------- questions section ---------- */
-
-	.questions-section {
-		display: grid;
-		grid-template-columns: 1fr 1fr;
-		gap: 10px;
+	.services-section .service-card-grid {
+		grid-template-columns: repeat(3, 1fr);
 	}
 }

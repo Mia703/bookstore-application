@@ -1,4 +1,3 @@
-
 import "./globals.css";
 
 export const metadata = {
@@ -14,9 +13,7 @@ export default function RootLayout({ children }) {
 				<meta charSet="UTF-8" />
 				<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 			</head>
-			<body>
-				<div id="main-grid">{children}</div>
-			</body>
+			<body><div id="main-grid">{children}</div></body>
 		</html>
 	);
 }

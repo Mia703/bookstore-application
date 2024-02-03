@@ -1,7 +1,6 @@
 import Navigation from "./components/homeNavigation";
 import Footer from "./components/Footer";
-import Card from "./components/serviceCard";
-import Question from "./components/fqaQuestion";
+import Card from "./components/Card";
 import "./styles.css";
 
 export default function Home() {
@@ -9,7 +8,8 @@ export default function Home() {
 		<main>
 			<Navigation />
 			<section className="welcome-section">
-				<div>
+				<div className="image-container"></div>
+				<div className="text-container">
 					<h1>Welcome to PanelSync</h1>
 					<h2>
 						Discover a simple way to take control of your reading progress and
@@ -18,19 +18,12 @@ export default function Home() {
 					</h2>
 					<a href={"/pages/signup"} className="a-button-link">
 						<button type="button" className="button-highlight">
-							Sign-up
+							<span className="bold">Sign up now</span>
 						</button>
 					</a>
-					<a href={"/pages/login"} className="a-button-link">
-						<button type="button" className="button-accent-light">
-							Login
-						</button>
-					</a>
-				</div>
-				<div>
-					<img src={""} alt="PanelSync Display Image" />
 				</div>
 			</section>
+
 			<section className="services-section">
 				<h1>Everything you need</h1>
 				<h2>All in one place</h2>
@@ -53,27 +46,24 @@ export default function Home() {
 					/>
 				</div>
 			</section>
+
 			<section className="questions-section">
-				<div className="left-container">
-					<h1>Frequently Asked Questions</h1>
-					<h2>
-						Can't find the answer you're looking for?{" "}
-						<a href="mailto:amya.moore@du.edu">Email us</a>.
-					</h2>
-				</div>
-				<div className="right-container">
-					<Question
-						question={"How does PanelSync work?"}
-						answer={
-							"First, sign-up and create your personalised account to unlock a world of reading possibilities. Then start building your digital library by adding your favourite books. As your reading journey unfolds, document your progress."
-						}
-					/>
-					<Question
-						question={"Some question here?"}
-						answer={
-							"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Neque ornare aenean euismod elementum nisi quis eleifend quam. Morbi quis commodo odio aenean sed adipiscing diam donec adipiscing."
-						}
-					/>
+				<h1>How does PanelSync work?</h1>
+				<div>
+					<ol>
+						<li>
+							<span className="bold">Sign up:</span> Create your personalised
+							account to unlock a world of reading possibiliites.
+						</li>
+						<li>
+							<span className="bold">Add your favourites:</span> Build your
+							digital library by adding your favourite books.
+						</li>
+						<li>
+							<span className="bold">Track your progress:</span> As your reading
+							journey unfolds, document your progresss.
+						</li>
+					</ol>
 				</div>
 			</section>
 			<Footer />
