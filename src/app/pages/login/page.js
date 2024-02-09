@@ -1,44 +1,56 @@
 import Navigation from "../../components/homeNavigation";
-import "./loginStyles.css";
+import Footer from "../../components/Footer";
+import "./styles.css";
+
+// TODO: use Formik for form validation
+// https://formik.org/docs/tutorial
 
 export default function Login() {
 	return (
-		<div className="login-page-container">
+		<div id="login-page">
 			<Navigation />
 			<section className="login-section">
-				<div className="form-container login">
+				<div className="left-container">
+					<h1>Login to PanelSync</h1>
+					<h2>Enter your email and password to access your account.</h2>
 					<form action="#">
-						<h1>Login</h1>
-						<div className="form-inputs-container">
-							<label htmlFor="email">My email is </label>
-							<input
-								type="email"
-								name="user-email"
-								id="email"
-								placeholder="Enter your email"
-								required
-							/>
-
-							<label htmlFor="password">
-								<span aria-label="required">* </span>and my password is{" "}
-							</label>
-							<input
-								type="password"
-								name="password"
-								id="password"
-								placeholder="Enter your password"
-								required
-							/>
-							<label htmlFor="">
-								<span aria-label="required">* </span>.
-							</label>
-						</div>
+						<label htmlFor="email">
+							<span aria-label="required">Email</span>
+						</label>
+						<input
+							type="email"
+							name="user-email"
+							id="email"
+							placeholder="Enter your email"
+							required
+						/>
+						<label htmlFor="password" className="space">
+							<span aria-label="required">Password</span>
+							<a href="#" className="underline">
+								Forgot?
+							</a>
+						</label>
+						<input
+							type="password"
+							name="password"
+							id="password"
+							placeholder="Enter your password"
+							required
+						/>
 						<button type="submit" className="button-highlight">
 							Login
 						</button>
 					</form>
+					<p>
+						Don't have an account?{" "}
+						<a href={"/pages/signup"} className="underline">
+							Sign up
+						</a>
+					</p>
 				</div>
+				<div className="image-container"></div>
 			</section>
+			<Footer />
 		</div>
 	);
 }

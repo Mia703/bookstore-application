@@ -1,0 +1,111 @@
+/* =================== constants =================== */
+
+section.login-section {
+	padding: var(--std-section-padding);
+}
+
+form {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-evenly;
+}
+
+input {
+	padding: 0.5rem 0.4rem;
+	border-radius: 5px;
+	margin-top: 0.4rem;
+}
+
+input:invalid {
+	--accent-light: rgb(182, 182, 182);
+	border: solid 2px var(--accent-light);
+}
+
+input:valid {
+	--accent-light: #6e9c72;
+	border: solid 2px var(--accent-light);
+}
+
+label {
+	font-weight: 600;
+}
+
+.space {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+}
+
+label {
+	margin-top: 1.5rem;
+}
+
+button[type="submit"] {
+	margin: 1.6rem 0;
+}
+
+form a.underline {
+	align-self: end;
+}
+
+a.underline {
+	text-decoration: underline;
+}
+
+label a {
+	font-size: 0.8em;
+}
+
+.image-container {
+	background-color: grey;
+	border-radius: var(--std-section-border-radius);
+	display: none;
+}
+
+/* =================== media queries =================== */
+#login-page {
+	grid-column: span 4;
+	padding: var(--std-page-padding) var(--std-page-padding) 0;
+
+	display: grid;
+	height: 100vh;
+	grid-template-rows: auto 1fr auto;
+}
+
+.left-container {
+	background-color: var(--accent-light);
+	padding: var(--std-section-padding);
+	border-radius: var(--std-section-border-radius);
+}
+
+.left-container p {
+	text-align: center;
+}
+
+.input-container {
+	margin-top: 1rem;
+}
+
+/* =================== TABLET =================== */
+@media only screen and (min-width: 40.063em) {
+	#login-page {
+		grid-column: span 6;
+	}
+
+	section.login-section {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		gap: 2rem;
+	}
+
+	.image-container {
+		display: block;
+	}
+}
+
+/* =================== DESKTOP =================== */
+@media only screen and (min-width: 64.063em) {
+	#login-page {
+		grid-column: span 12;
+	}
+}

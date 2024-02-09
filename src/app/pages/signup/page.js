@@ -1,58 +1,74 @@
 import Navigation from "../../components/homeNavigation";
-import "./signupStyles.css";
+import Footer from "../../components/Footer";
+import "./styles.css";
+
+// TODO: use Formik
 
 export default function Signup() {
 	return (
-		<div className="signup-page-container">
+		<div id="signup-page">
 			<Navigation />
 			<section className="signup-section">
-				<div className="form-container signup">
+				<div className="left-container">
+					<h1>Sign up to PanelSync</h1>
+					<h2>Enter your name, email, and password to create an account.</h2>
 					<form action="#">
-						<h1 className="form-title">Sign-up</h1>
-						<div className="form-inputs-container">
-							<label htmlFor="full-name">Hi, my name is </label>
-							<input
-								type="text"
-								name="name"
-								id="full-name"
-								placeholder="Enter your first name"
-								required
-							/>
-
-							<label htmlFor="email">
-								{" "}
-								<span aria-label="required">*</span> and my email is{" "}
-							</label>
-							<input
-								type="email"
-								name="user-email"
-								id="email"
-								placeholder="Your email address"
-								required
-							/>
-
-							<label htmlFor="password">
-								<span aria-label="required">*</span> and I want to sign-up for
-								PanelSync with{" "}
-							</label>
-							<input
-								type="password"
-								name="password"
-								id="password"
-								placeholder="Enter your password"
-								required
-							/>
-							<label>
-								<span aria-label="required">*</span> as my password.
-							</label>
-
-						</div>
-							<button type="submit" className="button-highlight">
-								Sign-up
-							</button>
+						<label htmlFor="fname">
+							<span aria-label="required">First Name</span>
+						</label>
+						<input
+							type="text"
+							name="user-fname"
+							id="fname"
+							placeholder="Enter your first name"
+							maxLength={45}
+							required
+						/>
+						<label htmlFor="lname">
+							<span aria-label="required">Last Name</span>
+						</label>
+						<input
+							type="text"
+							name="user-lname"
+							id="lname"
+							placeholder="Enter your last name"
+							maxLength={45}
+							required
+						/>
+						<label htmlFor="email">
+							<span aria-label="required">Email</span>
+						</label>
+						<input
+							type="email"
+							name="user-email"
+							id="email"
+							placeholder="Enter your email"
+							required
+						/>
+						<label htmlFor="password" className="space">
+							<span aria-label="required">Password</span>
+						</label>
+						<input
+							type="password"
+							name="password"
+							id="password"
+							placeholder="Enter your password"
+							required
+						/>
+						<button type="submit" className="button-highlight">
+							Sign Up
+						</button>
 					</form>
+					<p>
+						Already have an account?{" "}
+						<a href={"/pages/login"} className="underline">
+							Login
+						</a>
+					</p>
 				</div>
+				<div className="image-container"></div>
 			</section>
+			<Footer />
 		</div>
 	);
 }

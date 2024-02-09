@@ -5,7 +5,9 @@ export default function homeNavigation() {
 	return (
 		<section className="navigation-section">
 			<div className="logo-container">
-				<Link href={"/"} className="logo">PanelSync</Link>
+				<Link href={"/"} className="logo">
+					PanelSync
+				</Link>
 			</div>
 
 			<nav id="home-navigation">
@@ -17,9 +19,11 @@ export default function homeNavigation() {
 						<Link href={"/pages/login"}>Login</Link>
 					</li>
 					<li className="nav-item">
-						<button type="button" className="button-accent-light">
-							<Link href={"/pages/signup"}>Sign up</Link>
-						</button>
+						<Link href={"/pages/signup"}>
+							<button type="button" className="button-accent-light">
+								Sign up
+							</button>
+						</Link>
 					</li>
 				</ul>
 			</nav>

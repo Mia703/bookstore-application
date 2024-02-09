@@ -1,29 +1,37 @@
 /* =================== constants =================== */
-section.about-section {
-	padding: var(--std-section-padding) var(--std-section-padding) 1rem;
-}
 
 /* =================== media queries =================== */
-
-.about-page-container {
+#about-page {
 	grid-column: span 4;
-	padding: 1rem 1rem 0;
+	padding: var(--std-page-padding) var(--std-page-padding) 0;
+
+	display: grid;
+	height: 100vh;
+	grid-template-rows: auto 1fr auto;
 }
 
-.about-section p {
+section.about-section {
+	margin-top: 4rem;
+}
+
+section.about-section h1 {
+	margin-bottom: 2rem;
+}
+
+section.about-section p:not(:last-child) {
 	margin-bottom: 1rem;
 }
 
 /* =================== TABLET =================== */
 @media only screen and (min-width: 40.063em) {
-	.about-page-container {
+	#about-page {
 		grid-column: span 6;
 	}
 }
 
 /* =================== DESKTOP =================== */
 @media only screen and (min-width: 64.063em) {
-	.about-page-container {
+	#about-page {
 		grid-column: span 12;
 	}
 }
