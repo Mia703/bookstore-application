@@ -28,4 +28,5 @@ There cannot be more than one main element in a document.
 - [How to create a search bar](https://www.maketechstuff.com/2023/02/create-search-bar-design.html)
 
 5. Sign up and log in
-- Consider putting form inside a white div container.
+
+- Use Formik for form validation (TODO)
