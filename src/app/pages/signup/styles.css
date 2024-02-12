@@ -82,8 +82,10 @@ label a {
 	text-align: center;
 }
 
-.input-container {
-	margin-top: 1rem;
+.name-container div {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-evenly;
 }
 
 /* =================== TABLET =================== */
@@ -96,6 +98,12 @@ label a {
 		display: grid;
 		grid-template-columns: 1fr 1fr;
 		gap: 2rem;
+	}
+
+	.name-container {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		gap: 1rem;
 	}
 
 	.image-container {

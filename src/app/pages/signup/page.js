@@ -13,28 +13,34 @@ export default function Signup() {
 					<h1>Sign up to PanelSync</h1>
 					<h2>Enter your name, email, and password to create an account.</h2>
 					<form action="#">
-						<label htmlFor="fname">
-							<span aria-label="required">First Name</span>
-						</label>
-						<input
-							type="text"
-							name="user-fname"
-							id="fname"
-							placeholder="Enter your first name"
-							maxLength={45}
-							required
-						/>
-						<label htmlFor="lname">
-							<span aria-label="required">Last Name</span>
-						</label>
-						<input
-							type="text"
-							name="user-lname"
-							id="lname"
-							placeholder="Enter your last name"
-							maxLength={45}
-							required
-						/>
+						<div className="name-container">
+							<div>
+								<label htmlFor="fname">
+									<span aria-label="required">First Name</span>
+								</label>
+								<input
+									type="text"
+									name="user-fname"
+									id="fname"
+									placeholder="Enter your first name"
+									maxLength={45}
+									required
+								/>
+							</div>
+							<div>
+								<label htmlFor="lname">
+									<span aria-label="required">Last Name</span>
+								</label>
+								<input
+									type="text"
+									name="user-lname"
+									id="lname"
+									placeholder="Enter your last name"
+									maxLength={45}
+									required
+								/>
+							</div>
+						</div>
 						<label htmlFor="email">
 							<span aria-label="required">Email</span>
 						</label>

@@ -10,7 +10,7 @@ export default function Home() {
 			<section className="welcome-section">
 				<div className="image-container"></div>
 				<div className="text-container">
-					<h1>Welcome to PanelSync</h1>
+					<h1>Find and track the book you're looking for.</h1>
 					<h2>
 						Discover a simple way to take control of your reading progress and
 						insights. Dive into a world of personalised tracking to enhance your
