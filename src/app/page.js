@@ -53,7 +53,7 @@ export default function Home() {
 					<ol>
 						<li>
 							<span className="bold">Sign up:</span> Create your personalised
-							account to unlock a world of reading possibiliites.
+							account to unlock a world of reading possibilities.
 						</li>
 						<li>
 							<span className="bold">Add your favourites:</span> Build your
@@ -61,7 +61,7 @@ export default function Home() {
 						</li>
 						<li>
 							<span className="bold">Track your progress:</span> As your reading
-							journey unfolds, document your progresss.
+							journey unfolds, document your progress.
 						</li>
 					</ol>
 				</div>

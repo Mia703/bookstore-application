@@ -18,7 +18,7 @@ section.about-section h1 {
 	margin-bottom: 2rem;
 }
 
-section.about-section p:not(:last-child) {
+section.about-section h2:not(:last-child) {
 	margin-bottom: 1rem;
 }
 

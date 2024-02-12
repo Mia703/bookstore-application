@@ -1,0 +1,36 @@
+/* =================== constants =================== */
+
+/* =================== media queries =================== */
+.navigation-section {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.logo-container a {
+	text-transform: none;
+	font-size: 1.2em;
+}
+
+.nav-list {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+	min-width: 30rem;
+}
+
+.nav-item {
+	list-style: none;
+}
+
+.nav-item a {
+	border-bottom: solid 2px transparent;
+	transition: var(--std-transition);
+}
+
+.nav-item a:hover {
+	border-bottom: solid 2px var(--font);
+	transition: var(--std-transition);
+}
