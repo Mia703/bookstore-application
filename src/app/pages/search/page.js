@@ -7,6 +7,7 @@ export default function Search() {
 	return (
 		<div id="search-page">
 			<Navigation />
+			<h1>Hello</h1>
 			<section className="search-section">
 				<form action="#">
 					<label htmlFor="Search"></label>
