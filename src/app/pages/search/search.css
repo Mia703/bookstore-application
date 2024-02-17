@@ -1,8 +1,44 @@
 /* =================== constants =================== */
+section.search-section {
+	padding: var(--std-section-padding);
+}
 
+form {
+	display: block;
+	flex-direction: column;
+	justify-content: space-evenly;
+	margin-bottom: 20px;
+}
+
+input {
+	padding: 10px;
+	font-size: 16px;
+	border: 1px solid #ccc;
+	border-radius: 5px;
+}
+
+.filter-container {
+    display: grid;
+    align-items: center;
+}
+
+.filter-options {
+    display: grid;
+    gap: 10px;
+}
+
+.filter-options label {
+    display: grid;
+    align-items: left;
+}
 /* =================== media queries =================== */
 #search-page {
 	grid-column: span 4;
+	padding: var(--std-page-padding) var(--std-page-padding) 0;
+
+	display: grid;
+	height: 100vh;
+	grid-template-rows: auto 1fr auto;
 }
 
 /* =================== TABLET =================== */
