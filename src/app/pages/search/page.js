@@ -17,7 +17,7 @@ export default function Search() {
 				<div className="filter-container">
 					<p>Filters</p>
 					<button type="button">+</button>
-					<div class="filter-options">
+					<div className="filter-options">
 						<p>Genres</p>
 						<label>
 							<input type="checkbox" name="genre" value="autobiography" /> Autobiography
