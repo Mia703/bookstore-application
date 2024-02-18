@@ -1,15 +1,33 @@
 /* =================== constants =================== */
 section.account-section {
 	padding: var(--std-section-padding);
+    display: flex;
 }
 
+.sidebar {
+    padding: 20px;
+    background-color: #e1e1e1;
+    width: 250px;
+  }
+
+  /* Style the navigation links */
+  .sidebar a {
+    color: #333;
+    display: block;
+    margin-bottom: 10px;
+    text-decoration: none;
+  }
+
+  .sidebar a:hover {
+    text-decoration: underline;
+  }
+
 .container {
-    max-width: 600px;
     margin: 50px auto;
     padding: 20px;
     background-color: #fff;
     border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    display: grid;
 }
 
 h1 {
