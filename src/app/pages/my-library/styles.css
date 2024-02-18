@@ -1,0 +1,59 @@
+/* =================== constants =================== */
+section.library-section {
+	padding: var(--std-section-padding);
+
+}
+
+.shelf-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-bottom: 50px;
+}
+
+.shelf-buttons button {
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+	background-color: var(--accent-medium);
+    color: #fff;
+    cursor: pointer;
+    border-radius: 5px;
+    color:black;
+}
+
+.book-shelf {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
+.book-card {
+    width: 100%;
+    height: 200px;
+    background-color: #eee;
+    border-radius: 8px;
+}
+
+/* =================== media queries =================== */
+#library-page {
+	grid-column: span 12;
+	padding: var(--std-page-padding) var(--std-page-padding) 0;
+	display: grid;
+	height: 100vh;
+	grid-template-rows: auto 1fr auto;
+}
+
+/* =================== TABLET =================== */
+@media only screen and (min-width: 40.063em) {
+	#search-page {
+		grid-column: span 6;
+	}
+}
+
+/* =================== DESKTOP =================== */
+@media only screen and (min-width: 64.063em) {
+	#search-page {
+		grid-column: span 12;
+	}
+}

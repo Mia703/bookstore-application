@@ -1,5 +1,5 @@
 import Navigation from "../../components/homeNavigation";
-import Footer from "../../components/Footer"
+import Footer from "../../components/Footer";
 import "./styles.css";
  
 export default function Account () {
