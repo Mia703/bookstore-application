@@ -4,7 +4,6 @@ import Footer from "../../components/Footer";
 import "./search.css";
 
 export default function Search() {
-
 	return (
 		<div id="search-page">
 			<Navigation />
@@ -12,7 +11,12 @@ export default function Search() {
 				<h1>Browse All Books</h1>
 				<form action="#">
 					<label htmlFor="Search"></label>
-					<input type="search" name="search" id="search" placeholder="Search for Title or Author"/>
+					<input
+						type="search"
+						name="search"
+						id="search"
+						placeholder="Search for Title or Author"
+					/>
 					<button type="submit">Search</button>
 				</form>
 				<div className="filter-container">
@@ -39,12 +43,19 @@ export default function Search() {
 								<input type="checkbox" name="pace" value="slow" /> Slow
 								<input type="checkbox" name="pace" value="medium" /> Medium
 								<input type="checkbox" name="pace" value="fast" /> Fast
+							</p>
 						</div>	
 						<div className="category">
 							<p>Pages</p>
+							<p>
 								<input type="checkbox" name="pages" value="lt300" /> Less than 300 pages
+							</p>
+							<p>
 								<input type="checkbox" name="pages" value="300-499" /> 300-499 pages
+							</p>
+							<p>
 								<input type="checkbox" name="pages" value="500plus" /> More than 500 pages
+							</p>
 						</div>	
 					</div>
 				</div>
