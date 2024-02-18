@@ -1,3 +1,4 @@
+import Link from "next/link";
 import Navigation from "../../components/homeNavigation";
 import Footer from "../../components/Footer";
 import "./styles.css";
@@ -8,10 +9,32 @@ export default function Account() {
 			<Navigation />
 			<section className="account-section">
 				<div className="sidebar">
-					<a href="#my-account">My Account</a>
-					<a href="#profile">Profile</a>
-					<a href="#password">Password</a>
-					<a href="#settings">Settings</a>
+					<div className="image-container">
+						<img src="" alt="[User's name]" />
+						<h1>[Name]</h1>
+					</div>
+					<ul className="nav-list">
+						<li className="list-item">
+							<Link href={"#"} className="account-link">
+								Reading Insights
+							</Link>
+						</li>
+						<li className="list-item">
+							<Link href={"#"} className="account-link">
+								User Info
+							</Link>
+						</li>
+						<li className="list-item">
+							<Link href={"#"} className="account-link">
+								Account Settings
+							</Link>
+						</li>
+						<li className="list-item">
+							<Link href={"/pages/login"} className="account-link">
+								Log Out
+							</Link>
+						</li>
+					</ul>
 				</div>
 				<div className="container">
 					<h1>Welcome, (Name)</h1>
