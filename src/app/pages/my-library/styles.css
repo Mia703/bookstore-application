@@ -24,7 +24,7 @@ section.library-section {
 
 .book-shelf {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(2, 1fr);
     gap: 20px;
 }
 
@@ -47,13 +47,13 @@ section.library-section {
 /* =================== TABLET =================== */
 @media only screen and (min-width: 40.063em) {
 	#search-page {
-		grid-column: span 6;
+		grid-column: span 3;
 	}
 }
 
 /* =================== DESKTOP =================== */
 @media only screen and (min-width: 64.063em) {
 	#search-page {
-		grid-column: span 12;
+		grid-column: span 4;
 	}
 }

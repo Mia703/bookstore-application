@@ -20,57 +20,31 @@ export default function Search() {
 					<div className="filter-options">
 						<div className="category">
 							<p>Genres</p>
-								<p>
 									<input type="checkbox" name="genre" value="autobiography" /> Autobiography
-								</p>
 									<input type="checkbox" name="genre" value="biography" /> Biography
-								<p>
 									<input type="checkbox" name="genre" value="drama" /> Drama
-								</p>
 									<input type="checkbox" name="genre" value="fantasy" /> Fantasy
-								<p>
 									<input type="checkbox" name="genre" value="fiction" /> Fiction
-								</p>
 									<input type="checkbox" name="genre" value="historical fiction" /> Historical Fiction
-								<p>
 									<input type="checkbox" name="genre" value="horror" /> Horror
-								</p>
 									<input type="checkbox" name="genre" value="humor" /> Humor
-								<p>
 									<input type="checkbox" name="genre" value="mystery" /> Mystery
-								</p>
 									<input type="checkbox" name="genre" value="mythology" /> Mythology
-								<p>
 									<input type="checkbox" name="genre" value="nonfiction" /> Nonfiction
-								</p>
 									<input type="checkbox" name="genre" value="science fiction" /> Science Fiction
-								<p>
 									<input type="checkbox" name="genre" value="young adult" /> Young Adult
-								</p>
 						</div>		
 						<div className="category">
 							<p>Pace</p>
-							<p>
 								<input type="checkbox" name="pace" value="slow" /> Slow
-							</p>
-							<p>
 								<input type="checkbox" name="pace" value="medium" /> Medium
-							</p>
-							<p>
 								<input type="checkbox" name="pace" value="fast" /> Fast
-							</p>
 						</div>	
 						<div className="category">
 							<p>Pages</p>
-							<p>
 								<input type="checkbox" name="pages" value="lt300" /> Less than 300 pages
-							</p>
-							<p>
 								<input type="checkbox" name="pages" value="300-499" /> 300-499 pages
-							</p>
-							<p>
 								<input type="checkbox" name="pages" value="500plus" /> More than 500 pages
-							</p>
 						</div>	
 					</div>
 				</div>

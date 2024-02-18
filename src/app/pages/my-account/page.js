@@ -1,4 +1,4 @@
-import Navigation from "../../components/homeNavigation";
+import Navigation from "../../components/mainNavigation";
 import Footer from "../../components/Footer";
 import "./styles.css";
  

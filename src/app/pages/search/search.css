@@ -1,6 +1,7 @@
 /* =================== constants =================== */
 section.search-section {
 	padding: var(--std-section-padding);
+	display: grid;
 }
 
 form {
@@ -15,6 +16,10 @@ input {
 	font-size: 16px;
 	border: 1px solid #ccc;
 	border-radius: 5px;
+}
+
+p {
+	font-weight: 600;
 }
 
 .filter-container {
@@ -44,6 +49,12 @@ input {
 
 .books-container {
 	margin-top: 320px;
+}
+
+.back-to-top-button {
+	position: fixed;
+	bottom: 0;
+	right: 0;
 }
 
 /* =================== media queries =================== */

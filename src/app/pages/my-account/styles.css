@@ -18,10 +18,6 @@ section.account-section {
     text-decoration: none;
   }
 
-  .sidebar a:hover {
-    text-decoration: underline;
-  }
-
   .dashboard {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -33,6 +29,7 @@ section.account-section {
     height: 150px;
     background-color: #eee;
     border-radius: 8px;
+    position: relative;
 }
   
 

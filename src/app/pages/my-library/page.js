@@ -1,5 +1,5 @@
 import Footer from "../../components/Footer";
-import Navigation from "../../components/homeNavigation";
+import Navigation from "../../components/mainNavigation";
 import "./styles.css";
  
 export default function Library () {
@@ -12,6 +12,7 @@ export default function Library () {
                     <button>Read</button>
                     <button>Currently Reading</button>
                     <button>Want to Read</button>
+                    <button>Discontinued</button>
                 </div>
                 <div className="book-shelf">
                     <div className="book-card">
