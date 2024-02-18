@@ -20,22 +20,37 @@ input {
 .filter-container {
     display: grid;
     align-items: center;
+	position: relative;
 }
 
 .filter-options {
-    display: grid;
+	display: flex;
     gap: 10px;
+	position: absolute;
+	top: 100%;
+	left: 0;
+	background-color: #fff;
+	border: 1px solid #ccc;
+	border-radius: 5px;
+	padding: 25px;
+	columns: 3;
 }
 
 .filter-options label {
-    display: grid;
-    align-items: left;
+    display: block;
+	align-items: left;
+	margin-bottom: 5px;
 }
+
+.books-container {
+	margin-top: 320px;
+}
+
 /* =================== media queries =================== */
 #search-page {
 	grid-column: span 4;
 	padding: var(--std-page-padding) var(--std-page-padding) 0;
-
+	background-color: var(--accent-light);
 	display: grid;
 	height: 100vh;
 	grid-template-rows: auto 1fr auto;
