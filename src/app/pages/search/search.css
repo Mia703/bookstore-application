@@ -1,7 +1,10 @@
 /* =================== constants =================== */
+#search-page {
+	position: relative;
+}
+
 section.search-section {
 	padding: 1rem;
-	display: grid;
 }
 
 /* ---------- search form ---------- */
@@ -96,14 +99,29 @@ button.search-button:hover {
 	background-color: var(--highlight);
 }
 
-.books-container {
-	margin-top: 320px;
+.filter-form button[type=submit]:hover {
+	box-shadow: none;
 }
 
+/* ---------- books section ---------- */
+.books-section {
+	padding: var(--std-section-padding);
+	display: grid;
+	grid-template-columns: repeat(1, 1fr);
+	gap: 2rem;
+}
+
+/* ---------- back to top button ---------- */
 .back-to-top-button {
 	position: fixed;
 	bottom: 0;
 	right: 0;
+	margin: 2rem;
+}
+
+.back-to-top-button button {
+	border-radius: 10000px;
+	background-color: var(--accent-light);
 }
 
 /* =================== media queries =================== */
@@ -118,10 +136,6 @@ button.search-button:hover {
 		grid-column: span 6;
 	}
 
-	section.search-section {
-		padding: var(--std-section-padding);
-	}
-
 	.search-form input[placeholder] {
 		font-size: 1em;
 	}
@@ -129,11 +143,23 @@ button.search-button:hover {
 	.category {
 		grid-column: span 1;
 	}
+
+	.books-section {
+		grid-template-columns: repeat(2, 1fr);
+	}
 }
 
 /* =================== DESKTOP =================== */
 @media only screen and (min-width: 64.063em) {
 	#search-page {
 		grid-column: span 12;
+	}
+
+	button:hover {
+		box-shadow: none;
+	}
+
+	.books-section {
+		grid-template-columns: repeat(3, 1fr);
 	}
 }

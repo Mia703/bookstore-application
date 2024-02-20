@@ -35,6 +35,7 @@ body {
 	background-color: var(--background);
 	font-family: var(--primary-font);
 	color: var(--font);
+	scroll-behavior: smooth;
 }
 
 /* =================== font styles =================== */
@@ -85,11 +86,6 @@ button {
 	transition: box-shadow var(--std-transition);
 }
 
-button:hover {
-	box-shadow: var(--std-button-shadow);
-	transition: box-shadow var(--std-transition);
-}
-
 .button-highlight {
 	background-color: var(--highlight);
 }
@@ -116,5 +112,10 @@ button:hover {
 @media only screen and (min-width: 64.063em) {
 	#main-grid {
 		grid-template-columns: repeat(12, 1fr);
+	}
+
+	button:hover {
+		box-shadow: var(--std-button-shadow);
+		transition: box-shadow var(--std-transition);
 	}
 }

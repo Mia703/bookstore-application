@@ -1,4 +1,4 @@
-'use client'
+"use client";
 import Navigation from "../../components/mainNavigation";
 import Book from "../../components/searchBooks";
 import Footer from "../../components/Footer";
@@ -9,7 +9,7 @@ export default function Search() {
 		<div id="search-page">
 			<Navigation />
 			<section className="search-section">
-				<h1>Browse All Books</h1>
+				<h1 id="browse-books">Browse All Books</h1>
 				<form action="#" className="search-form">
 					<label htmlFor="search"></label>
 					<input
@@ -52,7 +52,12 @@ export default function Search() {
 									/>
 									<label htmlFor="biography">Biography</label>
 									<br />
-									<input type="checkbox" name="genre" value="drama" id="drama" />
+									<input
+										type="checkbox"
+										name="genre"
+										value="drama"
+										id="drama"
+									/>
 									<label htmlFor="drama">Drama</label>
 									<br />
 									<input
@@ -79,10 +84,20 @@ export default function Search() {
 									/>
 									<label htmlFor="historical-fiction">Historical Fiction</label>
 									<br />
-									<input type="checkbox" name="genre" value="horror" id="horror" />
+									<input
+										type="checkbox"
+										name="genre"
+										value="horror"
+										id="horror"
+									/>
 									<label htmlFor="horror">Horror</label>
 									<br />
-									<input type="checkbox" name="genre" value="humour" id="humour" />
+									<input
+										type="checkbox"
+										name="genre"
+										value="humour"
+										id="humour"
+									/>
 									<label htmlFor="humour">Humour</label>
 									<br />
 									<input
@@ -131,7 +146,12 @@ export default function Search() {
 									<input type="checkbox" name="slow" value="slow" id="slow" />
 									<label htmlFor="slow">Slow</label>
 									<br />
-									<input type="checkbox" name="medium" value="medium" id="medium" />
+									<input
+										type="checkbox"
+										name="medium"
+										value="medium"
+										id="medium"
+									/>
 									<label htmlFor="medium">Medium</label>
 									<br />
 									<input type="checkbox" name="fast" value="fast" id="fast" />
@@ -166,16 +186,25 @@ export default function Search() {
 									<br />
 								</div>
 							</div>
-							<button type="submit" className="bold">Apply Filters</button>
+							<button type="submit" className="bold">
+								Apply Filters
+							</button>
 						</form>
 					</div>
 				</div>
 			</section>
 			<section className="books-section">
+				{/* TODO: add mapping to book component */}
+				<Book />
+				<Book />
 				<Book />
 			</section>
 			<div className="back-to-top-button">
-				<button type="button">^</button>
+				<button type="button">
+					<a href="#browse-books">
+						<span class="material-symbols-outlined">expand_less</span>
+					</a>
+				</button>
 			</div>
 			<Footer />
 		</div>
