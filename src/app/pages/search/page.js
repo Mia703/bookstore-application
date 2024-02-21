@@ -1,6 +1,6 @@
 "use client";
 import Navigation from "../../components/mainNavigation";
-import Book from "../../components/searchBooks";
+import Book from "../../components/searchBook";
 import Footer from "../../components/Footer";
 import "./search.css";
 
@@ -9,7 +9,7 @@ export default function Search() {
 		<div id="search-page">
 			<Navigation />
 			<section className="search-section">
-				<h1 id="browse-books">Browse All Books</h1>
+				<h1>Browse All Books</h1>
 				<form action="#" className="search-form">
 					<label htmlFor="search"></label>
 					<input
@@ -201,7 +201,7 @@ export default function Search() {
 			</section>
 			<div className="back-to-top-button">
 				<button type="button">
-					<a href="#browse-books">
+					<a href="#search-page">
 						<span class="material-symbols-outlined">expand_less</span>
 					</a>
 				</button>

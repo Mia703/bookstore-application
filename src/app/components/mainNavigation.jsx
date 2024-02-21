@@ -23,7 +23,7 @@ export default function Navigation () {
 						<Link href={"/pages/my-account"}>My Account</Link>
 					</li>
 					<li className="nav-item">
-						<Link href={"/pages/login"}>Sign out</Link>
+						<Link href={"/pages/login"}>Log out</Link>
 					</li>
 				</ul>
 			</nav>

@@ -16,6 +16,7 @@ export default function Account() {
 						<h1>[Name]</h1>
 					</div>
 
+					{/* TODO: add pages for nav list */}
 					<ul className="account-nav-list">
 						<li className="account-list-item">
 							<Link href={"#"} className="account-link">

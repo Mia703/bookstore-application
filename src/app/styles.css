@@ -19,7 +19,7 @@ section:not(:first-child, .welcome-section) {
 
 main {
 	grid-column: span 4;
-	padding: 1rem 1rem 0;
+	padding: var(--std-page-padding) var(--std-page-padding) 0;
 }
 
 .text-container {

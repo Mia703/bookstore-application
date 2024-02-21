@@ -1,12 +1,12 @@
 
-export default function SearchBooks() {
+export default function SearchBook() {
 	const style = {
-		container: {
+		bookContainer: {
 			display: 'grid',
 			gridTemplateColumns: 'max-content max-content',
 			gap: '10px'
 		},
-		bookContainer: {
+		bookImageContainer: {
 			backgroundColor: 'grey',
 			width: '10rem',
 			height: '15rem',
@@ -32,12 +32,12 @@ export default function SearchBooks() {
 	};
 
 	return (
-		<div className="container" style={style.container}>
-			<div className="book-container" style={style.bookContainer}>
+		<div className="book-container" style={style.bookContainer}>
+			<div className="book-image-container" style={style.bookImageContainer}>
 				<img src="" alt="" />
 			</div>
 
-			<div className="content-container">
+			<div className="book-content-container">
 				<h2 className="title bold" style={style.textStyle}>Title</h2>
 				<p className="author" style={style.textStyle}>Author</p>
 				<p className="desc" style={style.textStyle}>Description</p>

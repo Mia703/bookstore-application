@@ -1,8 +1,18 @@
 /* =================== constants =================== */
+#account-page {
+	grid-column: span 4;
+	padding: var(--std-page-padding) var(--std-page-padding) 0;
+}
+
+section.account-section {
+	margin: var(--std-section-margin);
+}
+
 .sidebar {
 	background-color: var(--accent-light);
-	border-radius: var(--std-section-border-radius);
 	padding: var(--std-section-padding);
+	border-radius: var(--std-section-border-radius);
+	border: 2px solid var(--font);
 }
 
 .image-container {
@@ -16,10 +26,11 @@
 	background-color: grey;
 	width: 10rem;
 	height: 10rem;
-	border-radius: 10000px;
+	border-radius: 1000px;
 	margin-bottom: 1rem;
 }
 
+/* ---------- navigation list ---------- */
 .account-nav-list {
 	display: grid;
 	grid-template-columns: repeat(2, 1fr);
@@ -32,12 +43,16 @@
 	list-style: none;
 }
 
-/* ---------- dashboard ---------- */
-.dashboard-container {
-	padding: 1rem;
+.account-list-item a {
+	transition: border-bottom var(--std-transition);
 }
 
-.container h1 {
+/* ---------- dashboard ---------- */
+.dashboard-container {
+	padding: var(--std-section-padding);
+}
+
+.dashboard-container h1 {
 	margin-bottom: 1rem;
 }
 
@@ -51,16 +66,12 @@
 	padding: 1rem;
 	border-radius: var(--std-section-border-radius);
 	border: 2px solid var(--font);
+	grid-column: span 2;
 }
 
 .book-stat-card:nth-child(1),
 .book-stat-card:nth-child(2) {
 	background-color: var(--accent-light);
-}
-
-.book-stat-card:nth-child(3),
-.book-stat-card:nth-child(4) {
-	grid-column: span 2;
 }
 
 .book-stat-card:nth-child(4) {
@@ -77,19 +88,17 @@
 }
 
 /* =================== media queries =================== */
-#account-page {
-	grid-column: span 4;
-	padding: var(--std-section-padding) var(--std-section-padding) 0;
-	height: 100vh;
-	display: grid;
-	grid-template-rows: auto 1fr auto;
-	gap: 1rem;
-}
 
 /* =================== TABLET =================== */
 @media only screen and (min-width: 40.063em) {
 	#account-page {
 		grid-column: span 6;
+	}
+
+	.book-stat-card:nth-child(1),
+	.book-stat-card:nth-child(2) {
+		grid-column: span 1;
+		grid-row: 1;
 	}
 }
 
@@ -97,15 +106,23 @@
 @media only screen and (min-width: 64.063em) {
 	#account-page {
 		grid-column: span 12;
+		display: grid;
+		grid-template-rows: min-content 1fr min-content;
+		height: 100vh;
 	}
 
 	section.account-section {
+		grid-row: 2;
 		display: grid;
 		grid-template-columns: max-content 1fr;
-		gap: 1rem;
 	}
 
-	.dashboard-container h1 {
-		margin-bottom: 4rem;
+	.account-nav-list {
+		grid-template-columns: 1fr;
+	}
+
+	.account-list-item a:hover {
+		border-bottom: 2px solid var(--font);
+		transition: border-bottom var(--std-transition);
 	}
 }
