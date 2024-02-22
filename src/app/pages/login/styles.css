@@ -26,10 +26,6 @@ input:valid {
 	border: solid 2px var(--accent-light);
 }
 
-label {
-	font-weight: 600;
-}
-
 .space {
 	display: flex;
 	flex-direction: row;
@@ -52,14 +48,23 @@ a.underline {
 	text-decoration: underline;
 }
 
-label a {
-	font-size: 0.8em;
-}
-
 .image-container {
 	background-color: grey;
 	border-radius: var(--std-section-border-radius);
 	display: none;
+}
+
+small {
+	font-style: italic;
+}
+
+small, small * {
+	color: var(--font);
+}
+
+.forgot-container small {
+	float: right;
+	margin-right: 0.5rem;
 }
 
 /* =================== media queries =================== */
