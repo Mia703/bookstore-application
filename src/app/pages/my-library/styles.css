@@ -1,0 +1,66 @@
+/* =================== constants =================== */
+#library-page {
+    grid-column: span 4;
+    padding: var(--std-page-padding) var(--std-page-padding) 0;
+}
+
+section.library-section {
+	padding: var(--std-section-padding);
+}
+
+.shelf-buttons {
+    display: grid;
+    grid-template-columns: auto auto;
+    justify-content: center;
+    gap: 1rem;
+    margin: var(--std-section-margin);
+}
+
+.shelf-buttons button:not(.selected) {
+    transition: background-color var(--std-transition);
+}
+
+.selected {
+    background-color: var(--highlight);
+}
+
+.book-shelf {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 1rem;
+    justify-items: center;
+}
+
+/* =================== media queries =================== */
+
+
+/* =================== TABLET =================== */
+@media only screen and (min-width: 40.063em) {
+	#library-page {
+		grid-column: span 6;
+	}
+
+    .shelf-buttons {
+        grid-template-columns: repeat(5, 1fr);
+    }
+
+    .book-shelf {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* =================== DESKTOP =================== */
+@media only screen and (min-width: 64.063em) {
+	#library-page {
+		grid-column: span 12;
+	}
+
+    .shelf-buttons button:hover:not(.selected) {
+        background-color: var(--highlight);
+        transition: background-color var(--std-transition);
+    }
+
+    .book-shelf {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}

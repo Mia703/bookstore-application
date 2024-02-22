@@ -17,13 +17,13 @@ export default function Navigation () {
 						<Link href={"/pages/search"}>Search</Link>
 					</li>
 					<li className="nav-item">
-						<Link href={"#"}>My Library</Link>
+						<Link href={"/pages/my-library"}>My Library</Link>
 					</li>
 					<li className="nav-item">
-						<Link href={"#"}>My Account</Link>
+						<Link href={"/pages/my-account"}>My Account</Link>
 					</li>
 					<li className="nav-item">
-						<Link href={"#"}>Sign out</Link>
+						<Link href={"/pages/login"}>Log out</Link>
 					</li>
 				</ul>
 			</nav>
