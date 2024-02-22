@@ -6,23 +6,29 @@
 
 section.library-section {
 	padding: var(--std-section-padding);
-
 }
-/* FIXME: fix the buttons to col 2 row 2 */
+
 .shelf-buttons {
     display: grid;
-    grid-auto-columns: min-content;
+    grid-template-columns: auto auto;
+    justify-content: center;
     gap: 1rem;
-    margin-bottom: var(--std-section-margin);
+    margin: var(--std-section-margin);
 }
 
+.shelf-buttons button:not(.selected) {
+    transition: background-color var(--std-transition);
+}
+
+.selected {
+    background-color: var(--highlight);
+}
 
 .book-shelf {
     display: grid;
     grid-template-columns: repeat(1, 1fr);
     gap: 1rem;
     justify-items: center;
-    margin: var(--std-section-margin);
 }
 
 /* =================== media queries =================== */
@@ -34,8 +40,12 @@ section.library-section {
 		grid-column: span 6;
 	}
 
+    .shelf-buttons {
+        grid-template-columns: repeat(5, 1fr);
+    }
+
     .book-shelf {
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: repeat(2, 1fr);
     }
 }
 
@@ -44,6 +54,11 @@ section.library-section {
 	#library-page {
 		grid-column: span 12;
 	}
+
+    .shelf-buttons button:hover:not(.selected) {
+        background-color: var(--highlight);
+        transition: background-color var(--std-transition);
+    }
 
     .book-shelf {
         grid-template-columns: repeat(4, 1fr);
