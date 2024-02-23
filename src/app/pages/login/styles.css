@@ -54,12 +54,13 @@ a.underline {
 	display: none;
 }
 
-small {
+small:not(.forgot-container small) {
 	font-style: italic;
 }
 
 small, small * {
 	color: var(--font);
+	font-weight: 500;
 }
 
 .forgot-container small {
