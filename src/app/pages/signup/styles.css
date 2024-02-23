@@ -32,11 +32,6 @@ input:valid {
 	justify-content: space-between;
 }
 
-.space-c {
-	display: grid;
-	grid-template-rows: auto auto;
-}
-
 label {
 	margin-top: 1.5rem;
 }
@@ -113,6 +108,11 @@ small {
 	.image-container {
 		display: block;
 		height: 100%;
+	}
+
+	.space-c {
+		display: grid;
+		grid-template-rows: auto auto;
 	}
 }
 

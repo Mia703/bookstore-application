@@ -23,7 +23,7 @@ export default function Signup() {
 			.max(20, "Password is too long")
 			.required("Please enter a password"),
 		cpassword: Yup.string()
-			.oneOf([Yup.ref("password")], "Password does not match")
+			.oneOf([Yup.ref("password"), null], "Password does not match")
 			.required("Please confirm your password"),
 	});
 
@@ -51,7 +51,7 @@ export default function Signup() {
 					<form onSubmit={formik.handleSubmit}>
 						<div className="name-container">
 							<div>
-								<label htmlFor="fname" className="bold space-c">
+								<label htmlFor="fname" className="bold space space-c">
 									<span aria-label="required">First Name</span>
 									{formik.errors.fname ? <small>{formik.errors.fname}</small> : <small>Please enter your first name</small>}
 								</label>
@@ -66,7 +66,7 @@ export default function Signup() {
 								/>
 							</div>
 							<div>
-								<label htmlFor="lname" className="bold space-c">
+								<label htmlFor="lname" className="bold space space-c">
 									<span aria-label="required">Last Name</span>
 									{formik.errors.lname ? <small>{formik.errors.lname}</small> : <small>Please enter your last name</small>}
 								</label>
