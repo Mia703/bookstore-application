@@ -1,6 +1,6 @@
 import Navigation from "../../components/mainNavigation";
+import Sidebar from "../../components/accountSidebar";
 import Footer from "../../components/Footer";
-import Link from "next/link";
 import "./styles.css";
 
 export default function Account() {
@@ -8,39 +8,7 @@ export default function Account() {
 		<div id="account-page">
 			<Navigation />
 			<section className="account-section">
-				<div className="sidebar">
-					<div className="image-container">
-						<div className="container">
-							<img src="" alt="[User's name]" />
-						</div>
-						<h1>[Name]</h1>
-					</div>
-
-					{/* TODO: add pages for nav list */}
-					<ul className="account-nav-list">
-						<li className="account-list-item">
-							<Link href={"#"} className="account-link">
-								Reading Insights
-							</Link>
-						</li>
-						<li className="account-list-item">
-							<Link href={"#"} className="account-link">
-								User Info
-							</Link>
-						</li>
-						<li className="account-list-item">
-							<Link href={"#"} className="account-link">
-								Account Settings
-							</Link>
-						</li>
-						<li className="account-list-item">
-							<Link href={"/pages/login"} className="account-link">
-								Log Out
-							</Link>
-						</li>
-					</ul>
-				</div>
-
+				<Sidebar />
 				<div className="dashboard-container">
 					<h1>Reading Insights</h1>
 					<div className="dashboard">

@@ -1,0 +1,128 @@
+/* =================== constants =================== */
+#account-settings-page {
+	grid-column: span 4;
+	padding: var(--std-page-padding) var(--std-page-padding) 0;
+}
+
+section.account-settings-section {
+	margin: var(--std-section-margin);
+}
+
+/* ---------- nav list ---------- */
+.account-nav-list {
+	grid-template-columns: 1fr 1fr;
+}
+
+/* ---------- container ---------- */
+.form.container {
+	padding: var(--std-section-padding) var(--std-section-padding) 0;
+}
+
+.form.container h1 {
+	margin-bottom: 1rem;
+}
+
+.form.container div {
+	margin: var(--std-section-margin);
+}
+
+/* ---------- form styles ---------- */
+form {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-evenly;
+}
+
+input {
+	padding: 0.5rem 0.4rem;
+	border-radius: 5px;
+	margin-top: 0.4rem;
+}
+
+input:invalid {
+	--accent-light: rgb(182, 182, 182);
+	border: solid 2px var(--accent-light);
+}
+
+input:valid {
+	--accent-light: #6e9c72;
+	border: solid 2px var(--accent-light);
+}
+
+.space {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+}
+
+label:not(:first-child) {
+	margin-top: 1.5rem;
+}
+
+button[type="submit"] {
+	margin: 1.6rem 0;
+}
+
+small {
+	font-style: italic;
+	color: var(--font);
+	font-weight: 500;
+}
+
+/* =================== media queries =================== */
+
+/* =================== TABLET =================== */
+@media only screen and (min-width: 40.063em) {
+	#account-settings-page {
+		grid-column: span 6;
+	}
+}
+
+/* =================== DESKTOP =================== */
+@media only screen and (min-width: 64.063em) {
+	#account-settings-page {
+		grid-column: span 12;
+		display: grid;
+		grid-template-rows: min-content 1fr min-content;
+		height: 100vh;
+	}
+
+	section.account-settings-section {
+		grid-row: 2;
+		display: grid;
+		grid-template-columns: max-content 1fr;
+	}
+
+	/* ---------- navigation styles ---------- */
+	.account-nav-list {
+		grid-template-columns: 1fr;
+	}
+
+	.account-list-item a {
+		border-bottom: 2px solid transparent;
+	}
+
+	.account-list-item a:hover {
+		border-color: var(--font);
+	}
+
+	/* ---------- form styles ---------- */
+	.form.container {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		gap: 2rem;
+	}
+
+	.form.container div {
+		margin: 0;
+	}
+
+	.form.container h1 {
+		grid-column: span 2;
+		margin: 0;
+	}
+
+	.clear-container {
+		grid-column: span 2;
+	}
+}

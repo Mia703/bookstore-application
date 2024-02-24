@@ -29,4 +29,11 @@ There cannot be more than one main element in a document.
 
 5. Sign up and log in
 
-- Use Formik for form validation (TODO)
+- Use Formik for form validation. [How to use Formik in React](https://youtu.be/5QJQeqCUoFE?si=MVPy7_GFmJY7wZsl)
+- Use regular expressions to validate a password:
+
+  - [Password validation with Yup and Formik](https://stackoverflow.com/questions/49502436/password-validation-with-yup-and-formik)
+
+  - [Password validation Regular Expression](https://stackoverflow.com/questions/2370015/regular-expression-for-password-validation)
+
+  - [Regular Expression Password Validation in Java](https://www.geeksforgeeks.org/how-to-validate-a-password-using-regular-expressions-in-java/)
