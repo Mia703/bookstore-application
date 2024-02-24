@@ -114,7 +114,7 @@ button.search-button:hover {
 
 .back-to-top-button button {
 	border-radius: 10000px;
-	background-color: var(--accent-light);
+	background-color: var(--accent-medium);
 }
 
 /* =================== media queries =================== */
@@ -150,5 +150,9 @@ button.search-button:hover {
 
 	.books-section {
 		grid-template-columns: repeat(3, 1fr);
+	}
+
+	.category label {
+		cursor: pointer;
 	}
 }
