@@ -8,43 +8,9 @@ section.account-section {
 	margin: var(--std-section-margin);
 }
 
-.sidebar {
-	background-color: var(--accent-light);
-	padding: var(--std-section-padding);
-	border-radius: var(--std-section-border-radius);
-	border: 2px solid var(--font);
-}
-
-.image-container {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	margin-bottom: 1rem;
-}
-
-.image-container .container {
-	background-color: grey;
-	width: 10rem;
-	height: 10rem;
-	border-radius: 1000px;
-	margin-bottom: 1rem;
-}
-
 /* ---------- navigation list ---------- */
 .account-nav-list {
-	display: grid;
-	grid-template-columns: repeat(2, 1fr);
-	gap: 10px;
-	text-align: center;
-	margin-top: 1rem;
-}
-
-.account-list-item {
-	list-style: none;
-}
-
-.account-list-item a {
-	transition: border-bottom var(--std-transition);
+	grid-template-columns: 1fr 1fr;
 }
 
 /* ---------- dashboard ---------- */

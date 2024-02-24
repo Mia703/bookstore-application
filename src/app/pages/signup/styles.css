@@ -26,10 +26,6 @@ input:valid {
 	border: solid 2px var(--accent-light);
 }
 
-label {
-	font-weight: 600;
-}
-
 .space {
 	display: flex;
 	flex-direction: row;
@@ -52,15 +48,18 @@ a.underline {
 	text-decoration: underline;
 }
 
-label a {
-	font-size: 0.8em;
-}
-
 .image-container {
 	background-color: grey;
 	border-radius: var(--std-section-border-radius);
 	display: none;
 }
+
+small {
+	font-style: italic;
+	color: var(--font);
+	font-weight: 500;
+}
+
 
 /* =================== media queries =================== */
 #signup-page {
@@ -109,6 +108,11 @@ label a {
 	.image-container {
 		display: block;
 		height: 100%;
+	}
+
+	.space-c {
+		display: grid;
+		grid-template-rows: auto auto;
 	}
 }
 
