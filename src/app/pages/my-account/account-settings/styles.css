@@ -63,6 +63,12 @@ button[type="submit"] {
 	margin: 1.6rem 0;
 }
 
+small {
+	font-style: italic;
+	color: var(--font);
+	font-weight: 500;
+}
+
 /* =================== media queries =================== */
 
 /* =================== TABLET =================== */

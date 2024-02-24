@@ -1,9 +1,49 @@
+"use client";
+import { useFormik } from "formik";
+import * as Yup from "yup";
 import Navigation from "../../../components/mainNavigation";
 import Sidebar from "../../../components/accountSidebar";
 import Footer from "../../../components/Footer";
 import "./styles.css";
 
 export default function AccountSettings() {
+	const emailValidation = Yup.object({
+		newEmail: Yup.string()
+			.email("Please enter a valid email")
+			.required("Please enter your updated email"),
+	});
+
+	const passwordValidation = Yup.object({
+		newPassword: Yup.string()
+			.min(8, "Password is too short")
+			.max(20, "Password is too long")
+			.required("Please enter a password"),
+		confirmPassword: Yup.string()
+			.oneOf([Yup.ref("newPassword"), null], "Password does not match")
+			.required("Please confirm your password"),
+	});
+
+	const formikEmail = useFormik({
+		initialValues: {
+			newEmail: "",
+		},
+		validationSchema: emailValidation,
+		onSubmit: (values) => {
+			console.log(values);
+		},
+	});
+
+	const formikPassword = useFormik({
+		initialValues: {
+			newPassword: "",
+			confirmPassword: "",
+		},
+		validationSchema: passwordValidation,
+		onSubmit: (values) => {
+			console.log(values);
+		},
+	});
+
 	return (
 		<div id="account-settings-page">
 			<Navigation />
@@ -13,21 +53,31 @@ export default function AccountSettings() {
 					<h1>Account Settings</h1>
 					<div className="email-container">
 						<h2>Email Address</h2>
-						<form action="">
-							<label htmlFor="cemail" className="bold">Current Email Address</label>
+						<form onSubmit={formikEmail.handleSubmit}>
+							<label htmlFor="currentEmail" className="bold">
+								Current Email Address
+							</label>
 							<input
+								id="currentEmail"
+								name="currentEmail"
 								type="email"
-								name="cemail"
-								id="cemail"
 								placeholder="[user's current email address]"
 								disabled
 							/>
-							<label htmlFor="nemail" className="bold">New Email ADdress</label>
+							<label htmlFor="newEmail" className="bold space">
+								<span aria-label="required">New Email Address</span>
+								{formikEmail.errors.newEmail && (
+									<small>{formikEmail.errors.newEmail}</small>
+								)}
+							</label>
 							<input
+								id="newEmail"
+								name="newEmail"
 								type="email"
-								name="nemail"
-								id="nemail"
 								placeholder="Enter new email address"
+								onBlur={formikEmail.handleBlur}
+								onChange={formikEmail.handleChange}
+								value={formikEmail.values.newEmail}
 							/>
 							<button type="submit" className="button-highlight">
 								Update Email Address
@@ -37,30 +87,46 @@ export default function AccountSettings() {
 
 					<div className="password-container">
 						<h2>Password</h2>
-						<form action="">
-							<label htmlFor="cpassword" className="bold">Current Password</label>
+						<form onSubmit={formikPassword.handleSubmit}>
+							<label htmlFor="currentPassword" className="bold">
+								Current Password
+							</label>
 							<input
 								type="password"
-								name="cpassword"
-								id="cpassword"
+								name="currentPassword"
+								id="currentPassword"
 								placeholder="[user's current password]"
 								disabled
 							/>
 
-							<label htmlFor="npassword" className="bold">New Password</label>
+							<label htmlFor="newPassword" className="bold space">
+								<span aria-label="required">New Password</span>
+								{formikPassword.errors.newPassword && (
+									<small>{formikPassword.errors.newPassword}</small>
+								)}
+							</label>
 							<input
+								id="newPassword"
+								name="newPassword"
 								type="password"
-								name="npassword"
-								id="npassword"
 								placeholder="Enter new password"
+								onBlur={formikPassword.handleBlur}
+								onChange={formikPassword.handleChange}
+								value={formikPassword.values.newPassword}
 							/>
 
-							<label htmlFor="confirmpassword">Confirm New Password</label>
+							<label htmlFor="confirmPassword" className="bold space">
+								<span aria-label="required">Confirm New Password</span>
+								{formikPassword.errors.confirmPassword && <small>{formikPassword.errors.confirmPassword}</small>}
+							</label>
 							<input
+								id="confirmPassword"
+								name="confirmPassword"
 								type="password"
-								name="confirmpassword"
-								id="confirmpassword"
 								placeholder="Confirm your password"
+								onBlur={formikPassword.handleBlur}
+								onChange={formikPassword.handleChange}
+								value={formikPassword.values.confirmPassword}
 							/>
 							<button type="submit" className="button-highlight">
 								Update Password
