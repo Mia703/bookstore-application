@@ -349,6 +349,9 @@ export default function Search() {
 				<Book />
 				<Book />
 				<Book />
+				<Book />
+				<Book />
+				<Book />
 			</section>
 			<div className="back-to-top-button">
 				<button type="button">

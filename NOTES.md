@@ -37,3 +37,6 @@ There cannot be more than one main element in a document.
   - [Password validation Regular Expression](https://stackoverflow.com/questions/2370015/regular-expression-for-password-validation)
 
   - [Regular Expression Password Validation in Java](https://www.geeksforgeeks.org/how-to-validate-a-password-using-regular-expressions-in-java/)
+
+
+6. [How to use react-collapsible](https://blog.logrocket.com/create-collapsible-react-components-react-collapsed/)
