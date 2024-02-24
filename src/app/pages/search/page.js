@@ -2,14 +2,13 @@
 import Navigation from "../../components/mainNavigation";
 import Book from "../../components/searchBook";
 import Footer from "../../components/Footer";
-import React, { useState } from 'react'
+import React, { useState } from "react";
 import { useCollapse } from "react-collapsed";
 import "./search.css";
 
 export default function Search() {
-
-	const [isExpanded, setExpanded] = useState(false)
-	const { getCollapseProps, getToggleProps } = useCollapse({ isExpanded })
+	const [isExpanded, setExpanded] = useState(false);
+	const { getCollapseProps, getToggleProps } = useCollapse({ isExpanded });
 
 	return (
 		<div id="search-page">
@@ -32,12 +31,18 @@ export default function Search() {
 				<div className="filter-container">
 					<div className="container">
 						<h2>Filter</h2>
-						<button type="button" className="collapse-button"{...getToggleProps({
-          				onClick: () => setExpanded((prevExpanded) => !prevExpanded),
-        				})}>
-        				{isExpanded ? 'Collapse' : 'Expand'}
-							<span class="material-symbols-outlined">add</span>
-							<span class="material-symbols-outlined">remove</span>
+						<button
+							type="button"
+							className="collapse-button"
+							{...getToggleProps({
+								onClick: () => setExpanded((prevExpanded) => !prevExpanded),
+							})}
+						>
+							{isExpanded ? (
+								<span class="material-symbols-outlined">remove</span>
+								) : (
+								<span class="material-symbols-outlined">add</span>
+							)}
 						</button>
 					</div>
 					<div {...getCollapseProps()} id="hidden">

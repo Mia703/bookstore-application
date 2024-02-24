@@ -51,7 +51,7 @@ button.search-button:hover {
 /* ---------- filter form ---------- */
 .filter-container {
 	background-color: var(--accent-light);
-	padding: var(--std-section-padding);
+	padding: 0.5rem 1rem;
 	border-radius: var(--std-section-border-radius);
 	border: 2px solid var(--font);
 }
@@ -60,16 +60,13 @@ button.search-button:hover {
 	display: flex;
 	flex-direction: row;
 	justify-content: space-between;
-	align-items: center;
+	align-items: flex-end;
 }
 
 .container .collapse-button {
 	background-color: var(--accent-light);
+	display: flex;
 }
-
-/* #hidden {
-	
-} */
 
 .filter-options {
 	display: grid;
