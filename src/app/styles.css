@@ -8,13 +8,6 @@ section:not(:first-child, .welcome-section) {
 	padding: var(--std-section-padding);
 }
 
-.image-container {
-	height: 15rem;
-	background-color: grey;
-	border-radius: var(--std-section-border-radius);
-	margin-bottom: 2rem;
-}
-
 /* =================== media queries =================== */
 
 main {

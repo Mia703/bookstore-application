@@ -8,7 +8,6 @@ export default function Home() {
 		<main>
 			<Navigation />
 			<section className="welcome-section">
-				<div className="image-container"></div>
 				<div className="text-container">
 					<h1>Find and track the book you're looking for.</h1>
 					<h2>
