@@ -1,11 +1,14 @@
 "use client";
 import { useFormik } from "formik";
 import * as Yup from "yup";
-import Link from "next/link";
+import Link from "next/link"
+import app from "../../firebase/clientApp";
+import { getAuth, signInWithEmailAndPassword } from "firebase/auth";;
 import Navigation from "../../components/homeNavigation";
 import Footer from "../../components/Footer";
 import "./styles.css";
 
+const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 export default function Login() {
 	// validates that email and password are in correct format
 	const loginValidation = Yup.object({
@@ -29,8 +32,25 @@ export default function Login() {
 			password: "",
 		},
 		validationSchema: loginValidation,
-		onSubmit: (values) => {
-			console.log(values);
+		onSubmit: async (values) => {
+			await sleep(500);
+			// console.log(values);
+			const auth = getAuth(app);
+			signInWithEmailAndPassword(auth, values.email, values.password)
+				.then((userCredential) => {
+					// Signed in
+					const user = userCredential.user;
+					// ...route user to search page
+					window.location.href = "/pages/search";
+				})
+				.catch((error) => {
+					const errorCode = error.code;
+					const errorMessage = error.message;
+					// alert error message
+					alert("Failed to Log in User\n" + errorCode + ": " + errorMessage);
+					// refresh pages
+					window.location.href="/pages/login";
+				});
 		},
 	});
 
@@ -57,7 +77,9 @@ export default function Login() {
 						/>
 						<label htmlFor="password" className="space bold">
 							<span aria-label="required">Password</span>
-							{formik.errors.password && (<small>{formik.errors.password}</small>)}
+							{formik.errors.password && (
+								<small>{formik.errors.password}</small>
+							)}
 						</label>
 						<input
 							id="password"
@@ -70,7 +92,9 @@ export default function Login() {
 						/>
 						<div className="forgot-container">
 							<small>
-								<Link href={"/pages/signup"} className="underline bold">
+								{/* TODO: add functionality for user to reset password; firebase */}
+								{/* https://support.google.com/firebase/answer/7000714 */}
+								<Link href={"#"} className="underline bold">
 									Forgot?
 								</Link>
 							</small>

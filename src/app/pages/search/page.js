@@ -49,7 +49,7 @@ export default function Search() {
 						value={formikSearch.values.search}
 					/>
 					<button type="submit" className="search-button">
-						<span class="search-icon material-symbols-outlined">search</span>
+						<span className="search-icon material-symbols-outlined">search</span>
 					</button>
 				</form>
 
@@ -64,9 +64,9 @@ export default function Search() {
 							})}
 						>
 							{isExpanded ? (
-								<span class="material-symbols-outlined">remove</span>
+								<span className="material-symbols-outlined">remove</span>
 							) : (
-								<span class="material-symbols-outlined">add</span>
+								<span className="material-symbols-outlined">add</span>
 							)}
 						</button>
 					</div>
@@ -356,7 +356,7 @@ export default function Search() {
 			<div className="back-to-top-button">
 				<button type="button">
 					<a href="#search-page">
-						<span class="material-symbols-outlined">expand_less</span>
+						<span className="material-symbols-outlined">expand_less</span>
 					</a>
 				</button>
 			</div>
