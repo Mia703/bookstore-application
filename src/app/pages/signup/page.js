@@ -1,26 +1,29 @@
 "use client";
 import { useFormik } from "formik";
 import * as Yup from "yup";
+import app from "../../firebase/clientApp";
+import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 import Navigation from "../../components/homeNavigation";
 import Footer from "../../components/Footer";
 import "./styles.css";
 
+const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 export default function Signup() {
 	const signupValidation = Yup.object({
 		fname: Yup.string()
-			.min(5, "First name is too short")
+			.min(1, "First name is too short")
 			.max(20, "First name is too long")
 			.required("Please enter your first name"),
 		lname: Yup.string()
-			.min(5, "Last name is too short")
+			.min(1, "Last name is too short")
 			.max(20, "Last name is too long")
 			.required("Please enter your last name"),
 		email: Yup.string()
 			.email("Please enter a valid email")
 			.required("Please enter your email"),
 		password: Yup.string()
-			.min(8, "Password is too short")
-			.max(20, "Password is too long")
+			.min(8, "Password is too short. Password should be 8 to 20 characters")
+			.max(20, "Password is too long. Password should be 8 to 20 characters")
 			.required("Please enter a password"),
 		cpassword: Yup.string()
 			.oneOf([Yup.ref("password"), null], "Password does not match")
@@ -36,8 +39,28 @@ export default function Signup() {
 			cpassword: "",
 		},
 		validationSchema: signupValidation,
-		onSubmit: (values) => {
-			console.log(values);
+		onSubmit: async (values) => {
+			await sleep(500);
+			// console.log("Submitted: " + values);
+			// Initialize Firebase Authentication and get a reference to the service
+			const auth = getAuth(app);
+			createUserWithEmailAndPassword(auth, values.email, values.password)
+				.then((userCredential) => {
+					// Signed up
+					const user = userCredential.user;
+					// save user to database?
+					user.displayName = values.fname + " " + values.lname;
+					// ... route user to search page
+					window.location.href = "/pages/search";
+				})
+				.catch((error) => {
+					const errorCode = error.code;
+					const errorMessage = error.message;
+					// ... console log error message
+					alert("Failed to Create User Account\n" + errorCode + ": " + errorMessage);
+					// refresh page
+					window.location.href = "/pages/signup";
+				});
 		},
 	});
 

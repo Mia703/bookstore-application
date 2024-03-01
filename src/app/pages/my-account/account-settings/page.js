@@ -41,6 +41,9 @@ export default function AccountSettings() {
 		validationSchema: passwordValidation,
 		onSubmit: (values) => {
 			console.log(values);
+			// TODO: add functionality to update email address
+			// TODO: add functionality to update password
+			// https://support.google.com/firebase/answer/7000714
 		},
 	});
 
