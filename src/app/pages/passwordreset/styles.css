@@ -1,0 +1,97 @@
+/* =================== constants =================== */
+section.reset-section {
+	padding: var(--std-section-padding);
+}
+
+form {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-evenly;
+}
+
+input {
+	padding: 0.5rem 0.4rem;
+	border-radius: 5px;
+	margin-top: 0.4rem;
+}
+
+input:invalid {
+	--accent-light: rgb(182, 182, 182);
+	border: solid 2px var(--accent-light);
+}
+
+input:valid {
+	--accent-light: #6e9c72;
+	border: solid 2px var(--accent-light);
+}
+
+.space {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+}
+
+label {
+	margin-top: 1.5rem;
+}
+
+button[type="submit"] {
+	margin: 1.6rem 0;
+}
+
+.image-container {
+	background-color: grey;
+	border-radius: var(--std-section-border-radius);
+	display: none;
+}
+
+small, small * {
+	color: var(--font);
+	font-style: italic;
+	font-weight: 500;
+}
+
+/* =================== media queries =================== */
+#reset-page {
+	grid-column: span 4;
+	padding: var(--std-page-padding) var(--std-page-padding) 0;
+
+	display: grid;
+	height: 100vh;
+	grid-template-rows: auto 1fr auto;
+}
+
+.left-container {
+	background-color: var(--accent-light);
+	padding: var(--std-section-padding);
+	border-radius: var(--std-section-border-radius);
+}
+
+.left-container p {
+	text-align: center;
+}
+
+/* =================== TABLET =================== */
+@media only screen and (min-width: 40.063em) {
+	#reset-page {
+		grid-column: span 6;
+	}
+
+	section.reset-section {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		gap: 2rem;
+	}
+
+	.image-container {
+		display: block;
+		height: 100%;
+	}
+}
+
+/* =================== DESKTOP =================== */
+@media only screen and (min-width: 64.063em) {
+	#reset-page {
+		grid-column: span 12;
+	}
+}

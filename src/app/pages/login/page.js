@@ -92,9 +92,7 @@ export default function Login() {
 						/>
 						<div className="forgot-container">
 							<small>
-								{/* TODO: add functionality for user to reset password; firebase */}
-								{/* https://support.google.com/firebase/answer/7000714 */}
-								<Link href={"#"} className="underline bold">
+								<Link href={"/pages/passwordreset"} className="underline bold">
 									Forgot?
 								</Link>
 							</small>
