@@ -1,36 +1,47 @@
 "use client";
-import React, { useState } from "react";
-import { useCollapse } from "react-collapsed";
+import React, { useState, useEffect } from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
+import supabase from "../../supabase/initSupabase";
 import Navigation from "../../components/mainNavigation";
+import ScrollButton from "../../components/scrollButton";
 import Book from "../../components/searchBook";
 import Footer from "../../components/Footer";
 import "./search.css";
 
 export default function Search() {
-	const [isExpanded, setExpanded] = useState(false);
-	const { getCollapseProps, getToggleProps } = useCollapse({ isExpanded });
+
+	// TODO: add page redirect. if user is not logged in, redirect to login page, else display user's name
 
 	const formikSearch = useFormik({
 		initialValues: {
-			search: '',
-		},
-		onSubmit: (values) => {
-			console.log(values)
-		},
-	});
-
-	const formikFilter = useFormik({
-		initialValues: {
-			genre: [],
-			pace: [],
-			pages: [],
+			search: "",
 		},
 		onSubmit: (values) => {
 			console.log(values);
 		},
 	});
+
+	// fetching data from supabase
+	const [data, setData] = useState(null);
+	useEffect(() => {
+		async function fetchData() {
+			const { data, error } = await supabase
+				.from("books")
+				.select("*")
+				.order("book_title", { ascending: true });
+
+			if (error) console.log("error", error);
+			else setData(data);
+		}
+
+		fetchData();
+	}, []);
+
+	// async function Notes() {
+	// 	const { data: books } = await supabase.from("books").select();
+	// 	return <pre>{JSON.stringify(books, null, 2)}</pre>
+	// }
 
 	return (
 		<div id="search-page">
@@ -49,317 +60,32 @@ export default function Search() {
 						value={formikSearch.values.search}
 					/>
 					<button type="submit" className="search-button">
-						<span className="search-icon material-symbols-outlined">search</span>
+						<span className="search-icon material-symbols-outlined">
+							search
+						</span>
 					</button>
 				</form>
-
-				<div className="filter-container">
-					<div className="container">
-						<h2 className="bold">Filter</h2>
-						<button
-							type="button"
-							className="collapse-button"
-							{...getToggleProps({
-								onClick: () => setExpanded((prevExpanded) => !prevExpanded),
-							})}
-						>
-							{isExpanded ? (
-								<span className="material-symbols-outlined">remove</span>
-							) : (
-								<span className="material-symbols-outlined">add</span>
-							)}
-						</button>
-					</div>
-					<div {...getCollapseProps()} id="hidden">
-						<form onSubmit={formikFilter.handleSubmit} className="filter-form">
-							<div className="filter-options">
-								<div className="category genre">
-									<p className="bold">Genres</p>
-
-									<label htmlFor="autobiography">
-										<input
-											type="checkbox"
-											name="genre"
-											value="autobiography"
-											id="autobiography"
-											onBlur={formikFilter.handleBlur}
-											onChange={formikFilter.handleChange}
-											values={formikFilter.values.filter}
-										/>
-										Autobiography
-									</label>
-									<br />
-
-									<label htmlFor="biography">
-										<input
-											type="checkbox"
-											name="genre"
-											value="biography"
-											id="biography"
-											onBlur={formikFilter.handleBlur}
-											onChange={formikFilter.handleChange}
-											values={formikFilter.values.filter}
-										/>
-										Biography
-									</label>
-									<br />
-
-									<label htmlFor="drama">
-										<input
-											type="checkbox"
-											name="genre"
-											value="drama"
-											id="drama"
-											onBlur={formikFilter.handleBlur}
-											onChange={formikFilter.handleChange}
-											values={formikFilter.values.filter}
-										/>
-										Drama
-									</label>
-									<br />
-									<label htmlFor="fantasy">
-										<input
-											type="checkbox"
-											name="genre"
-											value="fantasy"
-											id="fantasy"
-											onBlur={formikFilter.handleBlur}
-											onChange={formikFilter.handleChange}
-											values={formikFilter.values.filter}
-										/>
-										Fantasy
-									</label>
-									<br />
-									<label htmlFor="fiction">
-										<input
-											type="checkbox"
-											name="genre"
-											value="fiction"
-											id="fiction"
-											onBlur={formikFilter.handleBlur}
-											onChange={formikFilter.handleChange}
-											values={formikFilter.values.filter}
-										/>
-										Fiction
-									</label>
-									<br />
-									<label htmlFor="historical-fiction">
-										<input
-											type="checkbox"
-											name="genre"
-											value="historical fiction"
-											id="historical-fiction"
-											onBlur={formikFilter.handleBlur}
-											onChange={formikFilter.handleChange}
-											values={formikFilter.values.filter}
-										/>
-										Historical Fiction
-									</label>
-									<br />
-									<label htmlFor="horror">
-										<input
-											type="checkbox"
-											name="genre"
-											value="horror"
-											id="horror"
-											onBlur={formikFilter.handleBlur}
-											onChange={formikFilter.handleChange}
-											values={formikFilter.values.filter}
-										/>
-										Horror
-									</label>
-									<br />
-									<label htmlFor="humour">
-										<input
-											type="checkbox"
-											name="genre"
-											value="humour"
-											id="humour"
-											onBlur={formikFilter.handleBlur}
-											onChange={formikFilter.handleChange}
-											values={formikFilter.values.filter}
-										/>
-										Humour
-									</label>
-									<br />
-									<label htmlFor="mystery">
-										<input
-											type="checkbox"
-											name="genre"
-											value="mystery"
-											id="mystery"
-											onBlur={formikFilter.handleBlur}
-											onChange={formikFilter.handleChange}
-											values={formikFilter.values.filter}
-										/>
-										Mystery
-									</label>
-									<br />
-									<label htmlFor="mythology">
-										<input
-											type="checkbox"
-											name="genre"
-											value="mythology"
-											id="mythology"
-											onBlur={formikFilter.handleBlur}
-											onChange={formikFilter.handleChange}
-											values={formikFilter.values.filter}
-										/>
-										Mythology
-									</label>
-									<br />
-									<label htmlFor="non-fiction">
-										<input
-											type="checkbox"
-											name="genre"
-											value="non-fiction"
-											id="non-fiction"
-											onBlur={formikFilter.handleBlur}
-											onChange={formikFilter.handleChange}
-											values={formikFilter.values.filter}
-										/>
-										Non-Fiction
-									</label>
-									<br />
-									<label htmlFor="science-fiction">
-										<input
-											type="checkbox"
-											name="genre"
-											value="science-fiction"
-											id="science-fiction"
-											onBlur={formikFilter.handleBlur}
-											onChange={formikFilter.handleChange}
-											values={formikFilter.values.filter}
-										/>
-										Science Fiction
-									</label>
-									<br />
-									<label htmlFor="young-adult">
-										<input
-											type="checkbox"
-											name="genre"
-											value="young-adult"
-											id="young-adult"
-											onBlur={formikFilter.handleBlur}
-											onChange={formikFilter.handleChange}
-											values={formikFilter.values.filter}
-										/>
-										Young Adult
-									</label>
-									<br />
-								</div>
-								<div className="category pace">
-									<p className="bold">Pace</p>
-
-									<label htmlFor="slow">
-										<input
-											type="checkbox"
-											name="pace"
-											value="slow"
-											id="slow"
-											onBlur={formikFilter.handleBlur}
-											onChange={formikFilter.handleChange}
-											values={formikFilter.values.pace}
-										/>
-										Slow
-									</label>
-									<br />
-
-									<label htmlFor="medium">
-										<input
-											type="checkbox"
-											name="pace"
-											value="medium"
-											id="medium"
-											onBlur={formikFilter.handleBlur}
-											onChange={formikFilter.handleChange}
-											values={formikFilter.values.pace}
-										/>
-										Medium
-									</label>
-									<br />
-
-									<label htmlFor="fast">
-										<input
-											type="checkbox"
-											name="pace"
-											value="fast"
-											id="fast"
-											onBlur={formikFilter.handleBlur}
-											onChange={formikFilter.handleChange}
-											values={formikFilter.values.pace}
-										/>
-										Fast
-									</label>
-									<br />
-								</div>
-								<div className="category pages">
-									<p className="bold">Pages</p>
-
-									<label htmlFor="lt300">
-										<input
-											type="checkbox"
-											name="pages"
-											value="less-than-300"
-											id="lt300"
-											onBlur={formikFilter.handleBlur}
-											onChange={formikFilter.handleChange}
-											values={formikFilter.values.pages}
-										/>
-										Less than 300 pages
-									</label>
-									<br />
-									<label htmlFor="lt499">
-										<input
-											type="checkbox"
-											name="pages"
-											value="300-to-499"
-											id="lt499"
-											onBlur={formikFilter.handleBlur}
-											onChange={formikFilter.handleChange}
-											values={formikFilter.values.pages}
-										/>
-										300 - 499 pages
-									</label>
-									<br />
-									<label htmlFor="500plus">
-										<input
-											type="checkbox"
-											name="pages"
-											value="500-plus"
-											id="500plus"
-											onBlur={formikFilter.handleBlur}
-											onChange={formikFilter.handleChange}
-											values={formikFilter.values.pages}
-										/>
-										More than 500 pages
-									</label>
-									<br />
-								</div>
-							</div>
-							<button type="submit" className="bold">
-								Apply Filters
-							</button>
-						</form>
-					</div>
-				</div>
 			</section>
 			<section className="books-section">
-				{/* TODO: add mapping to book component */}
-				<Book />
-				<Book />
-				<Book />
-				<Book />
-				<Book />
-				<Book />
+				{data ? (
+					<div className="books-grid">
+						{data.map((item) => (
+							<Book
+								key={item.isbn}
+								book_title={item.book_title}
+								book_author={item.book_author}
+								book_description={item.book_description}
+								book_cover={item.image_url}
+								published_year={item.published_year}
+								total_pages={item.total_pages}
+							/>
+						))}
+					</div>
+				) : (
+					<p>Loading book data...</p>
+				)}
 			</section>
-			<div className="back-to-top-button">
-				<button type="button">
-					<a href="#search-page">
-						<span className="material-symbols-outlined">expand_less</span>
-					</a>
-				</button>
-			</div>
+			<ScrollButton />
 			<Footer />
 		</div>
 	);
