@@ -14,7 +14,8 @@
 	--accent-medium: #bae8e8;
 	--accent-dark: #2d334a;
 
-	--std-section-border-radius: 1rem;
+	--std-section-border-radius: 1rem; 
+	/* change to 5px? */
 	--std-page-padding: 1rem;
 	--std-section-padding: 2rem;
 	--std-section-margin: 2rem 0;
@@ -92,6 +93,10 @@ button {
 
 .button-accent-light {
 	background-color: var(--accent-light);
+}
+
+.button-accent-medium {
+	background-color: var(--accent-medium);
 }
 
 .button-accent-dark {
