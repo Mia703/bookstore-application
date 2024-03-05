@@ -12,6 +12,7 @@
 
 section.about-section {
 	margin-top: 4rem;
+	padding: var(--std-page-padding);
 }
 
 section.about-section h1 {

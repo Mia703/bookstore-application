@@ -1,4 +1,4 @@
-import Navigation from "../../components/homeNavigation";
+import Navigation from "../../components/navigation/homepage/homeNavigation"
 import Footer from "../../components/Footer";
 import "./styles.css";
 
@@ -25,7 +25,7 @@ export default function About() {
 				</h2>
 				<h2>
 					We sincerely appreciate your assistance and support. 
-					<br />- The PanelSync Team
+					<br /><span className="bold">- The PanelSync Team</span>
 				</h2>
 			</section>
 			<Footer />

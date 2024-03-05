@@ -1,6 +1,7 @@
-import Navigation from "./components/homeNavigation";
-import Footer from "./components/Footer";
+import Navigation from "./components/navigation/homepage/homeNavigation";
 import Card from "./components/Card";
+import Link from "next/link";
+import Footer from "./components/Footer";
 import "./styles.css";
 
 export default function Home() {
@@ -15,11 +16,11 @@ export default function Home() {
 						insights. Dive into a world of personalised tracking to enhance your
 						book reading.
 					</h2>
-					<a href={"/pages/signup"} className="a-button-link">
+					<Link href={"/pages/signup"} className="a-button-link">
 						<button type="button" className="button-highlight">
 							<span className="bold">Sign up now</span>
 						</button>
-					</a>
+					</Link>
 				</div>
 			</section>
 
