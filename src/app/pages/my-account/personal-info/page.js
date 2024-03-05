@@ -1,9 +1,9 @@
 "use client";
 import { useFormik } from "formik";
 import * as Yup from "yup";
-import app from "../../../api/firebase"
+import app from "../../../api/firebase";
 import { getAuth } from "firebase/auth";
-import Logged from "../../../components/notLogged/Logged"
+import Logged from "../../../components/notLogged/Logged";
 import Navigation from "../../../components/navigation/allpages/mainNavigation";
 import Sidebar from "../../../components/navigation/accountpage/accountSidebar";
 import Footer from "../../../components/Footer";
@@ -43,7 +43,6 @@ export default function UserInfo() {
 			console.log(values);
 		},
 	});
-
 	const auth = getAuth(app);
 	const user = auth.currentUser;
 	if (user) {
@@ -66,7 +65,7 @@ export default function UserInfo() {
 								placeholder="[User's current first name]"
 								disabled
 							/>
-	
+
 							<label htmlFor="newFirstname" className="bold space">
 								<span aria-label="required">New First Name</span>
 								{formikFirstname.errors.newFirstname && (
@@ -86,7 +85,7 @@ export default function UserInfo() {
 								Update First Name
 							</button>
 						</form>
-	
+
 						<form onSubmit={formikLastname.handleSubmit}>
 							{/* TODO: add user's last name */}
 							<label htmlFor="currentLastname" className="bold">
@@ -99,7 +98,7 @@ export default function UserInfo() {
 								placeholder="[User's current last name]"
 								disabled
 							/>
-	
+
 							<label htmlFor="newLastname" className="bold space">
 								<span aria-label="required">New Last Name</span>
 								{formikLastname.errors.newLastname && (
@@ -124,10 +123,7 @@ export default function UserInfo() {
 				<Footer />
 			</div>
 		);
-	}
-	else {
-		return (
-			<Logged />
-		);
+	} else {
+		return <Logged />;
 	}
 }

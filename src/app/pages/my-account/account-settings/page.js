@@ -1,9 +1,9 @@
 "use client";
-import { useFormik } from "formik";
-import * as Yup from "yup";
 import app from "../../../api/firebase";
 import { getAuth } from "firebase/auth";
-import Logged from "../../../components/notLogged/Logged"
+import { useFormik } from "formik";
+import * as Yup from "yup";
+import Logged from "../../../components/notLogged/Logged";
 import Navigation from "../../../components/navigation/allpages/mainNavigation";
 import Sidebar from "../../../components/navigation/accountpage/accountSidebar";
 import Footer from "../../../components/Footer";
@@ -48,7 +48,6 @@ export default function AccountSettings() {
 			console.log(values);
 		},
 	});
-
 	const auth = getAuth(app);
 	const user = auth.currentUser;
 	if (user) {
@@ -93,7 +92,7 @@ export default function AccountSettings() {
 								</button>
 							</form>
 						</div>
-	
+
 						<div className="password-container">
 							<h2>Password</h2>
 							<form onSubmit={formikPassword.handleSubmit}>
@@ -107,7 +106,7 @@ export default function AccountSettings() {
 									placeholder="********"
 									disabled
 								/>
-	
+
 								<label htmlFor="newPassword" className="bold space">
 									<span aria-label="required">New Password</span>
 									{formikPassword.errors.newPassword && (
@@ -123,10 +122,12 @@ export default function AccountSettings() {
 									onChange={formikPassword.handleChange}
 									value={formikPassword.values.newPassword}
 								/>
-	
+
 								<label htmlFor="confirmPassword" className="bold space">
 									<span aria-label="required">Confirm New Password</span>
-									{formikPassword.errors.confirmPassword && <small>{formikPassword.errors.confirmPassword}</small>}
+									{formikPassword.errors.confirmPassword && (
+										<small>{formikPassword.errors.confirmPassword}</small>
+									)}
 								</label>
 								<input
 									id="confirmPassword"
@@ -142,16 +143,16 @@ export default function AccountSettings() {
 								</button>
 							</form>
 						</div>
-	
+
 						<div className="clear-container">
 							{/* TODO: add functionality to clear library and delete account */}
 							<div className="clear-library-container">
 								<h2>Clear Library</h2>
 								<p>
 									Would you like to clear your library? This is an irreversible
-									action that cannot be undone. All information regarding, books,
-									reviews, comments, etc. will be permanently erased. If you would
-									like to proceed, please press the button below.
+									action that cannot be undone. All information regarding,
+									books, reviews, comments, etc. will be permanently erased. If
+									you would like to proceed, please press the button below.
 								</p>
 								<button type="submit" className="button-accent-dark">
 									Clear Library
@@ -161,9 +162,9 @@ export default function AccountSettings() {
 								<h2>Delete Account</h2>
 								<p>
 									Would you like to delete you account? This is an irreversible
-									action that cannot be undone. All information about you and the
-									information stored in your library will be permanently deleted.
-									If you would like to proceed, press the button below.
+									action that cannot be undone. All information about you and
+									the information stored in your library will be permanently
+									deleted. If you would like to proceed, press the button below.
 								</p>
 								<button type="submit" className="button-accent-dark">
 									Delete Account
@@ -175,10 +176,7 @@ export default function AccountSettings() {
 				<Footer />
 			</div>
 		);
-	}
-	else {
-		return (
-			<Logged />
-		);
+	} else {
+		return <Logged />;
 	}
 }

@@ -1,7 +1,6 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import { useFormik } from "formik";
-import * as Yup from "yup";
 import app from "../../api/firebase";
 import { getAuth } from "firebase/auth";
 import Logged from "../../components/notLogged/Logged"

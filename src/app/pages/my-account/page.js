@@ -1,6 +1,7 @@
-import app from "../../api/firebase"
+"use client";
+import app from "../../api/firebase";
 import { getAuth } from "firebase/auth";
-import Logged from "../../components/notLogged/Logged"
+import Logged from "../../components/notLogged/Logged";
 import Navigation from "../../components/navigation/allpages/mainNavigation";
 import Sidebar from "../../components/navigation/accountpage/accountSidebar";
 import Footer from "../../components/Footer";
@@ -40,10 +41,7 @@ export default function Account() {
 				<Footer />
 			</div>
 		);
-	}
-	else {
-		return (
-			<Logged />
-		);
+	} else {
+		return <Logged />;
 	}
 }

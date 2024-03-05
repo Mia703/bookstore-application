@@ -1,13 +1,13 @@
-import app from "../../api/firebase"
+"use client";
+import app from "../../api/firebase";
 import { getAuth } from "firebase/auth";
-import Logged from "../../components/notLogged/Logged"
+import Logged from "../../components/notLogged/Logged";
 import Navigation from "../../components/navigation/allpages/mainNavigation";
 import Book from "../../components/books/librarypage/libraryBook";
 import Footer from "../../components/Footer";
 import "./styles.css";
 
 export default function Library() {
-
 	const auth = getAuth(app);
 	const user = auth.currentUser;
 	if (user) {
@@ -33,10 +33,7 @@ export default function Library() {
 				<Footer />
 			</div>
 		);
-	}
-	else {
-		return (
-			<Logged />
-		);
+	} else {
+		return <Logged />;
 	}
 }
