@@ -2,16 +2,17 @@
 import React, { useState, useEffect } from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
-import supabase from "../../supabase/initSupabase";
-import Navigation from "../../components/mainNavigation";
-import ScrollButton from "../../components/scrollButton";
-import Book from "../../components/searchBook";
+import app from "../../api/firebase";
+import { getAuth } from "firebase/auth";
+import Logged from "../../components/notLogged/Logged"
+import Navigation from "../../components/navigation/allpages/mainNavigation";
+import supabase from "../../api/supabase";
+import Book from "../../components/books/searchpage/searchBook";
+import ScrollButton from "../../components/books/searchpage/scrollButton";
 import Footer from "../../components/Footer";
-import "./search.css";
+import "./style.css";
 
 export default function Search() {
-
-	// TODO: add page redirect. if user is not logged in, redirect to login page, else display user's name
 
 	const formikSearch = useFormik({
 		initialValues: {
@@ -31,44 +32,41 @@ export default function Search() {
 				.select("*")
 				.order("book_title", { ascending: true });
 
-			if (error) console.log("error", error);
-			else setData(data);
+			if (error) {console.log("Error: Could not fetch data from supabase. ", error);}
+			else {setData(data);}
 		}
-
 		fetchData();
 	}, []);
 
-	// async function Notes() {
-	// 	const { data: books } = await supabase.from("books").select();
-	// 	return <pre>{JSON.stringify(books, null, 2)}</pre>
-	// }
-
-	return (
-		<div id="search-page">
-			<Navigation />
-			<section className="search-section">
-				<h1>Browse All Books</h1>
-				<form onSubmit={formikSearch.handleSubmit} className="search-form">
-					<label htmlFor="search"></label>
-					<input
-						type="search"
-						name="search"
-						id="search"
-						placeholder="Search for a Title or Author"
-						onBlur={formikSearch.handleBlur}
-						onChange={formikSearch.handleChange}
-						value={formikSearch.values.search}
-					/>
-					<button type="submit" className="search-button">
-						<span className="search-icon material-symbols-outlined">
-							search
-						</span>
-					</button>
-				</form>
-			</section>
-			<section className="books-section">
+	const auth = getAuth(app);
+	const user = auth.currentUser;
+	if (user) {
+		// User is signed in
+		return (
+			<div id="search-page">
+				<Navigation />
+				<section className="search-section">
+					<h1>Browse All Books</h1>
+					<form onSubmit={formikSearch.handleSubmit} className="searchbar">
+						<label htmlFor="search"></label>
+						<input
+							type="search"
+							name="search"
+							id="search"
+							placeholder="Search for a Title or Author"
+							onBlur={formikSearch.handleBlur}
+							onChange={formikSearch.handleChange}
+							value={formikSearch.values.search}
+						/>
+						<button type="submit" className="search-button">
+							<span className="search-icon material-symbols-outlined">
+								search
+							</span>
+						</button>
+					</form>
+				</section>
 				{data ? (
-					<div className="books-grid">
+					<div className="books-grid-container">
 						{data.map((item) => (
 							<Book
 								key={item.isbn}
@@ -84,9 +82,14 @@ export default function Search() {
 				) : (
 					<p>Loading book data...</p>
 				)}
-			</section>
-			<ScrollButton />
-			<Footer />
-		</div>
-	);
+				<ScrollButton />
+				<Footer />
+			</div>
+		);
+	} else {
+		// User is not signed in
+		return (
+			<Logged />
+		);
+	}
 }

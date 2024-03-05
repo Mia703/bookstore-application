@@ -9,7 +9,7 @@ section.search-section {
 }
 
 /* ---------- search form ---------- */
-.search-form {
+.searchbar {
 	min-width: 100%;
 	display: grid;
 	grid-template-columns: min-content 1fr min-content;
@@ -18,16 +18,16 @@ section.search-section {
 	border-bottom: 2px solid var(--font);
 }
 
-.search-form input[type=search] {
+.searchbar input[type=search] {
 	background-color: var(--background);
 	border: none;
 }
 
-.search-form input[placeholder] {
+.searchbar input[placeholder] {
 	font-size: 0.9em;
 }
 
-.search-form input:focus {
+.searchbar input:focus {
 	outline: none;
 }
 
@@ -97,7 +97,7 @@ button.search-button:hover {
 }
 
 /* ---------- books section ---------- */
-.books-grid {
+.books-grid-container {
 	padding: var(--std-section-padding);
 	display: grid;
 	grid-template-columns: repeat(1, 1fr);
@@ -117,17 +117,6 @@ button.search-button:hover {
 	background-color: var(--accent-medium);
 }
 
-@keyframes slideDown {
-	from {
-		transform: translateY(-50%);
-		opacity: 0;
-	}
-
-	to {
-		transform: translateY(0);
-		opacity: 1;
-	}
-}
 /* =================== media queries =================== */
 
 /* =================== TABLET =================== */
@@ -136,7 +125,7 @@ button.search-button:hover {
 		grid-column: span 6;
 	}
 
-	.search-form input[placeholder] {
+	.searchbar input[placeholder] {
 		font-size: 1em;
 	}
 
@@ -144,7 +133,7 @@ button.search-button:hover {
 		grid-column: span 1;
 	}
 
-	.books-grid {
+	.books-grid-container {
 		grid-template-columns: repeat(2, 1fr);
 	}
 }
@@ -163,7 +152,7 @@ button.search-button:hover {
 		cursor: pointer;
 	}
 
-	.books-grid {
+	.books-grid-container {
 		grid-template-columns: repeat(4, 1fr);
 	}
 

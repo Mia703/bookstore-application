@@ -1,13 +1,15 @@
 "use client";
 import { useFormik } from "formik";
 import * as Yup from "yup";
-import app from "../../firebase/clientApp";
+import app from "../../api/firebase";
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
-import Navigation from "../../components/homeNavigation";
+import Link from "next/link";
+import Navigation from "../../components/navigation/homepage/homeNavigation";
 import Footer from "../../components/Footer";
 import "./styles.css";
 
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
+
 export default function Signup() {
 	const signupValidation = Yup.object({
 		fname: Yup.string()
@@ -46,18 +48,19 @@ export default function Signup() {
 			const auth = getAuth(app);
 			createUserWithEmailAndPassword(auth, values.email, values.password)
 				.then((userCredential) => {
-					// Signed up
+					// the user signed up successfully
 					const user = userCredential.user;
-					// save user to database?
 					user.displayName = values.fname + " " + values.lname;
-					// ... route user to search page
+					// TODO: save user first and last name to database
+					// route user to search page
 					window.location.href = "/pages/search";
 				})
 				.catch((error) => {
+					// the user couldn't sign up successfullly
 					const errorCode = error.code;
 					const errorMessage = error.message;
 					// ... console log error message
-					alert("Failed to Create User Account\n" + errorCode + ": " + errorMessage);
+					alert("Failed to Create User Account\n" + errorCode + ": \"" + errorMessage + "\"");
 					// refresh page
 					window.location.href = "/pages/signup";
 				});
@@ -151,9 +154,7 @@ export default function Signup() {
 					</form>
 					<p>
 						Already have an account?{" "}
-						<a href={"/pages/login"} className="underline">
-							Login
-						</a>
+						<Link href={"/pages/login"} className="underline">Login</Link>
 					</p>
 				</div>
 				<div className="image-container"></div>

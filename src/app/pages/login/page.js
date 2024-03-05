@@ -2,14 +2,16 @@
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import Link from "next/link"
-import app from "../../firebase/clientApp";
-import { getAuth, signInWithEmailAndPassword } from "firebase/auth";;
-import Navigation from "../../components/homeNavigation";
+import app from "../../api/firebase";
+import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import Navigation from "../../components/navigation/homepage/homeNavigation";
 import Footer from "../../components/Footer";
 import "./styles.css";
 
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
+
 export default function Login() {
+
 	// validates that email and password are in correct format
 	const loginValidation = Yup.object({
 		email: Yup.string()
@@ -18,10 +20,6 @@ export default function Login() {
 		password: Yup.string()
 			.min(8, "Password is too short")
 			.max(20, "Password is too long")
-			// .matches(
-			// 	/^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&-+=()])(?=\\S+$)$/,
-			// 	"Please enter a valid password"
-			// )
 			.required("Please enter your password"),
 	});
 
@@ -38,18 +36,19 @@ export default function Login() {
 			const auth = getAuth(app);
 			signInWithEmailAndPassword(auth, values.email, values.password)
 				.then((userCredential) => {
-					// Signed in
+					// the user is log in
 					const user = userCredential.user;
-					// ...route user to search page
+					// route user to search page
 					window.location.href = "/pages/search";
 				})
 				.catch((error) => {
+					// the user couldn't log in
 					const errorCode = error.code;
 					const errorMessage = error.message;
 					// alert error message
-					alert("Failed to Log in User\n" + errorCode + ": " + errorMessage);
-					// refresh pages
-					window.location.href="/pages/login";
+					alert("Failed to Log in User.\n" + errorCode + ": \"" + errorMessage + "\"");
+					// refresh page
+					window.location.href = "/pages/login";
 				});
 		},
 	});

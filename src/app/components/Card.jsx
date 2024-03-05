@@ -1,4 +1,3 @@
-// Services Card(s)
 
 export default function Card ({ title = "", body = "" }) {
 	const style = {
