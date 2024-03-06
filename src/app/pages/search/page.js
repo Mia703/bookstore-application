@@ -1,11 +1,8 @@
 "use client";
-import React, { useState, useEffect } from "react";
 import { useFormik } from "formik";
-import app from "../../api/firebase";
-import { getAuth } from "firebase/auth";
+import { user, booksData } from "../../api/methods"
 import Logged from "../../components/notLogged/Logged"
 import Navigation from "../../components/navigation/allpages/mainNavigation";
-import supabase from "../../api/supabase";
 import Book from "../../components/books/searchpage/searchBook";
 import ScrollButton from "../../components/books/searchpage/scrollButton";
 import Footer from "../../components/Footer";
@@ -21,29 +18,7 @@ export default function Search() {
 		},
 	});
 
-	const [data, setData] = useState(null);
-	useEffect(() => {
-		async function fetchData() {
-			const { data, error } = await supabase
-				.from("books")
-				.select("*")
-				.order("book_title", { ascending: true });
-
-			if (error) {
-				console.log("Error: Could not fetch data from supabase. ", error);
-			} else {
-				setData(data);
-			}
-		}
-		fetchData();
-	}, []);
-
-	const auth = getAuth(app);
-	const user = auth.currentUser;
 	if (user) {
-		// user is signed in
-		// fetching book data from supabase
-		// render search page
 		return (
 			<div id="search-page">
 				<Navigation />
@@ -67,9 +42,9 @@ export default function Search() {
 						</button>
 					</form>
 				</section>
-				{data ? (
+				{booksData ? (
 					<div className="books-grid-container">
-						{data.map((item) => (
+						{booksData.map((item) => (
 							<Book
 								key={item.isbn}
 								book_title={item.book_title}
@@ -82,7 +57,7 @@ export default function Search() {
 						))}
 					</div>
 				) : (
-					<p>Loading book data...</p>
+					<p>Loading books...</p>
 				)}
 				<ScrollButton />
 				<Footer />

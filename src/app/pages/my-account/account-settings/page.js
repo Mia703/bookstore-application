@@ -1,8 +1,7 @@
 "use client";
-import app from "../../../api/firebase";
-import { getAuth } from "firebase/auth";
 import { useFormik } from "formik";
-import * as Yup from "yup";
+import { user } from "../../../api/methods"
+import { newEmailValidation, newPasswordValidation} from "../../../api/validations"
 import Logged from "../../../components/notLogged/Logged";
 import Navigation from "../../../components/navigation/allpages/mainNavigation";
 import Sidebar from "../../../components/navigation/accountpage/accountSidebar";
@@ -10,28 +9,13 @@ import Footer from "../../../components/Footer";
 import "./styles.css";
 
 export default function AccountSettings() {
-	const emailValidation = Yup.object({
-		newEmail: Yup.string()
-			.email("Please enter a valid email")
-			.required("Please enter your updated email"),
-	});
-
-	const passwordValidation = Yup.object({
-		newPassword: Yup.string()
-			.min(8, "Password is too short")
-			.max(20, "Password is too long")
-			.required("Please enter a password"),
-		confirmPassword: Yup.string()
-			.oneOf([Yup.ref("newPassword"), null], "Password does not match")
-			.required("Please confirm your password"),
-	});
-
+	
 	// TODO: add functionality to update email
 	const formikEmail = useFormik({
 		initialValues: {
 			newEmail: "",
 		},
-		validationSchema: emailValidation,
+		validationSchema: newEmailValidation,
 		onSubmit: (values) => {
 			console.log(values);
 		},
@@ -43,14 +27,12 @@ export default function AccountSettings() {
 			newPassword: "",
 			confirmPassword: "",
 		},
-		validationSchema: passwordValidation,
+		validationSchema: newPasswordValidation,
 		onSubmit: (values) => {
 			console.log(values);
 		},
 	});
 	
-	const auth = getAuth(app);
-	const user = auth.currentUser;
 	if (user) {
 		return (
 			<div id="account-settings-page">

@@ -1,57 +1,14 @@
 "use client";
 import { useFormik } from "formik";
-import * as Yup from "yup";
-import app from "../../api/firebase";
-import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
-import supabase from "../../api/supabase";
+import { auth, addUser, sleep } from "../../api/methods"
+import { signupValidation } from "../../api/validations";
+import { createUserWithEmailAndPassword } from "firebase/auth";
 import Link from "next/link";
 import Navigation from "../../components/navigation/homepage/homeNavigation";
 import Footer from "../../components/Footer";
 import "./styles.css";
-import { useEffect, useState } from "react";
-
-const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 
 export default function Signup() {
-	const signupValidation = Yup.object({
-		fname: Yup.string()
-			.min(1, "First name is too short")
-			.max(20, "First name is too long")
-			.required("Please enter your first name"),
-		lname: Yup.string()
-			.min(1, "Last name is too short")
-			.max(20, "Last name is too long")
-			.required("Please enter your last name"),
-		email: Yup.string()
-			.email("Please enter a valid email")
-			.required("Please enter your email"),
-		password: Yup.string()
-			.min(8, "Password is too short. Password should be 8 to 20 characters")
-			.max(20, "Password is too long. Password should be 8 to 20 characters")
-			.required("Please enter a password"),
-		cpassword: Yup.string()
-			.oneOf([Yup.ref("password"), null], "Password does not match")
-			.required("Please confirm your password"),
-	});
-
-	// adds user's UUI, first and last name to supabase database
-	const [data, setData] = useState(null);
-	async function insertDataToSupabase(userID, values) {
-		const { data, error } = await supabase.from("users").insert([
-			{
-				uuid: `${userID}`,
-				first_name: `${values.fname}`,
-				last_name: `${values.lname}`,
-			},
-		]);
-
-		if (error) {
-			console.log("Error: Could not insert data into supabase.\n", error);
-		} else {
-			setData(data);
-		}
-	}
-
 	const formik = useFormik({
 		initialValues: {
 			fname: "",
@@ -63,23 +20,20 @@ export default function Signup() {
 		validationSchema: signupValidation,
 		onSubmit: async (values) => {
 			await sleep(500);
-			// console.log("Submitted: " + values);
 			// Initialize Firebase Authentication and get a reference to the service
-			const auth = getAuth(app);
 			createUserWithEmailAndPassword(auth, values.email, values.password)
 				.then((userCredential) => {
 					// the user signed up successfully
 					const user = userCredential.user;
 					// save user uuid, first and last name to database
-					insertDataToSupabase(user.uid, values);
+					addUser(user.uid, values.fname, values.lname);
 					// route user to search page
 					window.location.href = "/pages/search";
 				})
 				.catch((error) => {
-					// the user couldn't sign up successfullly
+					// the user couldn't sign up successfully
 					const errorCode = error.code;
 					const errorMessage = error.message;
-					// ... console log error message
 					alert(
 						"Failed to Create User Account\n" +
 							errorCode + ': "' + errorMessage + '"'

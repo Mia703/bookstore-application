@@ -1,35 +1,10 @@
 "use client";
 import Link from "next/link";
-import app from "../../../api/firebase";
-import { getAuth, signOut } from "firebase/auth";
-import supabase from "../../../api/supabase";
-import { useState, useEffect } from "react";
+import { auth, nameData } from "../../../api/methods";
+import { signOut } from "firebase/auth";
 import "./mainStyle.css";
 
 export default function Navigation() {
-	const auth = getAuth(app);
-	const user = auth.currentUser;
-
-	// get the current user's uuid
-	const [data, setData] = useState(null);
-	if (user !== null ) {
-		useEffect(() => {
-			async function fetchData() {
-				const { data, error } = await supabase
-					.from("users")
-					.select("first_name")
-					.eq("uuid", `${user.uid}`)
-	
-				if (error) {
-					console.log("Error: Could not fetch data from supabase. ", error);
-				} else {
-					setData(data);
-				}
-			}
-			fetchData();
-		}, []);
-	}
-
 	return (
 		<section className="navigation-section">
 			<div className="logo-container">
@@ -41,8 +16,8 @@ export default function Navigation() {
 			<nav id="home-navigation">
 				<ul className="nav-list">
 					<li className="nav-item" style={{ display: "flex" }}>
-						{data ? (
-							<p>Hello, {data[0].first_name}</p>
+						{nameData ? (
+							<p>Hello, {nameData[0].first_name}</p>
 						) : (
 							<p></p>
 						)}

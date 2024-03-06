@@ -1,6 +1,5 @@
 "use client";
-import app from "../../api/firebase";
-import { getAuth } from "firebase/auth";
+import { user } from "../../api/methods";
 import Logged from "../../components/notLogged/Logged";
 import Navigation from "../../components/navigation/allpages/mainNavigation";
 import Sidebar from "../../components/navigation/accountpage/accountSidebar";
@@ -8,8 +7,6 @@ import Footer from "../../components/Footer";
 import "./styles.css";
 
 export default function Account() {
-	const auth = getAuth(app);
-	const user = auth.currentUser;
 	if (user) {
 		return (
 			<div id="account-page">
@@ -32,7 +29,7 @@ export default function Account() {
 								<p className="number">num</p>
 							</div>
 							<div className="book-stat-card">
-								<p className="card-title bold">Favorite genre</p>
+								<p className="card-title bold">Favourite genre</p>
 								<p className="number">num</p>
 							</div>
 						</div>
