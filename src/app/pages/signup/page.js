@@ -3,10 +3,12 @@ import { useFormik } from "formik";
 import * as Yup from "yup";
 import app from "../../api/firebase";
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import supabase from "../../api/supabase";
 import Link from "next/link";
 import Navigation from "../../components/navigation/homepage/homeNavigation";
 import Footer from "../../components/Footer";
 import "./styles.css";
+import { useEffect, useState } from "react";
 
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 
@@ -32,6 +34,24 @@ export default function Signup() {
 			.required("Please confirm your password"),
 	});
 
+	// adds user's UUI, first and last name to supabase database
+	const [data, setData] = useState(null);
+	async function insertDataToSupabase(userID, values) {
+		const { data, error } = await supabase.from("users").insert([
+			{
+				uuid: `${userID}`,
+				first_name: `${values.fname}`,
+				last_name: `${values.lname}`,
+			},
+		]);
+
+		if (error) {
+			console.log("Error: Could not insert data into supabase.\n", error);
+		} else {
+			setData(data);
+		}
+	}
+
 	const formik = useFormik({
 		initialValues: {
 			fname: "",
@@ -50,8 +70,8 @@ export default function Signup() {
 				.then((userCredential) => {
 					// the user signed up successfully
 					const user = userCredential.user;
-					user.displayName = values.fname + " " + values.lname;
-					// TODO: save user first and last name to database
+					// save user uuid, first and last name to database
+					insertDataToSupabase(user.uid, values);
 					// route user to search page
 					window.location.href = "/pages/search";
 				})
@@ -60,7 +80,10 @@ export default function Signup() {
 					const errorCode = error.code;
 					const errorMessage = error.message;
 					// ... console log error message
-					alert("Failed to Create User Account\n" + errorCode + ": \"" + errorMessage + "\"");
+					alert(
+						"Failed to Create User Account\n" +
+							errorCode + ': "' + errorMessage + '"'
+					);
 					// refresh page
 					window.location.href = "/pages/signup";
 				});
@@ -79,7 +102,11 @@ export default function Signup() {
 							<div>
 								<label htmlFor="fname" className="bold space space-c">
 									<span aria-label="required">First Name</span>
-									{formik.errors.fname ? <small>{formik.errors.fname}</small> : <small>Please enter your first name</small>}
+									{formik.errors.fname ? (
+										<small>{formik.errors.fname}</small>
+									) : (
+										<small>Please enter your first name</small>
+									)}
 								</label>
 								<input
 									id="fname"
@@ -94,7 +121,11 @@ export default function Signup() {
 							<div>
 								<label htmlFor="lname" className="bold space space-c">
 									<span aria-label="required">Last Name</span>
-									{formik.errors.lname ? <small>{formik.errors.lname}</small> : <small>Please enter your last name</small>}
+									{formik.errors.lname ? (
+										<small>{formik.errors.lname}</small>
+									) : (
+										<small>Please enter your last name</small>
+									)}
 								</label>
 								<input
 									id="lname"
@@ -137,7 +168,9 @@ export default function Signup() {
 						/>
 						<label htmlFor="cpassword" className="space bold">
 							<span aria-label="required">Confirm Password</span>
-							{formik.errors.cpassword && <small>{formik.errors.cpassword}</small>}
+							{formik.errors.cpassword && (
+								<small>{formik.errors.cpassword}</small>
+							)}
 						</label>
 						<input
 							id="cpassword"
@@ -154,7 +187,9 @@ export default function Signup() {
 					</form>
 					<p>
 						Already have an account?{" "}
-						<Link href={"/pages/login"} className="underline">Login</Link>
+						<Link href={"/pages/login"} className="underline">
+							Login
+						</Link>
 					</p>
 				</div>
 				<div className="image-container"></div>

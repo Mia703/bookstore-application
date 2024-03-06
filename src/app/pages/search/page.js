@@ -12,7 +12,6 @@ import Footer from "../../components/Footer";
 import "./style.css";
 
 export default function Search() {
-
 	const formikSearch = useFormik({
 		initialValues: {
 			search: "",
@@ -22,7 +21,6 @@ export default function Search() {
 		},
 	});
 
-	// fetching data from supabase
 	const [data, setData] = useState(null);
 	useEffect(() => {
 		async function fetchData() {
@@ -31,8 +29,11 @@ export default function Search() {
 				.select("*")
 				.order("book_title", { ascending: true });
 
-			if (error) {console.log("Error: Could not fetch data from supabase. ", error);}
-			else {setData(data);}
+			if (error) {
+				console.log("Error: Could not fetch data from supabase. ", error);
+			} else {
+				setData(data);
+			}
 		}
 		fetchData();
 	}, []);
@@ -40,7 +41,9 @@ export default function Search() {
 	const auth = getAuth(app);
 	const user = auth.currentUser;
 	if (user) {
-		// User is signed in
+		// user is signed in
+		// fetching book data from supabase
+		// render search page
 		return (
 			<div id="search-page">
 				<Navigation />

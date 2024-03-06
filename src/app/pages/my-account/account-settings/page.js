@@ -48,6 +48,7 @@ export default function AccountSettings() {
 			console.log(values);
 		},
 	});
+	
 	const auth = getAuth(app);
 	const user = auth.currentUser;
 	if (user) {
