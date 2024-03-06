@@ -1,6 +1,6 @@
 "use client";
 import { useFormik } from "formik";
-import { user, updateFirstName, updateLastName, nameData } from "../../../api/methods";
+import { user, userDetails } from "../../../api/methods";
 import { firstNameValidation, lastNameValidation } from "../../../api/validations"
 import Logged from "../../../components/notLogged/Logged";
 import Navigation from "../../../components/navigation/allpages/mainNavigation";
@@ -9,7 +9,7 @@ import Footer from "../../../components/Footer";
 import "./styles.css";
 
 export default function UserInfo() {
-
+	const { updateFirstName, updateLastName, nameData } = userDetails();
 	// handle first name submit
 	const formikFirstName = useFormik({
 		initialValues: {

@@ -1,10 +1,21 @@
 "use client";
 import Link from "next/link";
-import { auth, nameData } from "../../../api/methods";
+import { auth, userDetails } from "../../../api/methods";
 import { signOut } from "firebase/auth";
+import { useEffect } from "react";
 import "./mainStyle.css";
 
 export default function Navigation() {
+	const {nameData, fetchUserName} = userDetails();
+	const user = auth.currentUser;
+
+	useEffect(() => {
+		// Fetch user details when the component mounts or userID changes
+		if (user.uid) {
+			fetchUserName(user.uid);
+		}
+	}, [user.uid, fetchUserName]);
+
 	return (
 		<section className="navigation-section">
 			<div className="logo-container">
@@ -16,10 +27,8 @@ export default function Navigation() {
 			<nav id="home-navigation">
 				<ul className="nav-list">
 					<li className="nav-item" style={{ display: "flex" }}>
-						{nameData ? (
-							<p>Hello, {nameData[0].first_name}</p>
-						) : (
-							<p></p>
+						{nameData && (
+							<p>Hello, {nameData.first_name}</p>
 						)}
 					</li>
 					<li className="nav-item">

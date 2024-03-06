@@ -1,6 +1,6 @@
 "use client";
 import { useFormik } from "formik";
-import { auth, addUser, sleep } from "../../api/methods"
+import { auth, insertUser, useSleep } from "../../api/methods"
 import { signupValidation } from "../../api/validations";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import Link from "next/link";
@@ -9,6 +9,9 @@ import Footer from "../../components/Footer";
 import "./styles.css";
 
 export default function Signup() {
+	const { addUser } = insertUser();
+	const sleep = useSleep();
+	
 	const formik = useFormik({
 		initialValues: {
 			fname: "",

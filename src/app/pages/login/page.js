@@ -1,6 +1,6 @@
 "use client";
 import { useFormik } from "formik";
-import { auth, sleep } from "../../api/methods";
+import { auth, useSleep } from "../../api/methods";
 import { loginValidation } from "../../api/validations";
 import Link from "next/link";
 import { signInWithEmailAndPassword } from "firebase/auth";
@@ -9,6 +9,8 @@ import Footer from "../../components/Footer";
 import "./styles.css";
 
 export default function Login() {
+	const sleep = useSleep();
+	
 	const formik = useFormik({
 		initialValues: {
 			email: "",

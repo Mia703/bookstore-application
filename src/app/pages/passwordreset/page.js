@@ -1,13 +1,15 @@
 "use client";
 import { useFormik } from "formik";
 import { emailValidation } from "../../api/validations";
-import { auth, sleep } from "../../api/methods"
+import { auth, useSleep } from "../../api/methods"
 import { sendPasswordResetEmail } from "firebase/auth";
 import Navigation from "../../components/navigation/homepage/homeNavigation";
 import Footer from "../../components/Footer";
 import "./styles.css";
 
 export default function PasswordReset() {
+	const sleep = useSleep();
+	
 	const formik = useFormik({
 		initialValues: {
 			email: "",

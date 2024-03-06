@@ -1,6 +1,6 @@
 "use client";
 import { useFormik } from "formik";
-import { user, booksData } from "../../api/methods"
+import { auth, loadBooksData, userDetails } from "../../api/methods"
 import Logged from "../../components/notLogged/Logged"
 import Navigation from "../../components/navigation/allpages/mainNavigation";
 import Book from "../../components/books/searchpage/searchBook";
@@ -9,6 +9,8 @@ import Footer from "../../components/Footer";
 import "./style.css";
 
 export default function Search() {
+	const booksData = loadBooksData();
+	
 	const formikSearch = useFormik({
 		initialValues: {
 			search: "",
@@ -18,6 +20,7 @@ export default function Search() {
 		},
 	});
 
+	const user = auth.currentUser;
 	if (user) {
 		return (
 			<div id="search-page">
@@ -44,7 +47,7 @@ export default function Search() {
 				</section>
 				{booksData ? (
 					<div className="books-grid-container">
-						{booksData.map((item) => (
+						{booksData && booksData.map((item) => (
 							<Book
 								key={item.isbn}
 								book_title={item.book_title}
