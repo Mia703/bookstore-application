@@ -1,16 +1,16 @@
 "use client";
 import { useState, useEffect } from "react";
-import { getAuth } from "firebase/auth";
 import app from "./firebase";
+import { getAuth } from "firebase/auth";
 import supabase from "./supabase";
 
 // -------------- firebase methods --------------
 const auth = getAuth(app);
-const user = auth.currentUser;
+
 
 // -------------- supabase methods --------------
 
-// add user's first and last name to database (signup page - good)
+// add user's first and last name to database (sign up page - good)
 const insertUser = () => {
 	async function addUser(userID, firstName, lastName) {
 		const { data, error } = await supabase.from("users").insert([
@@ -29,7 +29,7 @@ const insertUser = () => {
 	return { addUser };
 };
 
-// return books database (for search page)
+// return books database (search page - good)
 const loadBooksData = () => {
 	const [booksData, setBooksData] = useState(null);
 	useEffect(() => {
@@ -50,11 +50,9 @@ const loadBooksData = () => {
 	return booksData;
 };
 
-// update the users first and last name, return the user's current name
+// update the users first and last name; return the user's current name
 const userDetails = () => {
-	// update a user's first name
-	// TODO: remove userID parameter
-	// const [setFirstName] = useState(null);
+	// update the user's last name
 	async function updateFirstName(userID, firstName) {
 		const { data, error } = await supabase
 			.from("users")
@@ -64,13 +62,10 @@ const userDetails = () => {
 		if (error) {
 			console.log("Error: updateFirstName.\n", error.message);
 		} else {
-			// setFirstName(data);
 		}
 	}
 	
 	// update a user's last name
-	// TODO: remove userID parameter
-	// const [setLastName] = useState(null);
 	async function updateLastName(userID, lastName) {
 		const { data, error } = await supabase
 			.from("users")
@@ -79,39 +74,39 @@ const userDetails = () => {
 		if (error) {
 			console.log("Error: updateLastName.\n" + error.message);
 		} else {
-			// setLastName(data);
 		}
 	}
 	
-	// return the user's first and last name
+	// returns the user's first and last name (mainNavigation - good)
 	const [nameData, setName] = useState(null);
-	async function fetchUserName(userID) {
-		const { data, error } = await supabase
-			.from("users")
-			.select("first_name, last_name")
-			.eq("uuid", `${userID}`);
-
-		if (error) {
-			console.log("Error: fetchUserName.\n", error.message);
-		} else {
-			setName(data);
-		}
-	}
 	useEffect(() => {
-		fetchUserName();
+		async function fetchUserName(userID) {
+			const { data, error } = await supabase
+				.from("users")
+				.select("first_name, last_name")
+				.eq("uuid", `${userID}`);
+	
+			if (error) {
+				console.log("Error: fetchUserName.\n", error.message);
+			} else {
+				setName(data);
+			}
+		}
+		const user = auth.currentUser;
+		fetchUserName(user.uid);
 	}, []);
-	return { updateFirstName, updateLastName, nameData, fetchUserName };
+	return { updateFirstName, updateLastName, nameData };
 };
 
 // -------------- other methods --------------
 const useSleep = () => {
+	// sets a time which executes a function or piece of code after the timer expires
 	const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 	return sleep;
 };
 
 export {
 	auth,
-	user,
 	insertUser,
 	loadBooksData,
 	userDetails,

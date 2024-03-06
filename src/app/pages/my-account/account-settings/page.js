@@ -1,6 +1,7 @@
 "use client";
 import { useFormik } from "formik";
-import { user } from "../../../api/methods"
+import { auth, useSleep } from "../../../api/methods"
+import { updateEmail, updatePassword } from "firebase/auth";
 import { newEmailValidation, newPasswordValidation} from "../../../api/validations"
 import Logged from "../../../components/notLogged/Logged";
 import Navigation from "../../../components/navigation/allpages/mainNavigation";
@@ -8,28 +9,63 @@ import Sidebar from "../../../components/navigation/accountpage/accountSidebar";
 import Footer from "../../../components/Footer";
 import "./styles.css";
 
+
 export default function AccountSettings() {
-	
-	// TODO: add functionality to update email
+	const user = auth.currentUser;
+	const sleep = useSleep();
+
 	const formikEmail = useFormik({
 		initialValues: {
 			newEmail: "",
 		},
 		validationSchema: newEmailValidation,
-		onSubmit: (values) => {
-			console.log(values);
+		onSubmit: async (values) => {
+			await sleep(500)
+			updateEmail(auth.currentUser, `${values.newEmail}`)
+				.then(() => {
+					// Email updated!
+					// update the user in local storage
+					localStorage.setItem(user.uid, user);
+					// go to login page
+					window.location.href = "/pages/login"
+				})
+				.catch((error) => {
+					alert("Failed to update user email.\n" + error)
+					// refresh page? -- clear form
+					formikEmail.resetForm({
+						newEmail: "",
+					});
+				});
 		},
 	});
 
-	// TODO: add functionality to update password
+	
 	const formikPassword = useFormik({
 		initialValues: {
 			newPassword: "",
 			confirmPassword: "",
 		},
 		validationSchema: newPasswordValidation,
-		onSubmit: (values) => {
-			console.log(values);
+		onSubmit: async (values) => {
+			await sleep(500);
+			const newPassword = `${values.newPassword}`;
+			updatePassword(user, newPassword)
+				.then(() => {
+					// Update successful.
+					// update the user in local storage
+					localStorage.setItem(user.uid, user);
+					// go to login page
+					window.location.href = "/pages/login";
+				})
+				.catch((error) => {
+					// An error occurred
+					alert("Failed to update user password.\n" + error);
+					// refresh page? -- clear form
+					formikPassword.resetForm({
+						newPassword: "",
+						confirmPassword: "",
+					});
+				});
 		},
 	});
 	

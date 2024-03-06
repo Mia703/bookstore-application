@@ -8,9 +8,13 @@ section.account-section {
 	margin: var(--std-section-margin);
 }
 
-/* ---------- navigation list ---------- */
+/* ---------- sidebar navigation ---------- */
 .account-nav-list {
 	grid-template-columns: 1fr 1fr;
+}
+
+.account-list-item a {
+	border-bottom: 2px solid transparent;
 }
 
 /* ---------- dashboard ---------- */
@@ -83,12 +87,13 @@ section.account-section {
 		grid-template-columns: max-content 1fr;
 	}
 
+	/* ---------- sidebar navigation ---------- */
 	.account-nav-list {
 		grid-template-columns: 1fr;
 	}
 
 	.account-list-item a:hover {
-		border-bottom: 2px solid var(--font);
+		border-color: var(--font);
 		transition: border-bottom var(--std-transition);
 	}
 }

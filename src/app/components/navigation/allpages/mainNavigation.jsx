@@ -2,19 +2,11 @@
 import Link from "next/link";
 import { auth, userDetails } from "../../../api/methods";
 import { signOut } from "firebase/auth";
-import { useEffect } from "react";
 import "./mainStyle.css";
 
 export default function Navigation() {
-	const {nameData, fetchUserName} = userDetails();
 	const user = auth.currentUser;
-
-	useEffect(() => {
-		// Fetch user details when the component mounts or userID changes
-		if (user.uid) {
-			fetchUserName(user.uid);
-		}
-	}, [user.uid, fetchUserName]);
+	const {nameData} = userDetails();
 
 	return (
 		<section className="navigation-section">
@@ -28,7 +20,7 @@ export default function Navigation() {
 				<ul className="nav-list">
 					<li className="nav-item" style={{ display: "flex" }}>
 						{nameData && (
-							<p>Hello, {nameData.first_name}</p>
+							<p>Hello, <span className="bold">{nameData[0].first_name}</span></p>
 						)}
 					</li>
 					<li className="nav-item">
@@ -45,17 +37,18 @@ export default function Navigation() {
 							type="button"
 							className="button-accent-medium"
 							onClick={() => {
+								// remove the user from localstorage
+								localStorage.removeItem(user.uid)
 								signOut(auth)
 									.then(() => {
 										// Sign-out successful.
-										// console.log(
-										// 	"Sign out successful. Redirecting to login page."
-										// );
 										window.location.href = "/pages/login";
 									})
 									.catch((error) => {
 										// An error happened.
 										alert("Error: Could not sign out user.\n" + error);
+										// reload on search page
+										window.location.href = "/pages/search";
 									});
 							}}
 						>

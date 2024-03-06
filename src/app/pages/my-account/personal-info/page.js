@@ -1,6 +1,6 @@
 "use client";
 import { useFormik } from "formik";
-import { user, userDetails } from "../../../api/methods";
+import { auth, useSleep, userDetails } from "../../../api/methods";
 import { firstNameValidation, lastNameValidation } from "../../../api/validations"
 import Logged from "../../../components/notLogged/Logged";
 import Navigation from "../../../components/navigation/allpages/mainNavigation";
@@ -9,15 +9,21 @@ import Footer from "../../../components/Footer";
 import "./styles.css";
 
 export default function UserInfo() {
-	const { updateFirstName, updateLastName, nameData } = userDetails();
+	const user = auth.currentUser;
+	const { updateFirstName, updateLastName, nameData }  = userDetails();
+	const sleep = useSleep();
+
 	// handle first name submit
 	const formikFirstName = useFormik({
 		initialValues: {
 			newFirstName: "",
 		},
 		validationSchema: firstNameValidation,
-		onSubmit: (values) => {
+		onSubmit: async (values) => {
+			await sleep(500);
 			updateFirstName(user.uid, values.newFirstName);
+			await sleep(500);
+			// window.location.href="/pages/my-account/personal-info"
 		},
 	});
 	
@@ -27,8 +33,11 @@ export default function UserInfo() {
 			newLastName: "",
 		},
 		validationSchema: lastNameValidation,
-		onSubmit: (values) => {
+		onSubmit: async (values) => {
+			await sleep(500);
 			updateLastName(user.uid, values.newLastName);
+			await sleep(500);
+			window.location.href = "/pages/my-account/personal-info"
 		},
 	});
 	
@@ -48,9 +57,7 @@ export default function UserInfo() {
 								id="currentFirstname"
 								name="currentFirstname"
 								type="text"
-								placeholder={
-									nameData ? `${nameData[0].first_name}` : ""
-								}
+								placeholder={nameData && `${nameData[0].first_name}`}
 								disabled
 							/>
 							<label htmlFor="newFirstName" className="bold space">
@@ -82,9 +89,7 @@ export default function UserInfo() {
 								id="currentLastname"
 								name="currentLastname"
 								type="text"
-								placeholder={
-									nameData ? `${nameData[0].last_name}` : ""
-								}
+								placeholder={nameData && `${nameData[0].last_name}`}
 								disabled
 							/>
 

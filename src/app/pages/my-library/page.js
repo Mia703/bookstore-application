@@ -1,5 +1,5 @@
 "use client";
-import { user } from "../../api/methods"
+import { auth } from "../../api/methods"
 import Logged from "../../components/notLogged/Logged";
 import Navigation from "../../components/navigation/allpages/mainNavigation";
 import Book from "../../components/books/librarypage/libraryBook";
@@ -7,6 +7,8 @@ import Footer from "../../components/Footer";
 import "./styles.css";
 
 export default function Library() {
+	const user = auth.currentUser;
+	
 	if (user) {
 		return (
 			<div id="library-page">
