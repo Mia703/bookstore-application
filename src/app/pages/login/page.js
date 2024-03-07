@@ -24,7 +24,7 @@ export default function Login() {
 					// the user is log in
 					const user = userCredential.user;
 					// save current user to localstorage
-					localStorage.setItem(user.uid, user)
+					// localStorage.setItem(user.uid, user)
 					// route user to search page
 					window.location.href = "/pages/search";
 				})

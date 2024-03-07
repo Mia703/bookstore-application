@@ -7,6 +7,7 @@ import supabase from "./supabase";
 // -------------- firebase methods --------------
 const auth = getAuth(app);
 
+// get the current user every time this function is called?
 
 // -------------- supabase methods --------------
 
@@ -93,7 +94,9 @@ const userDetails = () => {
 			}
 		}
 		const user = auth.currentUser;
-		fetchUserName(user.uid);
+		if (user !== null) {
+			fetchUserName(user.uid);
+		} else return;
 	}, []);
 	return { updateFirstName, updateLastName, nameData };
 };

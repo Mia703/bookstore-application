@@ -25,7 +25,7 @@ export default function AccountSettings() {
 				.then(() => {
 					// Email updated!
 					// update the user in local storage
-					localStorage.setItem(user.uid, user);
+					// localStorage.setItem(user.uid, user);
 					// go to login page
 					window.location.href = "/pages/login"
 				})
@@ -53,7 +53,7 @@ export default function AccountSettings() {
 				.then(() => {
 					// Update successful.
 					// update the user in local storage
-					localStorage.setItem(user.uid, user);
+					// localStorage.setItem(user.uid, user);
 					// go to login page
 					window.location.href = "/pages/login";
 				})
