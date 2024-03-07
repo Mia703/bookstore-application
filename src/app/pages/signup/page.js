@@ -99,7 +99,11 @@ export default function Signup() {
 						</div>
 						<label htmlFor="email" className="space bold">
 							<span aria-label="required">Email</span>
-							{formik.errors.email && <small>{formik.errors.email}</small>}
+							{formik.errors.email ? (
+								<small>{formik.errors.email}</small>
+							) : (
+								<small>Please enter your email</small>
+							)}
 						</label>
 						<input
 							id="email"
@@ -112,8 +116,10 @@ export default function Signup() {
 						/>
 						<label htmlFor="password" className="space bold">
 							<span aria-label="required">Password</span>
-							{formik.errors.password && (
+							{formik.errors.password ? (
 								<small>{formik.errors.password}</small>
+							) : (
+								<small>Please enter a password</small>
 							)}
 						</label>
 						<input
@@ -127,8 +133,10 @@ export default function Signup() {
 						/>
 						<label htmlFor="cpassword" className="space bold">
 							<span aria-label="required">Confirm Password</span>
-							{formik.errors.cpassword && (
+							{formik.errors.cpassword ? (
 								<small>{formik.errors.cpassword}</small>
+							) : (
+								<small>Please confirm your password</small>
 							)}
 						</label>
 						<input

@@ -7,7 +7,8 @@ import supabase from "./supabase";
 // -------------- firebase methods --------------
 const auth = getAuth(app);
 
-// get the current user every time this function is called?
+// get the currently signed in user
+// TODO: call this function at the start of the page and after updating information on a user
 
 // -------------- supabase methods --------------
 
@@ -51,7 +52,7 @@ const loadBooksData = () => {
 	return booksData;
 };
 
-// update the users first and last name; return the user's current name
+// update the users first and last name; return the user's current name (navigation and account pages)
 const userDetails = () => {
 	// update the user's last name
 	async function updateFirstName(userID, firstName) {
@@ -100,6 +101,19 @@ const userDetails = () => {
 	}, []);
 	return { updateFirstName, updateLastName, nameData };
 };
+
+// add and remove books from user's library
+const userLibrary = () => {
+	// TODO: add to library
+
+	// TODO: remove from library
+
+}
+
+// TODO: return user's library
+const loadLibrary = () => {
+	
+}
 
 // -------------- other methods --------------
 const useSleep = () => {

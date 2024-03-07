@@ -87,6 +87,11 @@ button {
 	transition: box-shadow var(--std-transition);
 }
 
+.button-background {
+	background-color: var(--background);
+	border-color: var(--background);
+}
+
 .button-highlight {
 	background-color: var(--highlight);
 }
@@ -124,7 +129,7 @@ button {
 		grid-template-columns: repeat(12, 1fr);
 	}
 
-	button:hover:not(.button-accent-dark) {
+	button:hover:not(.button-accent-dark, .button-background) {
 		box-shadow: var(--std-button-shadow);
 		transition: box-shadow var(--std-transition);
 	}
