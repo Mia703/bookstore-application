@@ -1,92 +1,47 @@
 "use client";
 import { useFormik } from "formik";
-import * as Yup from "yup";
-import app from "../../../api/firebase";
-import { getAuth } from "firebase/auth";
+import { auth, useSleep, userDetails } from "../../../api/methods";
+import { firstNameValidation, lastNameValidation } from "../../../api/validations"
 import Logged from "../../../components/notLogged/Logged";
 import Navigation from "../../../components/navigation/allpages/mainNavigation";
 import Sidebar from "../../../components/navigation/accountpage/accountSidebar";
 import Footer from "../../../components/Footer";
-import supabase from "../../../api/supabase";
-import { useState, useEffect } from "react";
 import "./styles.css";
 
 export default function UserInfo() {
-	const auth = getAuth(app);
 	const user = auth.currentUser;
-
-	// ----------------- User's First Name -----------------
-	// form validation
-	const firstNameValidation = Yup.object({
-		newFirstName: Yup.string()
-			.min(5, "First name is too short")
-			.max(20, "First name is too long")
-			.required("Please enter your first name"),
-	});
-
-	const [firstNameData, setFirstName] = useState(null);
-	async function updateFirstName(userID, values) {
-		const { firstNameData, error } = await supabase
-			.from("users")
-			.update({ first_name: `${values.newFirstName}` })
-			.eq("uuid", `${userID}`);
-
-		if (error) {
-			console.log("Error: Could not update data in supabase.\n", error);
-		} else {
-			setFirstName(firstNameData);
-		}
-	}
+	const { updateFirstName, updateLastName, nameData }  = userDetails();
+	const sleep = useSleep();
 
 	// handle first name submit
-	const formikFirstname = useFormik({
+	const formikFirstName = useFormik({
 		initialValues: {
 			newFirstName: "",
 		},
 		validationSchema: firstNameValidation,
-		onSubmit: (values) => {
-			updateFirstName(user.uid, values);
+		onSubmit: async (values) => {
+			await sleep(500);
+			updateFirstName(user.uid, values.newFirstName);
+			await sleep(500);
+			// window.location.href="/pages/my-account/personal-info"
 		},
 	});
-
-	// ----------------- User's Last Name -----------------
-	const lastNameValidation = Yup.object({
-		newLastName: Yup.string()
-			.min(5, "Last name is too short")
-			.max(20, "Last name is too long")
-			.required("Please enter your last name"),
-	});
-
-	const formikLastname = useFormik({
+	
+	// handle last name submit
+	const formikLastName = useFormik({
 		initialValues: {
 			newLastName: "",
 		},
 		validationSchema: lastNameValidation,
-		onSubmit: (values) => {
-			console.log(values);
+		onSubmit: async (values) => {
+			await sleep(500);
+			updateLastName(user.uid, values.newLastName);
+			await sleep(500);
+			window.location.href = "/pages/my-account/personal-info"
 		},
 	});
-
-	const [returnNameData, setName] = useState(null);
+	
 	if (user) {
-		// returns the user's first and last name
-		useEffect(() => {
-			async function fetchUserName() {
-				const { returnNameData, error } = await supabase
-					.from("users")
-					.select("first_name, last_name")
-					.eq("uuid", `${user.uid}`);
-
-				if (error) {
-					console.log("Error: Could not fetch user's name from supabase. ", error);
-				} else {
-					console.log(returnNameData)
-					setName(returnNameData);
-				}
-			}
-			fetchUserName();
-		}, []);
-
 		return (
 			<div id="personal-information-page">
 				<Navigation />
@@ -94,8 +49,7 @@ export default function UserInfo() {
 					<Sidebar />
 					<div className="form container">
 						<h1>Personal Information</h1>
-						<form onSubmit={formikFirstname.handleSubmit}>
-							{/* the user's current first name */}
+						<form onSubmit={formikFirstName.handleSubmit}>
 							<label htmlFor="currentFirstname" className="bold">
 								First Name
 							</label>
@@ -103,17 +57,13 @@ export default function UserInfo() {
 								id="currentFirstname"
 								name="currentFirstname"
 								type="text"
-								placeholder={
-									returnNameData ? `${returnNameData[0].first_name}` : ""
-								}
+								placeholder={nameData && `${nameData[0].first_name}`}
 								disabled
 							/>
-
-							{/* the user's updated name */}
 							<label htmlFor="newFirstName" className="bold space">
 								<span aria-label="required">New First Name</span>
-								{formikFirstname.errors.newFirstName && (
-									<small>{formikFirstname.errors.newFirstName}</small>
+								{formikFirstName.errors.newFirstName && (
+									<small>{formikFirstName.errors.newFirstName}</small>
 								)}
 							</label>
 							<input
@@ -121,9 +71,9 @@ export default function UserInfo() {
 								name="newFirstName"
 								type="text"
 								placeholder="Please enter your updated first name"
-								onBlur={formikFirstname.handleBlur}
-								onChange={formikFirstname.handleChange}
-								value={formikFirstname.values.newFirstName}
+								onBlur={formikFirstName.handleBlur}
+								onChange={formikFirstName.handleChange}
+								value={formikFirstName.values.newFirstName}
 							/>
 							<button type="submit" className="button-highlight">
 								Update First Name
@@ -131,7 +81,7 @@ export default function UserInfo() {
 						</form>
 
 						{/* the user's current last name */}
-						<form onSubmit={formikLastname.handleSubmit}>
+						<form onSubmit={formikLastName.handleSubmit}>
 							<label htmlFor="currentLastname" className="bold">
 								Last Name
 							</label>
@@ -139,16 +89,14 @@ export default function UserInfo() {
 								id="currentLastname"
 								name="currentLastname"
 								type="text"
-								placeholder={
-									returnNameData ? `${returnNameData[0].last_name}` : ""
-								}
+								placeholder={nameData && `${nameData[0].last_name}`}
 								disabled
 							/>
 
 							<label htmlFor="newLastName" className="bold space">
 								<span aria-label="required">New Last Name</span>
-								{formikLastname.errors.newLastName && (
-									<small>{formikLastname.errors.newLastName}</small>
+								{formikLastName.errors.newLastName && (
+									<small>{formikLastName.errors.newLastName}</small>
 								)}
 							</label>
 							<input
@@ -156,9 +104,9 @@ export default function UserInfo() {
 								name="newLastName"
 								type="text"
 								placeholder="Please enter your updated last name"
-								onBlur={formikLastname.handleBlur}
-								onChange={formikLastname.handleChange}
-								value={formikLastname.values.newLastName}
+								onBlur={formikLastName.handleBlur}
+								onChange={formikLastName.handleChange}
+								value={formikLastName.values.newLastName}
 							/>
 							<button type="submit" className="button-highlight">
 								Update Last Name

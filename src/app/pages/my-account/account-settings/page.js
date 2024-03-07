@@ -1,56 +1,74 @@
 "use client";
-import app from "../../../api/firebase";
-import { getAuth } from "firebase/auth";
 import { useFormik } from "formik";
-import * as Yup from "yup";
+import { auth, useSleep } from "../../../api/methods"
+import { updateEmail, updatePassword } from "firebase/auth";
+import { newEmailValidation, newPasswordValidation} from "../../../api/validations"
 import Logged from "../../../components/notLogged/Logged";
 import Navigation from "../../../components/navigation/allpages/mainNavigation";
 import Sidebar from "../../../components/navigation/accountpage/accountSidebar";
 import Footer from "../../../components/Footer";
 import "./styles.css";
 
+
 export default function AccountSettings() {
-	const emailValidation = Yup.object({
-		newEmail: Yup.string()
-			.email("Please enter a valid email")
-			.required("Please enter your updated email"),
-	});
+	const user = auth.currentUser;
+	const sleep = useSleep();
 
-	const passwordValidation = Yup.object({
-		newPassword: Yup.string()
-			.min(8, "Password is too short")
-			.max(20, "Password is too long")
-			.required("Please enter a password"),
-		confirmPassword: Yup.string()
-			.oneOf([Yup.ref("newPassword"), null], "Password does not match")
-			.required("Please confirm your password"),
-	});
-
-	// TODO: add functionality to update email
 	const formikEmail = useFormik({
 		initialValues: {
 			newEmail: "",
 		},
-		validationSchema: emailValidation,
-		onSubmit: (values) => {
-			console.log(values);
+		validationSchema: newEmailValidation,
+		onSubmit: async (values) => {
+			await sleep(500)
+			updateEmail(auth.currentUser, `${values.newEmail}`)
+				.then(() => {
+					// Email updated!
+					// update the user in local storage
+					localStorage.setItem(user.uid, user);
+					// go to login page
+					window.location.href = "/pages/login"
+				})
+				.catch((error) => {
+					alert("Failed to update user email.\n" + error)
+					// refresh page? -- clear form
+					formikEmail.resetForm({
+						newEmail: "",
+					});
+				});
 		},
 	});
 
-	// TODO: add functionality to update password
+	
 	const formikPassword = useFormik({
 		initialValues: {
 			newPassword: "",
 			confirmPassword: "",
 		},
-		validationSchema: passwordValidation,
-		onSubmit: (values) => {
-			console.log(values);
+		validationSchema: newPasswordValidation,
+		onSubmit: async (values) => {
+			await sleep(500);
+			const newPassword = `${values.newPassword}`;
+			updatePassword(user, newPassword)
+				.then(() => {
+					// Update successful.
+					// update the user in local storage
+					localStorage.setItem(user.uid, user);
+					// go to login page
+					window.location.href = "/pages/login";
+				})
+				.catch((error) => {
+					// An error occurred
+					alert("Failed to update user password.\n" + error);
+					// refresh page? -- clear form
+					formikPassword.resetForm({
+						newPassword: "",
+						confirmPassword: "",
+					});
+				});
 		},
 	});
 	
-	const auth = getAuth(app);
-	const user = auth.currentUser;
 	if (user) {
 		return (
 			<div id="account-settings-page">

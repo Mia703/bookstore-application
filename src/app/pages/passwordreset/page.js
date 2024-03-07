@@ -1,21 +1,15 @@
 "use client";
 import { useFormik } from "formik";
-import * as Yup from "yup";
-import app from "../../api/firebase";
-import { getAuth, sendPasswordResetEmail } from "firebase/auth";
+import { emailValidation } from "../../api/validations";
+import { auth, useSleep } from "../../api/methods"
+import { sendPasswordResetEmail } from "firebase/auth";
 import Navigation from "../../components/navigation/homepage/homeNavigation";
 import Footer from "../../components/Footer";
 import "./styles.css";
 
-const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
-
 export default function PasswordReset() {
-	const emailValidation = Yup.object({
-		email: Yup.string()
-			.email("Please enter a valid email")
-			.required("Please enter your email"),
-	});
-
+	const sleep = useSleep();
+	
 	const formik = useFormik({
 		initialValues: {
 			email: "",
@@ -23,7 +17,6 @@ export default function PasswordReset() {
 		validationSchema: emailValidation,
 		onSubmit: async (values) => {
 			await sleep(500);
-			const auth = getAuth(app);
 			sendPasswordResetEmail(auth, values.email)
 				.then(() => {
 					alert("Password reset email sent! Please check your email");

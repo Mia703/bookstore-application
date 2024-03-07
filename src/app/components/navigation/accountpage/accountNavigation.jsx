@@ -6,7 +6,7 @@ export default function AccountNavigation() {
 		navList: {
 			display: "grid",
 			gap: "10px",
-			textAlign: "center",
+			textAlign: "left",
 			marginTop: "1rem",
 		},
 		listItem: {
@@ -44,15 +44,6 @@ export default function AccountNavigation() {
 					style={styles.listItemA}
 				>
 					Account Settings
-				</Link>
-			</li>
-			<li className="account-list-item" style={styles.listItem}>
-				<Link
-					href={"/pages/login"}
-					className="account-link"
-					style={styles.listItemA}
-				>
-					Log Out
 				</Link>
 			</li>
 		</ul>

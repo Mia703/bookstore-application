@@ -1,29 +1,16 @@
 "use client";
 import { useFormik } from "formik";
-import * as Yup from "yup";
-import Link from "next/link"
-import app from "../../api/firebase";
-import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import { auth, useSleep } from "../../api/methods";
+import { loginValidation } from "../../api/validations";
+import Link from "next/link";
+import { signInWithEmailAndPassword } from "firebase/auth";
 import Navigation from "../../components/navigation/homepage/homeNavigation";
 import Footer from "../../components/Footer";
 import "./styles.css";
 
-const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
-
 export default function Login() {
-
-	// validates that email and password are in correct format
-	const loginValidation = Yup.object({
-		email: Yup.string()
-			.email("Please enter a valid email")
-			.required("Please enter your email"),
-		password: Yup.string()
-			.min(8, "Password is too short")
-			.max(20, "Password is too long")
-			.required("Please enter your password"),
-	});
-
-	// calls the formik dependency
+	const sleep = useSleep();
+	
 	const formik = useFormik({
 		initialValues: {
 			email: "",
@@ -32,12 +19,12 @@ export default function Login() {
 		validationSchema: loginValidation,
 		onSubmit: async (values) => {
 			await sleep(500);
-			// console.log(values);
-			const auth = getAuth(app);
 			signInWithEmailAndPassword(auth, values.email, values.password)
 				.then((userCredential) => {
 					// the user is log in
 					const user = userCredential.user;
+					// save current user to localstorage
+					localStorage.setItem(user.uid, user)
 					// route user to search page
 					window.location.href = "/pages/search";
 				})

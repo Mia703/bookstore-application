@@ -1,34 +1,12 @@
 "use client";
 import Link from "next/link";
-import app from "../../../api/firebase";
-import { getAuth, signOut } from "firebase/auth";
-import supabase from "../../../api/supabase";
-import { useState, useEffect } from "react";
+import { auth, userDetails } from "../../../api/methods";
+import { signOut } from "firebase/auth";
 import "./mainStyle.css";
 
 export default function Navigation() {
-	const auth = getAuth(app);
 	const user = auth.currentUser;
-
-	// get the current user's uuid
-	const [data, setData] = useState(null);
-	if (user !== null ) {
-		useEffect(() => {
-			async function fetchData() {
-				const { data, error } = await supabase
-					.from("users")
-					.select("first_name")
-					.eq("uuid", `${user.uid}`)
-	
-				if (error) {
-					console.log("Error: Could not fetch data from supabase. ", error);
-				} else {
-					setData(data);
-				}
-			}
-			fetchData();
-		}, []);
-	}
+	const {nameData} = userDetails();
 
 	return (
 		<section className="navigation-section">
@@ -41,10 +19,8 @@ export default function Navigation() {
 			<nav id="home-navigation">
 				<ul className="nav-list">
 					<li className="nav-item" style={{ display: "flex" }}>
-						{data ? (
-							<p>Hello, {data[0].first_name}</p>
-						) : (
-							<p></p>
+						{nameData && (
+							<p>Hello, <span className="bold">{nameData[0].first_name}</span></p>
 						)}
 					</li>
 					<li className="nav-item">
@@ -61,17 +37,18 @@ export default function Navigation() {
 							type="button"
 							className="button-accent-medium"
 							onClick={() => {
+								// remove the user from localstorage
+								localStorage.removeItem(user.uid)
 								signOut(auth)
 									.then(() => {
 										// Sign-out successful.
-										// console.log(
-										// 	"Sign out successful. Redirecting to login page."
-										// );
 										window.location.href = "/pages/login";
 									})
 									.catch((error) => {
 										// An error happened.
 										alert("Error: Could not sign out user.\n" + error);
+										// reload on search page
+										window.location.href = "/pages/search";
 									});
 							}}
 						>
