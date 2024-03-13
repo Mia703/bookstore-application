@@ -28,7 +28,7 @@ input:valid {
 
 .space {
 	display: flex;
-	flex-direction: row;
+	flex-direction: column;
 	justify-content: space-between;
 }
 
@@ -108,6 +108,10 @@ small {
 	.image-container {
 		display: block;
 		height: 100%;
+	}
+
+	.space {
+		flex-direction: row;
 	}
 
 	.space-c {

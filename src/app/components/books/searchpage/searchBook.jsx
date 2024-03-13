@@ -29,14 +29,18 @@ export default function SearchBook({
 						<div className="close-button-container">
 							<button
 								type="button"
-								className="button-accent-medium close-button"
+								className="button-background close-button"
 								onClick={toggleModal}
 							>
 								<span className="material-symbols-outlined">close</span>
 							</button>
 						</div>
 						<div className="modal-content-grid">
-							<img src={book_cover} alt={book_title} className="modal-book-cover" />
+							<img
+								src={book_cover}
+								alt={book_title}
+								className="modal-book-cover"
+							/>
 							<div className="content">
 								<h2 className="title">{book_title}</h2>
 								<p className="author">
@@ -45,8 +49,14 @@ export default function SearchBook({
 								<p className="info">
 									Published in {published_year}. Total pages {total_pages}.
 								</p>
-								<p className="description">{book_description}</p>
+								<div className="library-button-container">
+									<button type="button">Reading</button>
+									<button type="button">Want to Read</button>
+									<button type="button">Read</button>
+									<button type="button">No longer want to read</button>
+								</div>
 							</div>
+							<p className="description">{book_description}</p>
 						</div>
 					</div>
 				</div>

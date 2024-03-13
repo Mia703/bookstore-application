@@ -38,7 +38,7 @@ export default function Navigation() {
 							className="button-accent-medium"
 							onClick={() => {
 								// remove the user from localstorage
-								localStorage.removeItem(user.uid)
+								// localStorage.removeItem(user.uid)
 								signOut(auth)
 									.then(() => {
 										// Sign-out successful.

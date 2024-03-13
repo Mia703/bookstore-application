@@ -10,6 +10,7 @@ import "./styles.css";
 
 export default function UserInfo() {
 	const user = auth.currentUser;
+	
 	const { updateFirstName, updateLastName, nameData }  = userDetails();
 	const sleep = useSleep();
 
@@ -37,7 +38,7 @@ export default function UserInfo() {
 			await sleep(500);
 			updateLastName(user.uid, values.newLastName);
 			await sleep(500);
-			window.location.href = "/pages/my-account/personal-info"
+			// window.location.href = "/pages/my-account/personal-info"
 		},
 	});
 	

@@ -98,9 +98,8 @@ button.search-button:hover {
 
 /* ---------- books section ---------- */
 .books-grid-container {
-	padding: var(--std-section-padding);
 	display: grid;
-	grid-template-columns: repeat(1, 1fr);
+	grid-template-columns: repeat(2, 1fr);
 	gap: 2rem;
 }
 
@@ -134,7 +133,7 @@ button.search-button:hover {
 	}
 
 	.books-grid-container {
-		grid-template-columns: repeat(2, 1fr);
+		grid-template-columns: repeat(3, 1fr);
 	}
 }
 
