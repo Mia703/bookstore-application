@@ -13,24 +13,49 @@
 	font-size: 1.2em;
 }
 
-.nav-list {
+.mobile button {
 	display: flex;
-	flex-direction: row;
-	justify-content: space-between;
-	align-items: center;
-	min-width: 35rem;
+	flex-direction: column;
 }
 
-.nav-item {
-	list-style: none;
+#home-navigation {
+	display: none;
+	visibility: hidden;
 }
 
-.nav-item a {
-	border-bottom: solid 2px transparent;
-	transition: var(--std-transition);
-}
+/* =================== DESKTOP =================== */
+@media only screen and (min-width: 64.063em) {
 
-.nav-item a:hover {
-	border-bottom: solid 2px var(--font);
-	transition: var(--std-transition);
+	#home-navigation {
+		display: block;
+		visibility: visible;
+	}
+
+	.mobile {
+		display: none;
+		visibility: hidden;
+	}
+	
+	.nav-list {
+		display: flex;
+		flex-direction: row;
+		justify-content: space-between;
+		align-items: center;
+		min-width: 35rem;
+	}
+	
+	.nav-item {
+		list-style: none;
+	}
+	
+	.nav-item a {
+		border-bottom: solid 2px transparent;
+		transition: var(--std-transition);
+	}
+	
+	.nav-item a:hover {
+		border-bottom: solid 2px var(--font);
+		transition: var(--std-transition);
+	}
+
 }

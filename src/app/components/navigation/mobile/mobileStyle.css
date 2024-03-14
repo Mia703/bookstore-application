@@ -1,0 +1,51 @@
+/* =================== constants =================== */
+.mobile-navigation {
+	position: fixed;
+	top: 1rem;
+	width: 300px;
+	height: 94vh;
+	background-color: var(--background);
+	border-left: solid 2px var(--font);
+	border-top: solid 2px var(--font);
+	border-bottom: solid 2px var(--font);
+	border-radius: 5px 0 0 5px;
+	box-shadow: -5px 0px 15px rgba(0, 0, 0, 35%);
+	right: -100%;
+	transition: right 0.3s ease;
+}
+
+.mobile-navigation.open {
+	right: 0;
+}
+
+.menu-container .button-container {
+	display: flex;
+	flex-direction: row;
+	justify-content: right;
+}
+
+.close-button {
+	display: flex;
+	flex-direction: column;
+	background-color: var(--background);
+	border-color: var(--background);
+}
+
+.close-button span {
+	color: var(--font);
+}
+
+.menu-container {
+	padding: 1rem 1rem 1rem 2rem;
+}
+
+.menu-container ul {
+	list-style-type: none;
+}
+
+.menu-container ul li {
+	margin-bottom: 3rem;
+	font-size: 2em;
+}
+
+/* =================== media queries =================== */

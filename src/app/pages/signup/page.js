@@ -30,8 +30,6 @@ export default function Signup() {
 					const user = userCredential.user;
 					// save user uuid, first and last name to database
 					addUser(user.uid, values.fname, values.lname);
-					// save the user to localstorage
-					// localStorage.setItem(user.uid, user);
 					// route user to search page
 					window.location.href = "/pages/search";
 				})

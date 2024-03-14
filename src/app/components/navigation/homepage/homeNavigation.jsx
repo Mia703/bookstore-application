@@ -1,7 +1,16 @@
+"use client";
+import { useState } from "react";
 import Link from "next/link";
-import "./homeStyle.css"
+import MobileNavigation from "../mobile/mobileNavigation";
+import "./homeStyle.css";
 
 export default function homeNavigation() {
+	const [isNavOpen, setIsNavOpen] = useState(false);
+
+	const toggleNav = () => {
+		setIsNavOpen(!isNavOpen);
+	};
+
 	return (
 		<section className="navigation-section">
 			<div className="logo-container">
@@ -10,7 +19,14 @@ export default function homeNavigation() {
 				</Link>
 			</div>
 
-			<nav id="home-navigation">
+			<div className="mobile">
+				<button type="button" className="button-accent-light" onClick={toggleNav}>
+					<span class="material-symbols-outlined">menu</span>
+				</button>
+				<MobileNavigation isOpen={isNavOpen} onClose={toggleNav} />
+			</div>
+
+			<nav id="home-navigation" role="navigation">
 				<ul className="nav-list">
 					<li className="nav-item">
 						<Link href={"/pages/about"}>About</Link>
