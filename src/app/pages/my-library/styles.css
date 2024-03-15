@@ -8,20 +8,16 @@ section.library-section {
 	padding: var(--std-section-padding);
 }
 
+section.library-section h1 {
+    margin-bottom: 2rem;
+}
+
 .shelf-buttons {
     display: grid;
     grid-template-columns: auto auto;
     justify-content: center;
     gap: 1rem;
     margin: var(--std-section-margin);
-}
-
-.shelf-buttons button:not(.selected) {
-    transition: background-color var(--std-transition);
-}
-
-.selected {
-    background-color: var(--highlight);
 }
 
 .book-shelf {
@@ -32,8 +28,6 @@ section.library-section {
 }
 
 /* =================== media queries =================== */
-
-
 /* =================== TABLET =================== */
 @media only screen and (min-width: 40.063em) {
 	#library-page {
@@ -57,10 +51,10 @@ section.library-section {
 
     .shelf-buttons button:hover:not(.selected) {
         background-color: var(--highlight);
-        transition: background-color var(--std-transition);
+        transition: box-shadow var(--std-transition), background-color var(--std-transition);
     }
 
     .book-shelf {
-        grid-template-columns: repeat(4, 1fr);
+        grid-template-columns: repeat(3, 1fr);
     }
 }

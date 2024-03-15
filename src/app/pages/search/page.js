@@ -27,7 +27,7 @@ export default function Search() {
 				<Navigation />
 				<section className="search-section">
 					<h1>Browse All Books</h1>
-					<form onSubmit={formikSearch.handleSubmit} className="searchbar">
+					{/* <form onSubmit={formikSearch.handleSubmit} className="searchbar">
 						<label htmlFor="search"></label>
 						<input
 							type="search"
@@ -43,13 +43,15 @@ export default function Search() {
 								search
 							</span>
 						</button>
-					</form>
+					</form> */}
 				</section>
 				{booksData ? (
 					<div className="books-grid-container">
 						{booksData && booksData.map((item) => (
 							<Book
 								key={item.isbn}
+								index={item.isbn}
+								user_id= {user.uid}
 								book_title={item.book_title}
 								book_author={item.book_author}
 								book_description={item.book_description}

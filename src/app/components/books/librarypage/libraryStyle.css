@@ -1,0 +1,68 @@
+/* =================== constants =================== */
+.book-container {
+	display: flex;
+	flex-direction: column;
+}
+
+.book-cover {
+	transition: var(--std-transition);
+	width: 150px;
+	box-shadow: 0px 4px 5px rgba(36, 29, 13, 80%);
+	margin-bottom: 1rem;
+}
+
+form {
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	align-items: flex-start;
+}
+
+form div {
+	text-align: left;
+	display: grid;
+	grid-template-columns: max-content auto;
+	margin-bottom: 0.5rem;
+}
+
+form label {
+	margin-right: 5px;
+}
+
+form input {
+	border: none;
+	font-size: 0.89em;
+	padding-left: 3px;
+}
+
+form input::placeholder {
+	color: var(--font);
+}
+
+form button {
+	display: none;
+}
+
+/* =================== media queries =================== */
+
+/* =================== MOBILE =================== */
+
+/* =================== TABLET =================== */
+@media only screen and (min-width: 40.063em) {
+	.book-cover {
+		width: 200px;
+	}
+}
+
+/* =================== DESKTOP =================== */
+@media only screen and (min-width: 64.063em) {
+	.book-cover {
+		width: 250px;
+	}
+
+	.book-container {
+		display: flex;
+		flex-direction: row;
+		gap: 1.5rem;
+	}
+}

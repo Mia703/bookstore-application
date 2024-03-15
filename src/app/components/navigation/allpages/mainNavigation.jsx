@@ -7,7 +7,6 @@ import MobileNavigation from "../mobile/mainMobileNav";
 import "./mainStyle.css";
 
 export default function Navigation() {
-	const user = auth.currentUser;
 	const {nameData} = userDetails();
 
 	const [isNavOpen, setIsNavOpen] = useState(false);

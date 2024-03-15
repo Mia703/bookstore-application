@@ -1,8 +1,11 @@
 "use client";
 import { useState } from "react";
+import { userLibrary } from "../../../api/methods";
 import "./style.css";
 
 export default function SearchBook({
+	index,
+	user_id,
 	book_title,
 	book_author,
 	book_description,
@@ -14,6 +17,8 @@ export default function SearchBook({
 	const toggleModal = () => {
 		setShowModal(!showModal);
 	};
+
+	const { addUserBook } = userLibrary();
 
 	return (
 		<div className="book-container">
@@ -50,10 +55,18 @@ export default function SearchBook({
 									Published in {published_year}. Total pages {total_pages}.
 								</p>
 								<div className="library-button-container">
-									<button type="button">Reading</button>
-									<button type="button">Want to Read</button>
-									<button type="button">Read</button>
-									<button type="button">No longer want to read</button>
+									<button type="button" className="button-accent-medium" onClick={() => {
+										addUserBook(user_id, index, "reading");
+									}}>Reading</button>
+									<button type="button" className="button-accent-medium" onClick={() => {
+										addUserBook(user_id, index, "wantToRead");
+									}}>Want to Read</button>
+									<button type="button" className="button-accent-medium" onClick={() => {
+										addUserBook(user_id, index, "read");
+									}}>Read</button>
+									<button type="button" className="button-accent-medium" onClick={() => {
+										addUserBook(user_id, index, "noLongerWantToRead");
+									}}>No longer want to read</button>
 								</div>
 							</div>
 							<p className="description">{book_description}</p>
