@@ -57,8 +57,8 @@ export default function SearchBook({
 								<div className="library-button-container">
 									<button type="button" className="button-accent-medium" onClick={() => {
 										addUserBook(user_id, index, "reading");
-									}}>Reading</button>
-									<button type="button" className="button-accent-medium" onClick={() => {
+									}}>Add to Library</button>
+									{/* <button type="button" className="button-accent-medium" onClick={() => {
 										addUserBook(user_id, index, "wantToRead");
 									}}>Want to Read</button>
 									<button type="button" className="button-accent-medium" onClick={() => {
@@ -66,7 +66,7 @@ export default function SearchBook({
 									}}>Read</button>
 									<button type="button" className="button-accent-medium" onClick={() => {
 										addUserBook(user_id, index, "noLongerWantToRead");
-									}}>No longer want to read</button>
+									}}>No longer want to read</button> */}
 								</div>
 							</div>
 							<p className="description">{book_description}</p>

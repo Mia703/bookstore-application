@@ -50,7 +50,7 @@ export default function Navigation() {
 						<Link href={"/pages/my-library"}>My Library</Link>
 					</li>
 					<li className="nav-item">
-						<Link href={"/pages/my-account"}>My Account</Link>
+						<Link href={"/pages/my-account/personal-info"}>My Account</Link>
 					</li>
 					<li className="nav-item">
 						<button

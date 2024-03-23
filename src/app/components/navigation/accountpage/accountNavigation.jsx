@@ -19,7 +19,7 @@ export default function AccountNavigation() {
 	
 	return (
 		<ul className="account-nav-list" style={styles.navList}>
-			<li className="account-list-item" style={styles.listItem}>
+			{/* <li className="account-list-item" style={styles.listItem}>
 				<Link
 					href={"/pages/my-account"}
 					className="account-link"
@@ -27,7 +27,7 @@ export default function AccountNavigation() {
 				>
 					Reading Insights
 				</Link>
-			</li>
+			</li> */}
 			<li className="account-list-item" style={styles.listItem}>
 				<Link
 					href={"/pages/my-account/personal-info"}

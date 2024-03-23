@@ -1,14 +1,16 @@
 "use client";
 import { useFormik } from "formik";
-import { auth, useSleep } from "../../../api/methods"
+import { auth, useSleep } from "../../../api/methods";
 import { updateEmail, updatePassword } from "firebase/auth";
-import { newEmailValidation, newPasswordValidation} from "../../../api/validations"
+import {
+	newEmailValidation,
+	newPasswordValidation,
+} from "../../../api/validations";
 import Logged from "../../../components/notLogged/Logged";
 import Navigation from "../../../components/navigation/allpages/mainNavigation";
 import Sidebar from "../../../components/navigation/accountpage/accountSidebar";
 import Footer from "../../../components/Footer";
 import "./styles.css";
-
 
 export default function AccountSettings() {
 	const user = auth.currentUser;
@@ -20,15 +22,15 @@ export default function AccountSettings() {
 		},
 		validationSchema: newEmailValidation,
 		onSubmit: async (values) => {
-			await sleep(500)
+			await sleep(500);
 			updateEmail(auth.currentUser, `${values.newEmail}`)
 				.then(() => {
 					// Email updated!
 					// go to login page
-					window.location.href = "/pages/login"
+					window.location.href = "/pages/login";
 				})
 				.catch((error) => {
-					alert("Failed to update user email.\n" + error)
+					alert("Failed to update user email.\n" + error);
 					// refresh page? -- clear form
 					formikEmail.resetForm({
 						newEmail: "",
@@ -37,7 +39,6 @@ export default function AccountSettings() {
 		},
 	});
 
-	
 	const formikPassword = useFormik({
 		initialValues: {
 			newPassword: "",
@@ -64,7 +65,7 @@ export default function AccountSettings() {
 				});
 		},
 	});
-	
+
 	if (user) {
 		return (
 			<div id="account-settings-page">
@@ -167,11 +168,15 @@ export default function AccountSettings() {
 									Would you like to clear your library? This is an irreversible
 									action that cannot be undone. All information regarding,
 									books, reviews, comments, etc. will be permanently erased. If
-									you would like to proceed, please press the button below.
+									you would like to proceed, please email us at{" "}
+									<a href="mailto:panelsyncteam@gmail.com" className="bold">
+										panelsyncteam@gmail.com
+									</a>
+									.
 								</p>
-								<button type="submit" className="button-accent-dark">
+								{/* <button type="submit" className="button-accent-dark">
 									Clear Library
-								</button>
+								</button> */}
 							</div>
 							<div className="delete-account-container">
 								<h2>Delete Account</h2>
@@ -179,11 +184,15 @@ export default function AccountSettings() {
 									Would you like to delete you account? This is an irreversible
 									action that cannot be undone. All information about you and
 									the information stored in your library will be permanently
-									deleted. If you would like to proceed, press the button below.
+									deleted. If you would like to proceed, please email us at{" "}
+									<a href="mailto:panelsyncteam@gmail.com" className="bold">
+										panelsyncteam@gmail.com
+									</a>
+									.
 								</p>
-								<button type="submit" className="button-accent-dark">
+								{/* <button type="submit" className="button-accent-dark">
 									Delete Account
-								</button>
+								</button> */}
 							</div>
 						</div>
 					</div>

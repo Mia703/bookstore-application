@@ -162,7 +162,9 @@ const userLibrary = () => {
 		]);
 		if (error) {
 			console.log("Error: addUserBook.\n", error.message);
+			alert("Could not add book to library. Please try again");
 		} else {
+			alert("Added book to library.");
 		}
 	}
 	return { addUserBook };

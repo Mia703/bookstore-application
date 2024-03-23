@@ -39,10 +39,6 @@ form input::placeholder {
 	color: var(--font);
 }
 
-form button {
-	display: none;
-}
-
 /* =================== media queries =================== */
 
 /* =================== MOBILE =================== */

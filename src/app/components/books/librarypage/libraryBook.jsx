@@ -79,7 +79,7 @@ export default function LibraryBook({
 		<div className={`book-container ${reading_status}`}>
 			<img src={book_cover} alt={book_title} className="book-cover" />
 			<div>
-				<form onSubmit={formikUserBook.handleSubmit}>
+				{/* <form onSubmit={formikUserBook.handleSubmit}>
 					<div>
 						<label htmlFor="rating">Rating: </label>
 						<input
@@ -180,7 +180,7 @@ export default function LibraryBook({
 						/>
 					</div>
 					<button type="submit">submit</button>
-				</form>
+				</form> */}
 			</div>
 		</div>
 	);
