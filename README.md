@@ -1,40 +1,11 @@
-# Welcome to Next JS
+# PanelSync
 
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+PanelSync is a book-tracking application designed to help users monitor their reading progress. It allows users to authenticate their information, search, and filter for books and save or delete books they are currently reading. PanelSync aims to provide a seamless and enjoyable experience for literature enthusiasts by offering a centralised platform to organise and enhance their reading journey. PanelSync was built as a full-stack application using Next.js and React for the front-end, Firebase for authentication, and Supabase for the database.
 
-## Getting Started
+Note: This project was created for the express purpose to serve as the final project for the course ICT 4300: Web Systems and Information. Developed to meet the specific requirements of the assignment, any data collected will be erased upon the conclusion of the course on March 16th, 2024, and the project's database has been frozen since then.
 
-First, run the development server:
+Project URL: https://panelsync.vercel.app/
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## License
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-Run `npm run build` to start the build process and `npm run start` to run the built pages on localhost.
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+PanelSync © 2024 by Amya Moore is licensed under CC BY-SA 4.0.
